@@ -53,7 +53,8 @@ function Home() {
             minHeight: 280,
           }}
         >
-          <EventCalendar />
+          <p className="placeholder">placeholder</p>
+          <EventCalendar className="calendar" />
         </Content>
       </Layout>
     </Layout>

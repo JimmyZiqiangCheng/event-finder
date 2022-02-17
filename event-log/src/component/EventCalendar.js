@@ -14,7 +14,12 @@ function EventCalendar() {
   };
 
   return (
-    <Calendar value={date} onSelect={onSelect} onPanelChange={onPanelChange} />
+    <Calendar
+      fullscreen={false}
+      value={date}
+      onSelect={onSelect}
+      onPanelChange={onPanelChange}
+    />
   );
 }
 
