@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "antd/dist/antd.css";
-import { Calendar, Alert } from "antd";
+import { Calendar } from "antd";
 import moment from "moment";
 
 function EventCalendar() {
@@ -8,6 +8,7 @@ function EventCalendar() {
   const [selected, setSelected] = useState(moment());
   const onSelect = (val) => {
     setSelected(val);
+    console.log(`selected date: ${selected}`);
   };
   const onPanelChange = (val) => {
     setDate(val);
