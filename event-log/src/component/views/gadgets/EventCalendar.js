@@ -20,6 +20,7 @@ function EventCalendar() {
       value={date}
       onSelect={onSelect}
       onPanelChange={onPanelChange}
+      className="event-calendar"
     />
   );
 }

@@ -1,6 +1,15 @@
 import React from "react";
+import EventCalendar from "./views/gadgets/EventCalendar";
+import EventList from "./views/gadgets/EventList";
+import "./views/view.css";
+
 function Events() {
-  return <h1> events page</h1>;
+  return (
+    <div className="events-content">
+      <EventList />
+      <EventCalendar className="calendar" />
+    </div>
+  );
 }
 
 export default Events;

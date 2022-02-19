@@ -1,6 +1,10 @@
 import React from "react";
 function Profile() {
-  return <h1> profile page</h1>;
+  return (
+    <>
+      <p>event detail</p>
+    </>
+  );
 }
 
 export default Profile;

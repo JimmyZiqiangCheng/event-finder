@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import "./view.css";
 import "antd/dist/antd.css";
 import { Layout } from "antd";
 import ThemeContext from "./theme";
