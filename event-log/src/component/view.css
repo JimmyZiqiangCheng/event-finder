@@ -3,6 +3,17 @@
   background: #fff;
 }
 
+.header-button-group {
+  align-self: center;
+  display: flex;
+  gap: 20px;
+  margin-right: 100px;
+}
+
+.my-header {
+  justify-content: space-between;
+}
+
 .trigger {
   padding: 0 24px;
   font-size: 18px;
@@ -22,13 +33,16 @@
   flex: 1 0 auto;
 }
 
+/* content */
+
 .events-content {
   display: flex;
 }
 
-.ant-list {
+.ant-list-vertical {
+  flex: 0.6;
 }
 
 .ant-picker-calendar {
-  flex: 0.4 1 auto;
+  flex: 0.4;
 }
