@@ -2,7 +2,7 @@ import React from "react";
 import "antd/dist/antd.css";
 import { List, Avatar, Space } from "antd";
 import { MessageOutlined, LikeOutlined, StarOutlined } from "@ant-design/icons";
-import "../view.css";
+import "../layout/layout.css";
 
 const listData = [];
 for (let i = 0; i < 8; i++) {

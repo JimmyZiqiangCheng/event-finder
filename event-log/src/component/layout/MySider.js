@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "../view.css";
+import "./layout.css";
 import "antd/dist/antd.css";
 import { Layout, Menu } from "antd";
 import {

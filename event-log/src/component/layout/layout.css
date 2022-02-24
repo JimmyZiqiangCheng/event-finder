@@ -10,6 +10,10 @@
   margin-right: 100px;
 }
 
+.header-button {
+  border-radius: 5px !important;
+}
+
 .my-header {
   justify-content: space-between;
 }
@@ -39,10 +43,39 @@
   display: flex;
 }
 
+@media screen and (max-width: 876px) {
+  .events-content {
+    flex-wrap: wrap;
+  }
+}
+
 .ant-list-vertical {
   flex: 0.6;
 }
 
+@media screen and (max-width: 876px) {
+  .ant-list-vertical {
+    flex: 1;
+  }
+}
+
 .ant-picker-calendar {
   flex: 0.4;
+}
+
+@media screen and (max-width: 876px) {
+  .ant-picker-calendar {
+    flex: 1;
+  }
+}
+
+.ant-layout {
+  /* height: 100vh; */
+}
+
+/* event list */
+@media screen and (max-width: 1366px) {
+  .ant-list-item {
+    flex-direction: column-reverse;
+  }
 }

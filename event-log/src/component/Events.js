@@ -1,7 +1,7 @@
 import React from "react";
-import EventCalendar from "./gadgets/EventCalendar";
-import EventList from "./gadgets/EventList";
-import "./view.css";
+import EventCalendar from "./utils/EventCalendar";
+import EventList from "./utils/EventList";
+import "./layout/layout.css";
 
 function Events() {
   return (
