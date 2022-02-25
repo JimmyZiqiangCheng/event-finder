@@ -8,6 +8,7 @@ import {
   CoffeeOutlined,
 } from "@ant-design/icons";
 import ThemeContext from "./theme";
+import { Link } from "react-router-dom";
 
 const { Sider } = Layout;
 
@@ -18,13 +19,13 @@ function MySider() {
       <div className="logo" />
       <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
         <Menu.Item key="Events" icon={<CoffeeOutlined />}>
-          Events
+          <Link to="/">Events</Link>
         </Menu.Item>
         <Menu.Item key="Create Event" icon={<UploadOutlined />}>
-          Create Event
+          <Link to="/create">Create Event</Link>
         </Menu.Item>
         <Menu.Item key="Profile" icon={<UserOutlined />}>
-          Profile
+          <Link to="/profile">Profile</Link>
         </Menu.Item>
       </Menu>
     </Sider>

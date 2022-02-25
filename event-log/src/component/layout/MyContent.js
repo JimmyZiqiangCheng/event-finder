@@ -2,10 +2,10 @@ import React from "react";
 import "./layout.css";
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "antd";
-import Event from "../Event";
-import Events from "../Events";
-import CreateEvent from "../CreateEvent";
-import Profile from "../Profile";
+import Event from "../events/Event";
+import Events from "../events/Events";
+import CreateEvent from "../events/CreateEvent";
+import Profile from "../profile/Profile";
 
 const { Content } = Layout;
 function MyContent() {

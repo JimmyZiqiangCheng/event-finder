@@ -1,6 +1,6 @@
 /* Header */
 .site-layout-background {
-  background: #fff;
+  background: #fff !important;
 }
 
 .header-button-group {
@@ -19,11 +19,11 @@
 }
 
 .trigger {
-  padding: 0 24px;
-  font-size: 18px;
-  line-height: 64px;
-  cursor: pointer;
-  transition: color 0.3s;
+  padding: 0 24px !important;
+  font-size: 18px !important;
+  line-height: 64px !important;
+  cursor: pointer !important;
+  transition: color 0.3s !important;
 }
 
 /* sider */
@@ -39,13 +39,23 @@
 
 /* content */
 
-.events-content {
-  display: flex;
+.site-layout-background {
+  height: 100vh;
 }
 
-@media screen and (max-width: 876px) {
+/* events */
+
+.events-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+@media screen and (max-width: 960px) {
   .events-content {
+    flex: 1;
     flex-wrap: wrap;
+    gap: 50px;
   }
 }
 
@@ -53,7 +63,7 @@
   flex: 0.6;
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: 960px) {
   .ant-list-vertical {
     flex: 1;
   }
@@ -63,14 +73,10 @@
   flex: 0.4;
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: 960px) {
   .ant-picker-calendar {
     flex: 1;
   }
-}
-
-.ant-layout {
-  /* height: 100vh; */
 }
 
 /* event list */
@@ -78,4 +84,40 @@
   .ant-list-item {
     flex-direction: column-reverse;
   }
+}
+
+/* create event form*/
+.create-event {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-left: 50px;
+}
+
+.create-event h1 {
+  align-self: center;
+  margin: 30px 0;
+  font-size: 36px;
+  padding-right: 100px;
+}
+
+@media screen and (max-width: 575px) {
+  .create-event h1 {
+    padding-right: 0;
+  }
+}
+
+.event-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-button {
+  align-self: center;
+}
+
+/* profile */
+
+.profile-content {
+  height: 100vh;
 }

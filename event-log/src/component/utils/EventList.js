@@ -4,19 +4,6 @@ import { List, Avatar, Space } from "antd";
 import { MessageOutlined, LikeOutlined, StarOutlined } from "@ant-design/icons";
 import "../layout/layout.css";
 
-const listData = [];
-for (let i = 0; i < 8; i++) {
-  listData.push({
-    href: "https://ant.design",
-    title: `ant design part ${i}`,
-    avatar: "https://joeschmoe.io/api/v1/random",
-    description:
-      "Ant Design, a design language for background applications, is refined by Ant UED Team.",
-    content:
-      "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
-  });
-}
-
 const IconText = ({ icon, text }) => (
   <Space>
     {React.createElement(icon)}
@@ -24,7 +11,9 @@ const IconText = ({ icon, text }) => (
   </Space>
 );
 
-function EventList() {
+function EventList(props) {
+  const { events } = props;
+  const avatar = "https://joeschmoe.io/api/v1/random";
   return (
     <List
       itemLayout="vertical"
@@ -35,37 +24,41 @@ function EventList() {
         },
         pageSize: 3,
       }}
-      dataSource={listData}
+      dataSource={events}
       renderItem={(item) => (
         <List.Item
           key={item.title}
           actions={[
             <IconText
               icon={StarOutlined}
-              text="156"
+              text={Math.floor(
+                item.rate.map((ele) => ele.rate).reduce((sum, a) => a + sum) /
+                  item.rate.length
+              )}
               key="list-vertical-star-o"
             />,
             <IconText
               icon={LikeOutlined}
-              text="156"
+              text={
+                item.rate.map((ele) => ele.rate).filter((ele) => ele === 5)
+                  .length
+              }
               key="list-vertical-like-o"
             />,
             <IconText
               icon={MessageOutlined}
-              text="2"
+              text={item.comments.length}
               key="list-vertical-message"
             />,
           ]}
           extra={
-            <img
-              width={272}
-              alt="logo"
-              src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-            />
+            <a href={item.href}>
+              <img width={272} alt="logo" src={`./img/${item.category}.jpg`} />
+            </a>
           }
         >
           <List.Item.Meta
-            avatar={<Avatar src={item.avatar} />}
+            avatar={<Avatar src={avatar} />}
             title={<a href={item.href}>{item.title}</a>}
             description={item.description}
           />
