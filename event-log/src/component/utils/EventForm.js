@@ -1,17 +1,13 @@
 import React from "react";
 import "antd/dist/antd.css";
-import {
-  Form,
-  Input,
-  Button,
-  Radio,
-  Select,
-  Cascader,
-  DatePicker,
-  TreeSelect,
-} from "antd";
+import { Form, Input, Button, Select, DatePicker } from "antd";
 
-function EventForm() {
+function EventForm(props) {
+  const { onSubmit, categories } = props;
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+
   return (
     <Form
       labelCol={{
@@ -22,8 +18,18 @@ function EventForm() {
         span: 14,
       }}
       layout="horizontal"
+      onFinish={onSubmit}
+      onFinishFailed={onFinishFailed}
     >
-      <Form.Item label="Title">
+      <Form.Item
+        label="Title"
+        rules={[
+          {
+            required: true,
+            message: "Title is required!",
+          },
+        ]}
+      >
         <Input />
       </Form.Item>
       <Form.Item label="Description">
@@ -31,7 +37,11 @@ function EventForm() {
       </Form.Item>
       <Form.Item label="Category">
         <Select>
-          <Select.Option value="demo">Demo</Select.Option>
+          {categories.map((category, key) => (
+            <Select.Option key={key} value={category}>
+              {category}
+            </Select.Option>
+          ))}
         </Select>
       </Form.Item>
       <Form.Item label="City">
@@ -52,6 +62,7 @@ function EventForm() {
           <Button
             className="header-button form-button"
             type="primary"
+            htmlType="submit"
             size={"middle"}
           >
             Create

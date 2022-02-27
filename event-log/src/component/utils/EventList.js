@@ -31,17 +31,24 @@ function EventList(props) {
           actions={[
             <IconText
               icon={StarOutlined}
-              text={Math.floor(
-                item.rate.map((ele) => ele.rate).reduce((sum, a) => a + sum) /
-                  item.rate.length
-              )}
+              text={
+                item.rate.length !== 0
+                  ? Math.floor(
+                      item.rate
+                        .map((ele) => ele.rate)
+                        .reduce((sum, a) => a + sum) / item.rate.length
+                    )
+                  : 0
+              }
               key="list-vertical-star-o"
             />,
             <IconText
               icon={LikeOutlined}
               text={
-                item.rate.map((ele) => ele.rate).filter((ele) => ele === 5)
-                  .length
+                item.rate.length !== 0
+                  ? item.rate.map((ele) => ele.rate).filter((ele) => ele === 5)
+                      .length
+                  : 0
               }
               key="list-vertical-like-o"
             />,

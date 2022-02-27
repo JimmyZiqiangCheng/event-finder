@@ -3,7 +3,6 @@ import EventCalendar from "../utils/EventCalendar";
 import EventList from "../utils/EventList";
 
 const API_URL = "https://601caf791a9c220017060c02.mockapi.io/api/v1/Events";
-
 function Events() {
   const [events, setEvents] = useState([]);
   useEffect(() => {
