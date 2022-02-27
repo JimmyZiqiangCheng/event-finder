@@ -48,8 +48,12 @@ function EventForm() {
         <DatePicker />
       </Form.Item>
       <div className="create-button">
-        <Form.Item label="">
-          <Button className="header-button" type="primary" size={"middle"}>
+        <Form.Item label="button">
+          <Button
+            className="header-button form-button"
+            type="primary"
+            size={"middle"}
+          >
             Create
           </Button>
         </Form.Item>

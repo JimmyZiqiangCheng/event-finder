@@ -91,20 +91,16 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  padding-left: 50px;
 }
 
 .create-event h1 {
   align-self: center;
   margin: 30px 0;
   font-size: 36px;
-  padding-right: 100px;
 }
 
-@media screen and (max-width: 575px) {
-  .create-event h1 {
-    padding-right: 0;
-  }
+.ant-form-item .ant-col-14 {
+  max-width: 76%;
 }
 
 .event-form {
@@ -112,10 +108,9 @@
   flex-direction: column;
 }
 
-.create-button {
-  align-self: center;
+.create-button .ant-form-item-label label {
+  display: none;
 }
-
 /* profile */
 
 .profile-content {
