@@ -33,16 +33,7 @@ const data = [
 ];
 
 function EventsTable() {
-  return (
-    <Table
-      columns={columns}
-      dataSource={data}
-      pagination={false}
-      title={() => {
-        React.createElement(<h1>my events</h1>);
-      }}
-    />
-  );
+  return <Table columns={columns} dataSource={data} pagination={false} />;
 }
 
 export default EventsTable;

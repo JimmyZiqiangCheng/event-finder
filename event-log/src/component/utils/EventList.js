@@ -3,6 +3,8 @@ import "antd/dist/antd.css";
 import { List, Avatar, Space } from "antd";
 import { MessageOutlined, LikeOutlined, StarOutlined } from "@ant-design/icons";
 import "../layout/layout.css";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const IconText = ({ icon, text }) => (
   <Space>
@@ -11,8 +13,8 @@ const IconText = ({ icon, text }) => (
   </Space>
 );
 
-function EventList(props) {
-  const { events } = props;
+function EventList() {
+  const events = useSelector((state) => state.events);
   const avatar = "https://joeschmoe.io/api/v1/random";
   return (
     <List
@@ -59,16 +61,18 @@ function EventList(props) {
             />,
           ]}
           extra={
-            <a href={item.href}>
+            <Link to={`/events/:${item.eventId}`}>
               <img width={272} alt="logo" src={`./img/${item.category}.jpg`} />
-            </a>
+            </Link>
           }
         >
-          <List.Item.Meta
-            avatar={<Avatar src={avatar} />}
-            title={<a href={item.href}>{item.title}</a>}
-            description={item.description}
-          />
+          <Link to={`/events/:${item.eventId}`}>
+            <List.Item.Meta
+              avatar={<Avatar src={avatar} />}
+              title={item.title}
+              description={item.description}
+            />
+          </Link>
           {item.content}
         </List.Item>
       )}

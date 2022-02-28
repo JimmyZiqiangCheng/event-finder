@@ -3,7 +3,7 @@ import "antd/dist/antd.css";
 import { Form, Input, Button, Select, DatePicker } from "antd";
 
 function EventForm(props) {
-  const { onSubmit, categories } = props;
+  const { onSubmit, categories, cities, venues } = props;
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
@@ -23,19 +23,38 @@ function EventForm(props) {
     >
       <Form.Item
         label="Title"
+        name="title"
         rules={[
           {
             required: true,
-            message: "Title is required!",
+            message: "Please input the event title!",
           },
         ]}
       >
         <Input />
       </Form.Item>
-      <Form.Item label="Description">
+      <Form.Item
+        label="Description"
+        name="description"
+        rules={[
+          {
+            required: true,
+            message: "Please input the event description!",
+          },
+        ]}
+      >
         <Input.TextArea />
       </Form.Item>
-      <Form.Item label="Category">
+      <Form.Item
+        label="Category"
+        name="category"
+        rules={[
+          {
+            required: true,
+            message: "Please select the event category!",
+          },
+        ]}
+      >
         <Select>
           {categories.map((category, key) => (
             <Select.Option key={key} value={category}>
@@ -44,17 +63,53 @@ function EventForm(props) {
           ))}
         </Select>
       </Form.Item>
-      <Form.Item label="City">
+      <Form.Item
+        label="City"
+        name="city"
+        rules={[
+          {
+            required: true,
+            message: "Please select which city the event will be held!",
+          },
+        ]}
+      >
         <Select>
-          <Select.Option value="demo">Demo</Select.Option>
+          {cities.map((city, key) => (
+            <Select.Option key={key} value={city}>
+              {city}
+            </Select.Option>
+          ))}
         </Select>
       </Form.Item>
-      <Form.Item label="Venue">
+      <Form.Item
+        label="Venue"
+        name="venue"
+        rules={[
+          {
+            required: true,
+            message: "Please select the event venue!",
+          },
+        ]}
+      >
         <Select>
-          <Select.Option value="demo">Demo</Select.Option>
+          {venues.map((venue, key) => (
+            <Select.Option key={key} value={venue}>
+              {venue}
+            </Select.Option>
+          ))}
         </Select>
       </Form.Item>
-      <Form.Item className="date-picker" label="DatePicker">
+      <Form.Item
+        className="date-picker"
+        label="DatePicker"
+        name="date"
+        rules={[
+          {
+            required: true,
+            message: "Please select the event date!",
+          },
+        ]}
+      >
         <DatePicker />
       </Form.Item>
       <div className="create-button">

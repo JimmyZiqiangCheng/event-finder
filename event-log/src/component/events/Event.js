@@ -1,6 +1,8 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 function Event() {
-  return <h1> event page</h1>;
+  const { eventId } = useParams();
+  return <h1> event ID: {eventId} </h1>;
 }
 
 export default Event;
