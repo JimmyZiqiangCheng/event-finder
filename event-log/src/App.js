@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import MyContent from "./component/layout/MyContent";
+import MyContent from "./component/layout/MyContent/MyContent";
 import ThemeContext from "./component/layout/theme";
-import MySider from "./component/layout/MySider";
-import MyHeader from "./component/layout/MyHeader";
+import MySider from "./component/layout/MySider/MySider";
+import MyHeader from "./component/layout/MyHeader/MyHeader";
 import "antd/dist/antd.css";
 import { Layout } from "antd";
 import { BrowserRouter as Router } from "react-router-dom";

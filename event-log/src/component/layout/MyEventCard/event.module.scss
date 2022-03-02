@@ -1,0 +1,88 @@
+@use "../colors";
+
+.my_event_card {
+  :global {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 15px;
+    align-items: start;
+    .card-section {
+      border-radius: 5px;
+    }
+    .card-title {
+      grid-column: 1 / span 2;
+      grid-row: 1;
+      background-color: colors.$greycolor-light;
+      display: flex;
+      flex-direction: column;
+      .info-group {
+        border-radius: 5px 5px 0 0;
+        flex: 0.8;
+        // background-image: url("/img/culture.jpg") no-repeat;
+        background-color: colors.$themecolor-main;
+        padding-left: 15px;
+        padding-top: 80px;
+        h1 {
+          font-size: 20px;
+          color: #fff;
+        }
+        p {
+          color: #fff;
+        }
+      }
+      .button-group {
+        flex: 0.2;
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 10px;
+        .card-button {
+          border-radius: 5px;
+          background-color: colors.$themecolor-main;
+          border: none;
+        }
+      }
+    }
+    .card-host {
+      align-self: start;
+      grid-column: 3;
+      grid-row: 1;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      .title {
+        height: 60px;
+        background-color: colors.$themecolor-main;
+        border-radius: 5px 5px 0 0;
+        text-align: center;
+        padding: 16px 0;
+        font-weight: bold;
+        color: #fff;
+        font-size: 18px;
+      }
+      .host-info {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        height: 100px;
+        img {
+          height: 80px;
+          width: 80px;
+        }
+        .host-name {
+          margin-left: 15px;
+        }
+      }
+    }
+    .card-detail {
+      grid-column: 1 / span 2;
+      grid-row: 2 / span 2;
+      background-color: aquamarine;
+    }
+    .card-chat {
+      grid-column: 1 / span 2;
+      grid-row: 4 / span 2;
+      background-color: antiquewhite;
+    }
+  }
+}

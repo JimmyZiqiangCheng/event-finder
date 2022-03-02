@@ -1,3 +1,6 @@
+Events API: https://601caf791a9c220017060c02.mockapi.io/api/v1/Events
+Host API: https://601caf791a9c220017060c02.mockapi.io/api/v1/Hosts
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
