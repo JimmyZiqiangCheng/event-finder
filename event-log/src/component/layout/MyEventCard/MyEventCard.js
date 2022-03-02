@@ -1,6 +1,11 @@
 import React from "react";
 import styles from "./event.module.scss";
-import { Button } from "antd";
+import { Button, Avatar } from "antd";
+import {
+  InfoCircleOutlined,
+  CalendarOutlined,
+  CompassOutlined,
+} from "@ant-design/icons";
 
 function MyEventCard(props) {
   const { event, host } = props;
@@ -29,10 +34,24 @@ function MyEventCard(props) {
         </div>
       </section>
       <section className="card-section card-detail">
-        <div className="event-description">{event.description}</div>
-        <div className="event-time">{event.date}</div>
-        <div className="event-location">{event.venue}</div>
-        <div className="event-participant"> who is coming</div>
+        <div className="event-card-detail event-description">
+          <div className="event-icon"><InfoCircleOutlined style={{ fontSize: '20px' }}/></div>
+          <div className="description-detail">{event.description}</div>
+        </div>
+        <div className="event-card-detail event-time">
+          <div className="event-icon"><CalendarOutlined style={{ fontSize: '20px' }}/></div>
+          <div className="date-detail">{event.date}</div>
+        </div>
+        <div className="event-card-detail event-location">
+          <div className="event-icon"><CompassOutlined style={{ fontSize: '20px' }}/></div>
+          <div className="location-detail">{event.venue}</div>
+        </div>
+        <div className="event-card-detail event-participant"> 
+          <div className="participant-title">Who's coming?</div>
+          <div className="participant-avatar">
+            {event.attendees.map((attendee)=><Avatar src={attendee.photoURL}/>)}
+          </div>
+        </div>
       </section>
       <section className="card-section card-chat"> chat</section>
     </div>

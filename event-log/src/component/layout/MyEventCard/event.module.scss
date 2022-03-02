@@ -77,7 +77,33 @@
     .card-detail {
       grid-column: 1 / span 2;
       grid-row: 2 / span 2;
-      background-color: aquamarine;
+      background-color: colors.$greycolor-light;
+      display:flex;
+      flex-direction: column;
+      .event-card-detail {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 10px 10px;
+        gap: 10px;
+      }
+      .event-icon {
+        color: colors.$themecolor-main;
+      }
+      .event-description {
+        border-bottom: 1px solid colors.$greycolor-dark;
+      }
+      .event-time {
+        border-bottom: 1px solid colors.$greycolor-dark;
+      }
+      .event-participant {
+        flex-direction:column;
+        align-items: flex-start;
+        .participant-avatar{
+          display:flex;
+          gap: 15px;
+        }
+      }
     }
     .card-chat {
       grid-column: 1 / span 2;
