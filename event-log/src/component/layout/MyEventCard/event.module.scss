@@ -4,7 +4,7 @@
   :global {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    //grid-template-rows: repeat(5, 1fr);
     gap: 15px;
     align-items: start;
     .card-section {
@@ -78,7 +78,7 @@
       grid-column: 1 / span 2;
       grid-row: 2 / span 2;
       background-color: colors.$greycolor-light;
-      display:flex;
+      display: flex;
       flex-direction: column;
       .event-card-detail {
         display: flex;
@@ -97,18 +97,64 @@
         border-bottom: 1px solid colors.$greycolor-dark;
       }
       .event-participant {
-        flex-direction:column;
+        flex-direction: column;
         align-items: flex-start;
-        .participant-avatar{
-          display:flex;
+        .participant-avatar {
+          display: flex;
           gap: 15px;
+          flex: 1 1 auto;
+          align-items: center;
+          .see-more {
+            margin-left: 20px;
+          }
         }
       }
     }
     .card-chat {
       grid-column: 1 / span 2;
       grid-row: 4 / span 2;
-      background-color: antiquewhite;
+      background-color: colors.$greycolor-light;
+      display: flex;
+      flex-direction: column;
+      .chat-detail {
+        padding-left: 5px;
+      }
+      .chat-title {
+        padding: 5px 0;
+        text-align: center;
+        color: colors.$greycolor-light;
+        background-color: colors.$themecolor-main;
+        border-radius: 5px 5px 0 0;
+      }
+      .chat-number {
+        padding-top: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid colors.$greycolor-dark;
+        margin-bottom: 15px;
+      }
+      .comment-li {
+        display: flex;
+        list-style-type: none;
+        .comment-detail {
+          margin-left: 10px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          .comment-meta {
+            display: flex;
+            align-self: center;
+            .comment-time {
+              margin-left: 10px;
+              color: colors.$greycolor-dark;
+              margin-bottom: 0;
+            }
+            .comment-name {
+              margin-bottom: 5px;
+            }
+          }
+        }
+      }
     }
   }
 }
