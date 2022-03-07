@@ -1,16 +1,19 @@
+@use "../colors";
 .my_content {
   min-height: 100vh;
   display: flex;
   :global {
     .ant-layout-content {
       min-height: 100vh;
+      margin: 0 !important;
+      padding: 16px !important;
       .events-content {
         display: flex;
         padding: 15px;
         align-items: flex-start;
         justify-content: space-between;
         gap: 20px;
-        background-color: #fff;
+        background-color: colors.$greycolor-light;
         .ant-list-vertical {
           flex: 0.6;
         }
@@ -41,7 +44,7 @@
         }
       }
       .create-event {
-        background-color: #fff;
+        background-color: colors.$greycolor-light;
         display: flex;
         flex: 1;
         flex-direction: column;
@@ -62,6 +65,38 @@
       .event-detail {
         width: 100%;
         padding: 0 100px;
+      }
+      .profile-background {
+        background-color: colors.$greycolor-light;
+        width: 100%;
+        padding: 20px 20%;
+        .profile-content {
+          display: flex;
+          flex-direction: column;
+          h1 {
+            font-size: 24px;
+            margin-bottom: 40px;
+          }
+          .profile-avatar {
+            align-self: center;
+            margin-bottom: 20px;
+          }
+          .profile-table-background {
+            padding: 0 24px 88px 24px;
+            border-bottom: 1px solid colors.$greycolor-dark;
+            margin-bottom: 40px;
+            display: flex;
+            .profile-table {
+              width: 100%;
+              .table-item1 {
+                text-align: left;
+              }
+              .table-item2 {
+                text-align: right;
+              }
+            }
+          }
+        }
       }
     }
   }

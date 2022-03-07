@@ -26,12 +26,8 @@ function MyEventCard(props) {
       Number(comment.createAt.slice(0, 4));
     const year = timeFrame === 1 ? "year" : "years";
     return (
-      <li className="comment-li">
-        <Avatar
-          className="comment-avatar"
-          key={comment.id}
-          src={comment.photoURL}
-        ></Avatar>
+      <li className="comment-li" key={comment.id}>
+        <Avatar className="comment-avatar" src={comment.photoURL}></Avatar>
         <div className="comment-detail">
           <div className="comment-meta">
             <p className="comment-name">{comment.name}</p>

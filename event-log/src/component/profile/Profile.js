@@ -6,10 +6,24 @@ import EventsTable from "../utils/EventsTable";
 
 function Profile() {
   return (
-    <div className="profile-content">
-      <h1>My Profile</h1>
-      <Avatar size={64} icon={<UserOutlined />} />
-      <EventsTable />
+    <div className="profile-background">
+      <div className="profile-content">
+        <h1>My Profile</h1>
+        <Avatar className="profile-avatar" size={176} icon={<UserOutlined />} />
+        <div className="profile-table-background">
+          <table className="profile-table">
+            <tr>
+              <th className="table-item1">User Name</th>
+              <th className="table-item2">Email Address</th>
+            </tr>
+            <tr>
+              <td className="table-item1">Alfreds Futterkiste</td>
+              <td className="table-item2">alfredsF@gmail.com</td>
+            </tr>
+          </table>
+        </div>
+        <EventsTable />
+      </div>
     </div>
   );
 }
