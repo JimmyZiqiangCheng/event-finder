@@ -1,6 +1,6 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { List, Avatar, Space } from "antd";
+import { List, Avatar, Space, Rate } from "antd";
 import { MessageOutlined, LikeOutlined, StarOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -11,6 +11,8 @@ const IconText = ({ icon, text }) => (
     {text}
   </Space>
 );
+const defaultAvatar = "https://joeschmoe.io/api/v1/random";
+const defaultPicture = "travel";
 
 function EventList(props) {
   const { loading } = props;
@@ -18,6 +20,36 @@ function EventList(props) {
   const hosts = useSelector((state) => state.hosts);
   console.log(events);
   console.log(hosts);
+
+  const createAvatar = (hosts, item, defaultAvatar) => {
+    const arr =
+      hosts.length !== 0
+        ? hosts.filter((h) => h.eventId === item.eventId)
+        : null;
+    let source = defaultAvatar;
+    if (arr && arr.length > 0) {
+      source = arr[0].photoUrl;
+    }
+    return <Avatar src={source} />;
+  };
+
+  const createRating = (item) => {
+    const rate =
+      item.rate.length !== 0
+        ? Math.floor(
+            item.rate.map((ele) => ele.rate).reduce((sum, a) => a + sum) /
+              item.rate.length
+          )
+        : 0;
+    return <Rate allowHalf disabled defaultValue={rate} />;
+  };
+
+  const countLike = (item) => {
+    return item.rate.length !== 0
+      ? item.rate.map((ele) => ele.rate).filter((ele) => ele === 5).length
+      : 0;
+  };
+
   return (
     <>
       {loading ? (
@@ -37,28 +69,10 @@ function EventList(props) {
             <List.Item
               key={item.title}
               actions={[
-                <IconText
-                  icon={StarOutlined}
-                  text={
-                    item.rate.length !== 0
-                      ? Math.floor(
-                          item.rate
-                            .map((ele) => ele.rate)
-                            .reduce((sum, a) => a + sum) / item.rate.length
-                        )
-                      : 0
-                  }
-                  key="list-vertical-star-o"
-                />,
+                <Space>{createRating(item)}</Space>,
                 <IconText
                   icon={LikeOutlined}
-                  text={
-                    item.rate.length !== 0
-                      ? item.rate
-                          .map((ele) => ele.rate)
-                          .filter((ele) => ele === 5).length
-                      : 0
-                  }
+                  text={countLike(item)}
                   key="list-vertical-like-o"
                 />,
                 <IconText
@@ -79,16 +93,7 @@ function EventList(props) {
             >
               <Link to={`/events/${item.eventId}`}>
                 <List.Item.Meta
-                  avatar={
-                    <Avatar
-                      src={
-                        hosts.length !== 0
-                          ? hosts.filter((h) => h.eventId === item.eventId)[0]
-                              .photoUrl
-                          : null
-                      }
-                    />
-                  }
+                  avatar={createAvatar(hosts, item, defaultAvatar)}
                   title={item.title}
                   description={item.description}
                 />

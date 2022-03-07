@@ -10,25 +10,24 @@ const VENUES = [
   "482 Bloor St W, Toronto, ON, Canada",
 ];
 function CreateEvent() {
-  const submitForm = (formData) => {
+  const submitForm = async (formData) => {
     const input = {
       ...formData,
       date: moment(formData.date).format().slice(0, -6),
     };
-    console.log(input);
-    // try {
-    //   const response = await fetch(API_URL, {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(formData),
-    //   });
-    //   const data = await response.json();
-    //   console.log(data);
-    // } catch (err) {
-    //   console.error(err.message);
-    // }
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(input),
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (err) {
+      console.error(err.message);
+    }
   };
   return (
     <div className="create-event">

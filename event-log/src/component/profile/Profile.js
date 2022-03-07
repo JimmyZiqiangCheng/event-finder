@@ -12,14 +12,16 @@ function Profile() {
         <Avatar className="profile-avatar" size={176} icon={<UserOutlined />} />
         <div className="profile-table-background">
           <table className="profile-table">
-            <tr>
-              <th className="table-item1">User Name</th>
-              <th className="table-item2">Email Address</th>
-            </tr>
-            <tr>
-              <td className="table-item1">Alfreds Futterkiste</td>
-              <td className="table-item2">alfredsF@gmail.com</td>
-            </tr>
+            <tbody>
+              <tr>
+                <th className="table-item1">User Name</th>
+                <th className="table-item2">Email Address</th>
+              </tr>
+              <tr>
+                <td className="table-item1">Alfreds Futterkiste</td>
+                <td className="table-item2">alfredsF@gmail.com</td>
+              </tr>
+            </tbody>
           </table>
         </div>
         <EventsTable />
