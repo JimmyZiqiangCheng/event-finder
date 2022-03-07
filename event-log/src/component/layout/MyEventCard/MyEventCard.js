@@ -18,7 +18,7 @@ function MyEventCard(props) {
     }
     return attendees
       .slice(0, 5)
-      .map((attendee) => <Avatar src={attendee.photoURL} />);
+      .map((attendee) => <Avatar key={attendee.id} src={attendee.photoURL} />);
   };
   const createComments = (comment) => {
     const timeFrame =

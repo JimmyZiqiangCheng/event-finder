@@ -3,7 +3,7 @@ import EventCalendar from "../utils/EventCalendar";
 import EventList from "../utils/EventList";
 import { loadEvents } from "../../redux/actions/eventActions";
 import { loadHosts } from "../../redux/actions/hostActions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const EVENTS_API = "https://601caf791a9c220017060c02.mockapi.io/api/v1/Events";
 const HOSTS_API = "https://601caf791a9c220017060c02.mockapi.io/api/v1/Hosts";

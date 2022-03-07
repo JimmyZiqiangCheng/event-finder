@@ -7,6 +7,7 @@ import {
   CoffeeOutlined,
 } from "@ant-design/icons";
 import ThemeContext from "../theme";
+import EventContext from "../../events/eventContext";
 import { Link } from "react-router-dom";
 import styles from "./sider.module.scss";
 
@@ -14,11 +15,17 @@ const { Sider } = Layout;
 
 function MySider() {
   const { collapsed } = useContext(ThemeContext);
+  const { setFilter } = useContext(EventContext);
   return (
     <div className={styles.my_sider}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="logo" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+        <Menu
+          theme="dark"
+          mode="inline"
+          defaultSelectedKeys={["1"]}
+          onClick={() => setFilter(false)}
+        >
           <Menu.Item key="Events" icon={<CoffeeOutlined />}>
             <Link to="/">Events</Link>
           </Menu.Item>

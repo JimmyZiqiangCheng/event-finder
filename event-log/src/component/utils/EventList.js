@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import "antd/dist/antd.css";
 import { List, Avatar, Space, Rate } from "antd";
 import { MessageOutlined, LikeOutlined, StarOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import EventContext from "../events/eventContext";
 
 const IconText = ({ icon, text }) => (
   <Space>
@@ -12,11 +13,15 @@ const IconText = ({ icon, text }) => (
   </Space>
 );
 const defaultAvatar = "https://joeschmoe.io/api/v1/random";
-const defaultPicture = "travel";
 
 function EventList(props) {
+  const { filter, selected } = useContext(EventContext);
   const { loading } = props;
   const events = useSelector((state) => state.events);
+  const selectedEvents =
+    filter && selected
+      ? events.filter((e) => e.date.slice(0, 10) === selected)
+      : events;
   const hosts = useSelector((state) => state.hosts);
   console.log(events);
   console.log(hosts);
@@ -64,7 +69,7 @@ function EventList(props) {
             },
             pageSize: 3,
           }}
-          dataSource={events}
+          dataSource={selectedEvents}
           renderItem={(item) => (
             <List.Item
               key={item.title}
