@@ -2,9 +2,10 @@
 
 .my_event_card {
   :global {
+    flex: 0 1 80%;
+    max-width: 800px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    //grid-template-rows: repeat(5, 1fr);
     gap: 15px;
     align-items: start;
     .card-section {
@@ -19,8 +20,7 @@
       .info-group {
         border-radius: 5px 5px 0 0;
         flex: 0.8;
-        // background-image: url("/img/culture.jpg") no-repeat;
-        background-color: colors.$themecolor-main;
+        background-image: url("../../../../public/img/background-universe.JPG");
         padding-left: 15px;
         padding-top: 80px;
         h1 {
@@ -40,6 +40,18 @@
           border-radius: 5px;
           background-color: colors.$themecolor-main;
           border: none;
+        }
+      }
+      @media screen and (max-width: 760px) {
+        .button-group {
+          flex-direction: column;
+          gap: 10px;
+          align-items: center;
+        }
+      }
+      @media screen and (max-width: 760px) {
+        .card-button {
+          width: 120px;
         }
       }
     }

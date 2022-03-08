@@ -21,6 +21,7 @@ function MyContent() {
       >
         <Routes>
           <Route path="/" element={<Events />} />
+          <Route path="/events" element={<Events />} />
           <Route path="/events/:id" element={<Event />} />
           <Route path="/create" element={<CreateEvent />} />
           <Route path="/profile" element={<Profile />} />
