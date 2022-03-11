@@ -9,7 +9,16 @@ import EventContext from "../events/eventContext";
 
 function MyLayout() {
   const [collapsed, setCollapsed] = useState(false);
-  const themeValue = { collapsed, setCollapsed };
+  const [showLogin, setShowLogin] = useState(false);
+  const [showRating, setShowRating] = useState(false);
+  const themeValue = {
+    collapsed,
+    setCollapsed,
+    showLogin,
+    setShowLogin,
+    showRating,
+    setShowRating,
+  };
   const [selected, setSelected] = useState(null);
   const [filter, setFilter] = useState(false);
   const eventValue = { selected, setSelected, filter, setFilter };

@@ -1,0 +1,13 @@
+.my_attendees {
+  :global {
+    h1 {
+      font-weight: bold;
+      font-size: 22px;
+    }
+    .ant-list-items {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+  }
+}

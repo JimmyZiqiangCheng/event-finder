@@ -6,6 +6,8 @@ import Events from "../../events/Events";
 import CreateEvent from "../../events/CreateEvent";
 import Profile from "../../profile/Profile";
 import styles from "./content.module.scss";
+import Attendee from "../../events/Attendee";
+import Comments from "../../events/Comments";
 
 const { Content } = Layout;
 function MyContent() {
@@ -23,6 +25,8 @@ function MyContent() {
           <Route path="/" element={<Events />} />
           <Route path="/events" element={<Events />} />
           <Route path="/events/:id" element={<Event />} />
+          <Route path="/events/:id/Attendee" element={<Attendee />} />
+          <Route path="/events/:id/comments" element={<Comments />} />
           <Route path="/create" element={<CreateEvent />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>

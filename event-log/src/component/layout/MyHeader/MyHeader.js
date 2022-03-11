@@ -1,17 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "antd/dist/antd.css";
 import styles from "./header.module.scss";
 import { Layout, Button } from "antd";
 import ThemeContext from "../theme";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
+import LoginModal from "../../utils/MyModal/LoginModal";
 
 const { Header } = Layout;
 function MyHeader() {
-  const { collapsed, setCollapsed } = useContext(ThemeContext);
+  const { collapsed, setCollapsed, setShowLogin } = useContext(ThemeContext);
   const toggle = () => {
     setCollapsed(!collapsed);
   };
-
   return (
     <div className={styles.my_header}>
       <Header
@@ -26,13 +26,17 @@ function MyHeader() {
           }
         )}
         <div className="header-button-group">
-          <Button className="header-button" type="primary" size={"middle"}>
-            {" "}
-            Login{" "}
+          <Button
+            className="header-button"
+            type="primary"
+            size={"middle"}
+            onClick={() => setShowLogin(true)}
+          >
+            Login
           </Button>
+          <LoginModal />
           <Button className="header-button" type="primary" size={"middle"}>
-            {" "}
-            Sign Up{" "}
+            Sign Up
           </Button>
         </div>
       </Header>

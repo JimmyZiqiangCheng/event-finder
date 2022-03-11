@@ -46,7 +46,7 @@
         .button-group {
           flex-direction: column;
           gap: 10px;
-          align-items: center;
+          align-items: flex-end;
         }
       }
       @media screen and (max-width: 760px) {
@@ -83,6 +83,18 @@
         }
         .host-name {
           margin-left: 15px;
+          position: relative;
+        }
+        .host-name::after {
+          content: "Host";
+          background-color: colors.$themecolor-main;
+          color: colors.$greycolor-light;
+          font-size: 12px;
+          display: inline-block;
+          padding: 1px 5px;
+          position: absolute;
+          left: 120px;
+          bottom: 20px;
         }
       }
     }
@@ -116,6 +128,7 @@
           gap: 15px;
           flex: 1 1 auto;
           align-items: center;
+          flex-wrap: wrap;
           .see-more {
             margin-left: 20px;
           }
@@ -130,6 +143,16 @@
       flex-direction: column;
       .chat-detail {
         padding-left: 5px;
+        display: flex;
+        flex-direction: column;
+        .load-more-button {
+          align-self: center;
+          .ant-btn {
+            border-radius: 5px;
+            background-color: colors.$themecolor-main;
+            border: none;
+          }
+        }
       }
       .chat-title {
         padding: 5px 0;
