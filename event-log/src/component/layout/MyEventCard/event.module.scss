@@ -142,15 +142,17 @@
       display: flex;
       flex-direction: column;
       .chat-detail {
-        padding-left: 5px;
+        padding: 0 10px;
         display: flex;
         flex-direction: column;
         .load-more-button {
           align-self: center;
+          margin-bottom: 20px;
           .ant-btn {
             border-radius: 5px;
             background-color: colors.$themecolor-main;
             border: none;
+            padding: 0 32px;
           }
         }
       }
@@ -167,9 +169,24 @@
         border-bottom: 1px solid colors.$greycolor-dark;
         margin-bottom: 15px;
       }
+      .your-comment {
+        display: flex;
+        padding-right: 5px;
+        gap: 10px;
+        .ant-form {
+          width: 100%;
+        }
+        .submit-comment-button {
+          border-radius: 5px;
+          background-color: colors.$themecolor-main;
+          border: none;
+          margin-top: 10px;
+        }
+      }
       .comment-li {
         display: flex;
         list-style-type: none;
+        margin-bottom: 20px;
         .comment-detail {
           margin-left: 10px;
           display: flex;

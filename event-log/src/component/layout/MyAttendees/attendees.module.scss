@@ -1,4 +1,8 @@
 .my_attendees {
+  align-self: flex-start;
+  padding: 10px;
+  background-color: #fff;
+  width: 100%;
   :global {
     h1 {
       font-weight: bold;
@@ -8,6 +12,13 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
+    }
+    .ant-list {
+      display: flex;
+      flex-direction: column;
+      .ant-list-pagination {
+        align-self: center;
+      }
     }
   }
 }

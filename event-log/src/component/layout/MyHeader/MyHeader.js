@@ -27,7 +27,7 @@ function MyHeader() {
         )}
         <div className="header-button-group">
           <Button
-            className="header-button"
+            className="header-button header-button-login"
             type="primary"
             size={"middle"}
             onClick={() => setShowLogin(true)}
@@ -35,7 +35,11 @@ function MyHeader() {
             Login
           </Button>
           <LoginModal />
-          <Button className="header-button" type="primary" size={"middle"}>
+          <Button
+            className="header-button header-button-signup"
+            type="primary"
+            size={"middle"}
+          >
             Sign Up
           </Button>
         </div>

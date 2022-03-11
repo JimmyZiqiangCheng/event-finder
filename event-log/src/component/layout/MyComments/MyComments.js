@@ -8,6 +8,12 @@ function MyComments(props) {
   return (
     <div className={styles.my_comments}>
       <List
+        pagination={{
+          onChange: (page) => {
+            console.log(page);
+          },
+          pageSize: 10,
+        }}
         itemLayout="horizontal"
         dataSource={data}
         renderItem={(item) => (
@@ -15,8 +21,9 @@ function MyComments(props) {
             <List.Item.Meta
               avatar={<Avatar src={data.photoURL} />}
               title={<p>{item.name}</p>}
-              description={item.comment}
+              description={item.createAt}
             />
+            {item.comment}
           </List.Item>
         )}
       />

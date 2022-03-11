@@ -1,18 +1,20 @@
 import React, { useContext } from "react";
 import styles from "./event.module.scss";
-import { Button, Avatar } from "antd";
+import { Form, Button, Avatar, Input } from "antd";
 import {
   InfoCircleOutlined,
   CalendarOutlined,
   CompassOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import RateModal from "../../utils/RateModal/RateModal";
+import JoinModal from "../../utils/JoinModal/JoinModal";
 import ThemeContext from "../theme";
 
 function MyEventCard(props) {
-  const { setShowRating } = useContext(ThemeContext);
+  const { setShowRating, setShowJoin } = useContext(ThemeContext);
   const { event, host } = props;
 
   const createAvatars = (attendees) => {
@@ -25,6 +27,7 @@ function MyEventCard(props) {
       .slice(0, 5)
       .map((attendee) => <Avatar key={attendee.id} src={attendee.photoURL} />);
   };
+
   const createComments = (comment) => {
     const timeFrame =
       Number(moment().format().slice(0, 4)) -
@@ -43,6 +46,14 @@ function MyEventCard(props) {
       </li>
     );
   };
+
+  const onFinish = (values) => {
+    console.log("Success:", values);
+  };
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+
   return (
     <div className={styles.my_event_card}>
       <section className="card-section card-title">
@@ -52,9 +63,15 @@ function MyEventCard(props) {
           <p>{`hosted by ${host.name}`}</p>
         </div>
         <div className="button-group">
-          <Button className="card-button" type="primary" size={"middle"}>
+          <Button
+            className="card-button"
+            type="primary"
+            size={"middle"}
+            onClick={() => setShowJoin(true)}
+          >
             join this event
           </Button>
+          <JoinModal />
           <Button
             className="card-button"
             type="primary"
@@ -121,11 +138,46 @@ function MyEventCard(props) {
               className="load-more-button"
               to={`/events/${event.eventId}/comments`}
             >
-              <Button className="card-button" type="primary" size={"middle"}>
+              <Button
+                className="card-button load-button"
+                type="primary"
+                size={"middle"}
+              >
                 load more...
               </Button>
             </Link>
           )}
+          <li key="your-comment" className="your-comment">
+            <div>
+              <Avatar
+                className="comment-avatar"
+                size={32}
+                icon={<UserOutlined />}
+              ></Avatar>
+            </div>
+            <Form onFinish={onFinish} onFinishFailed={onFinishFailed}>
+              <Form.Item
+                name="comment"
+                rules={[
+                  {
+                    required: true,
+                    message: "type something",
+                  },
+                ]}
+              >
+                <Input.TextArea />
+              </Form.Item>
+              <Form.Item>
+                <Button
+                  className="submit-comment-button"
+                  type="primary"
+                  htmlType="submit"
+                >
+                  Submit Comment
+                </Button>
+              </Form.Item>
+            </Form>
+          </li>
         </ul>
       </section>
     </div>

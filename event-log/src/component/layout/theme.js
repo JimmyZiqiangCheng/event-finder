@@ -3,6 +3,7 @@ const themes = {
   collapsed: false,
   showLogin: false,
   showRating: false,
+  showJoin: false,
 };
 
 const ThemeContext = React.createContext(themes);

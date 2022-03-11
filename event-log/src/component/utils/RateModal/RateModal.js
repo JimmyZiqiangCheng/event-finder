@@ -34,7 +34,7 @@ function RateModal() {
       ]}
     >
       <h1>How do you rate this event?</h1>
-      <Rate onChange={handleChange} />
+      <Rate onChange={handleChange} allowHalf defaultValue={2.5} />
     </Modal>
   );
 }

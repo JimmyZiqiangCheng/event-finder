@@ -11,6 +11,7 @@ function MyLayout() {
   const [collapsed, setCollapsed] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [showRating, setShowRating] = useState(false);
+  const [showJoin, setShowJoin] = useState(false);
   const themeValue = {
     collapsed,
     setCollapsed,
@@ -18,6 +19,8 @@ function MyLayout() {
     setShowLogin,
     showRating,
     setShowRating,
+    showJoin,
+    setShowJoin,
   };
   const [selected, setSelected] = useState(null);
   const [filter, setFilter] = useState(false);

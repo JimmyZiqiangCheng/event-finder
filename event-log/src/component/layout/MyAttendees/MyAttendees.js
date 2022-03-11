@@ -2,11 +2,18 @@ import React from "react";
 import "antd/dist/antd.css";
 import { Card, List } from "antd";
 import styles from "./attendees.module.scss";
-
+import { UserOutlined } from "@ant-design/icons";
 const { Meta } = Card;
 function MyAttendees(props) {
   const { event } = props;
   const data = event.attendees;
+  const getPhoto = (url) => {
+    return url ? (
+      <img alt="example" src={url} />
+    ) : (
+      <UserOutlined style={{ fontSize: "242px" }} />
+    );
+  };
   return (
     <div className={styles.my_attendees}>
       <h1>All Attendees</h1>
@@ -23,7 +30,7 @@ function MyAttendees(props) {
           <Card
             hoverable
             style={{ width: 240 }}
-            cover={<img alt="example" src={item.photoURL} />}
+            cover={getPhoto(item.photoURL)}
           >
             <Meta title={item.name} description={item.email} />
           </Card>
