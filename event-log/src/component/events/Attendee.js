@@ -8,7 +8,7 @@ function Attendee() {
   const event = useSelector((state) => state.events).filter(
     (e) => e.eventId === id
   )[0];
-  return <MyAttendees event={event} />;
+  return <>{event && <MyAttendees event={event} />}</>;
 }
 
 export default Attendee;

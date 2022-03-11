@@ -29,18 +29,6 @@ function MyAttendees(props) {
           </Card>
         )}
       />
-      {/* 
-      <div className="attendee-list">
-        {event.attendees.map((a) => (
-          <Card
-            hoverable
-            style={{ width: 240 }}
-            cover={<img alt="example" src={a.photoURL} />}
-          >
-            <Meta title={a.name} description={a.email} />
-          </Card>
-        ))}
-        </div> */}
     </div>
   );
 }

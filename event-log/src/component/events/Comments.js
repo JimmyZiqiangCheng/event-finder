@@ -8,7 +8,7 @@ function Comments() {
   const event = useSelector((state) => state.events).filter(
     (e) => e.eventId === id
   )[0];
-  return <MyComments event={event} />;
+  return <>{event && <MyComments event={event} />}</>;
 }
 
 export default Comments;
