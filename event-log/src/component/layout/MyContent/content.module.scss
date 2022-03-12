@@ -7,6 +7,16 @@
       min-height: 100vh;
       margin: 0 !important;
       padding: 16px !important;
+      .comments {
+        display: flex;
+        background-color: colors.$greycolor-light;
+        width: 100%;
+      }
+      .attendees {
+        display: flex;
+        background-color: colors.$greycolor-light;
+        width: 100%;
+      }
       .events-content {
         display: flex;
         padding: 15px;

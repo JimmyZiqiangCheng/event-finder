@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styles from "./event.module.scss";
-import { Form, Button, Avatar, Input } from "antd";
+import { Form, Button, Avatar, Input, Badge } from "antd";
 import {
   InfoCircleOutlined,
   CalendarOutlined,
@@ -29,17 +29,32 @@ function MyEventCard(props) {
   };
 
   const createComments = (comment) => {
-    const timeFrame =
+    const [years, months, days] = [
       Number(moment().format().slice(0, 4)) -
-      Number(comment.createAt.slice(0, 4));
-    const year = timeFrame === 1 ? "year" : "years";
+        Number(comment.createAt.slice(0, 4)),
+      Number(moment().format().slice(5, 7)) -
+        Number(comment.createAt.slice(5, 7)),
+      Number(moment().format().slice(8, 10)) -
+        Number(comment.createAt.slice(8, 10)),
+    ];
+    const unit =
+      years > 1
+        ? "years"
+        : years === 1
+        ? "year"
+        : months > 1
+        ? "months"
+        : months === 1
+        ? "month"
+        : "days";
+    const finalTime = years > 0 ? years : months > 0 ? months : days;
     return (
       <li className="comment-li" key={comment.id}>
         <Avatar className="comment-avatar" src={comment.photoURL}></Avatar>
         <div className="comment-detail">
           <div className="comment-meta">
             <p className="comment-name">{comment.name}</p>
-            <p className="comment-time">{`${timeFrame} ${year} ago`}</p>
+            <p className="comment-time">{`${finalTime} ${unit} ago`}</p>
           </div>
           <p className="comment-content">{comment.comment}</p>
         </div>
@@ -85,10 +100,12 @@ function MyEventCard(props) {
       </section>
       <section className="card-section card-host">
         <div className="title"> Event Host</div>
-        <div className="host-info">
-          <img src={host.photoUrl} alt="avatar" />
-          <p className="host-name">{host.name}</p>
-        </div>
+        <Badge.Ribbon text="host">
+          <div className="host-info">
+            <img src={host.photoUrl} alt="avatar" />
+            <p className="host-name">{host.name}</p>
+          </div>
+        </Badge.Ribbon>
       </section>
       <section className="card-section card-detail">
         <div className="event-card-detail event-description">

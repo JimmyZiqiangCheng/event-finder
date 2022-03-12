@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
 import "antd/dist/antd.css";
-import { Input, Modal, Button, Checkbox, Alert } from "antd";
+import { Input, Modal, Button, Checkbox, Form, message } from "antd";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import ThemeContext from "../../layout/theme";
 import styles from "./modal.module.scss";
 
-function LoginModal(props) {
+function MyModal() {
   const [loading, setLoading] = useState(false);
   const { showLogin, setShowLogin } = useContext(ThemeContext);
   const handleGoogle = () => {
@@ -14,10 +14,10 @@ function LoginModal(props) {
     setLoading(false);
   };
   const handleLogin = () => {
-    alert("logged in");
+    message.success("logged in", 1);
   };
   const onChangeRemember = (e) => {
-    alert(`remember password: ${e.action.checked}`);
+    console.log(`remember password: ${e.action.checked}`);
   };
   return (
     <Modal
@@ -48,30 +48,52 @@ function LoginModal(props) {
         </Button>,
       ]}
     >
-      <div className="modal-input-field-group">
-        <Input
-          className="modal-input-field"
-          placeholder="Email"
-          prefix={<MailOutlined />}
-        />
-        <Input
-          className="modal-input-field"
-          placeholder="Password"
-          prefix={<LockOutlined />}
-        />
-      </div>
+      <Form className="login-form-modal">
+        <div className="modal-input-field-group">
+          <Form.item
+            key="email"
+            className="modal-input-field form-email"
+            name="email"
+            rules={[
+              {
+                required: true,
+                type: "email",
+                message: "Please enter a valid email address!",
+              },
+            ]}
+          >
+            <Input placeholder="Email" prefix={<MailOutlined />} />
+          </Form.item>
+          <Form.item
+            key="password"
+            className="modal-input-field form-password"
+            name="password"
+            rules={[
+              {
+                required: true,
+                type: "password",
+                message: "Please enter a valid password!",
+              },
+            ]}
+          >
+            <Input
+              placeholder="Password"
+              type="password"
+              prefix={<LockOutlined />}
+            />
+          </Form.item>
+        </div>
+      </Form>
       <div className="modal-others">
         <Checkbox onChange={onChangeRemember} className="login-checkbox">
-          {" "}
-          Remember me{" "}
+          Remember me
         </Checkbox>
         <a href="." className="login-forget">
-          {" "}
-          Forget password{" "}
+          Forget password
         </a>
       </div>
     </Modal>
   );
 }
 
-export default LoginModal;
+export default MyModal;

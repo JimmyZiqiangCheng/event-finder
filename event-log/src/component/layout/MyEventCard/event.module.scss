@@ -85,17 +85,6 @@
           margin-left: 15px;
           position: relative;
         }
-        .host-name::after {
-          content: "Host";
-          background-color: colors.$themecolor-main;
-          color: colors.$greycolor-light;
-          font-size: 12px;
-          display: inline-block;
-          padding: 1px 5px;
-          position: absolute;
-          left: 120px;
-          bottom: 20px;
-        }
       }
     }
     .card-detail {

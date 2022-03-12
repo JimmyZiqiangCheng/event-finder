@@ -4,7 +4,7 @@ import styles from "./header.module.scss";
 import { Layout, Button } from "antd";
 import ThemeContext from "../theme";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
-import LoginModal from "../../utils/MyModal/LoginModal";
+import LoginModal from "../../utils/MyModal/MyModal";
 
 const { Header } = Layout;
 function MyHeader() {
