@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
 import MyComments from "../layout/MyComments/MyComments";
+import { getData } from "../../api/eventsApi";
+import { useDispatch, useSelector } from "react-redux";
 
 function Comments() {
+  const dispatch = useDispatch();
   const { id } = useParams();
-  const event = useSelector((state) => state.events).filter(
-    (e) => e.eventId === id
-  )[0];
+  useEffect(() => {
+    const fetchData = getData(dispatch, null, id);
+    fetchData();
+  }, []);
+  const event = useSelector((state) => state.events[0]);
   return (
     <div className="comments">{event && <MyComments event={event} />}</div>
   );

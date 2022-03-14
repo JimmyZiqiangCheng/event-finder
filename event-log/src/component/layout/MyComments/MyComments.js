@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "antd/dist/antd.css";
 import { List, Avatar } from "antd";
-import styles from "./comment.modules.scss";
+import styles from "./comments.module.scss";
 import moment from "moment";
+
 function MyComments(props) {
   const { event } = props;
   const data = event.comments;
@@ -33,9 +34,6 @@ function MyComments(props) {
     <div className={styles.my_comments}>
       <List
         pagination={{
-          onChange: (page) => {
-            console.log(page);
-          },
           pageSize: 10,
         }}
         itemLayout="horizontal"
@@ -43,7 +41,9 @@ function MyComments(props) {
         renderItem={(item) => (
           <List.Item>
             <List.Item.Meta
-              avatar={<Avatar src={data.photoURL} />}
+              avatar={
+                <Avatar className="comment-avatar" src={item.photoURL}></Avatar>
+              }
               title={<p>{item.name}</p>}
               description={getTime(item)}
             />

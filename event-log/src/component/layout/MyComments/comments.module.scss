@@ -1,0 +1,18 @@
+.my_comments {
+  align-self: flex-start;
+  padding: 10px;
+  width: 100%;
+  background-color: #fff;
+  :global {
+    .ant-list-items {
+      padding: 20px;
+      .ant-list-item {
+        padding-bottom: 20px;
+        .ant-list-item-meta-content {
+          display: flex;
+          gap: 10px;
+        }
+      }
+    }
+  }
+}

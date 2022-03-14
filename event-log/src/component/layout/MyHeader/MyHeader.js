@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "antd/dist/antd.css";
 import styles from "./header.module.scss";
 import { Layout, Button } from "antd";
@@ -9,6 +9,13 @@ import LoginModal from "../../utils/MyModal/MyModal";
 const { Header } = Layout;
 function MyHeader() {
   const { collapsed, setCollapsed, setShowLogin } = useContext(ThemeContext);
+  useEffect(() => {
+    const handleWindowResize = () => {
+      window.innerWidth < 900 ? setCollapsed(true) : setCollapsed(false);
+    };
+    window.addEventListener("resize", handleWindowResize);
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, []);
   const toggle = () => {
     setCollapsed(!collapsed);
   };

@@ -6,27 +6,31 @@ import {
   UploadOutlined,
   CoffeeOutlined,
 } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
 import ThemeContext from "../theme";
-import EventContext from "../../events/eventContext";
 import { Link } from "react-router-dom";
 import styles from "./sider.module.scss";
+import { getData } from "../../../api/eventsApi";
 
 const { Sider } = Layout;
 
 function MySider() {
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    const fetchData = getData(dispatch);
+    fetchData();
+  };
   const { collapsed } = useContext(ThemeContext);
-  const { setFilter } = useContext(EventContext);
   return (
     <div className={styles.my_sider}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="logo" />
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={["1"]}
-          onClick={() => setFilter(false)}
-        >
-          <Menu.Item key="Events" icon={<CoffeeOutlined />}>
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+          <Menu.Item
+            key="Events"
+            icon={<CoffeeOutlined />}
+            onClick={handleClick}
+          >
             <Link to="/">Events</Link>
           </Menu.Item>
           <Menu.Item key="Create Event" icon={<UploadOutlined />}>

@@ -50,7 +50,7 @@ function MyModal() {
     >
       <Form className="login-form-modal">
         <div className="modal-input-field-group">
-          <Form.item
+          <Form.Item
             key="email"
             className="modal-input-field form-email"
             name="email"
@@ -63,8 +63,8 @@ function MyModal() {
             ]}
           >
             <Input placeholder="Email" prefix={<MailOutlined />} />
-          </Form.item>
-          <Form.item
+          </Form.Item>
+          <Form.Item
             key="password"
             className="modal-input-field form-password"
             name="password"
@@ -81,7 +81,7 @@ function MyModal() {
               type="password"
               prefix={<LockOutlined />}
             />
-          </Form.item>
+          </Form.Item>
         </div>
       </Form>
       <div className="modal-others">

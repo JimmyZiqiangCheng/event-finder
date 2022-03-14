@@ -1,15 +1,17 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import "antd/dist/antd.css";
 import { Calendar } from "antd";
 import moment from "moment";
-import EventContext from "../events/eventContext";
+import { getData } from "../../api/eventsApi";
 
 function EventCalendar() {
-  const { setSelected, setFilter } = useContext(EventContext);
+  const dispatch = useDispatch();
   const [date, setDate] = useState(moment());
   const onSelect = (val) => {
-    setSelected(moment(val).format().slice(0, 10));
-    setFilter(true);
+    const date = val.format().slice(0, 10);
+    const fetchData = getData(dispatch, date);
+    fetchData();
   };
   const onPanelChange = (val) => {
     setDate(val);
