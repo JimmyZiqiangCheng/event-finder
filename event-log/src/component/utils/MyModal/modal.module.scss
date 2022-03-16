@@ -5,35 +5,29 @@
       display: flex;
       flex-direction: column;
       gap: 32px;
-      .modal-input-field-group {
-        display: flex;
-        flex-direction: column;
-        gap: 28px;
-        .modal-input-field {
-          border-radius: 5px;
+      .modal-others {
+        .ant-form-item-control-input-content {
+          display: flex;
+          justify-content: space-between;
         }
       }
-      .modal-others {
-        display: flex;
-        justify-content: space-between;
-      }
-    }
-    .ant-modal-footer {
-      border-top: none;
-      display: flex;
-      flex-direction: column;
-      padding: 0 24px 36px 24px;
-      .modal-button {
-        border-radius: 5px;
-        margin-bottom: 20px;
-      }
-      .google-login-button {
-        background-color: orangered;
-        border: none;
-      }
-      .or-separator {
-        margin-top: 0;
-        align-self: center;
+      .modal-footer {
+        .ant-form-item-control-input-content {
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+          .google-login-button {
+            background-color: orangered;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+        p {
+          margin-top: 10px;
+          align-self: center;
+        }
       }
     }
   }

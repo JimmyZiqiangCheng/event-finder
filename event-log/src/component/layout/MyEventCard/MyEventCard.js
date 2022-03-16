@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import RateModal from "../../utils/RateModal/RateModal";
 import JoinModal from "../../utils/JoinModal/JoinModal";
 import ThemeContext from "../theme";
+import { postEventData } from "../../../api/eventsApi";
 
 function MyEventCard(props) {
   const { setShowRating, setShowJoin } = useContext(ThemeContext);
@@ -67,6 +68,10 @@ function MyEventCard(props) {
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
+  };
+  const submitComment = (e) => {
+    const postComment = postEventData();
+    postComment(event.eventId, event, e.comment);
   };
 
   return (
@@ -172,7 +177,7 @@ function MyEventCard(props) {
                 icon={<UserOutlined />}
               ></Avatar>
             </div>
-            <Form onFinish={onFinish} onFinishFailed={onFinishFailed}>
+            <Form onFinish={submitComment} onFinishFailed={onFinishFailed}>
               <Form.Item
                 name="comment"
                 rules={[
