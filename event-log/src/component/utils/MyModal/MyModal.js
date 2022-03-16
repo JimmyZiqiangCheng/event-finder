@@ -35,32 +35,26 @@ function MyModal(props) {
   };
   return (
     <div className="my-models">
-      {loginType ? (
-        <Modal
-          className={styles.my_modal}
-          visible={showLogin}
-          onCancel={() => setShowLogin(false)}
-          title="Login"
-          footer={null}
-        >
+      <Modal
+        className={styles.my_modal}
+        visible={loginType ? showLogin : showSignup}
+        onCancel={() =>
+          loginType ? setShowLogin(false) : setShowSignup(false)
+        }
+        title={loginType ? "Login" : "Sign Up"}
+        footer={null}
+      >
+        {loginType ? (
           <LoginModalForm
             loading={loading}
             onChangeRemember={onChangeRemember}
             onFinish={onSubmitLogin}
             handleGoogle={handleGoogle}
           />
-        </Modal>
-      ) : (
-        <Modal
-          className={styles.my_modal}
-          visible={showSignup}
-          onCancel={() => setShowSignup(false)}
-          title="Sign Up"
-          footer={null}
-        >
+        ) : (
           <SignupModalForm onFinish={onRegister} loading={loading} />
-        </Modal>
-      )}
+        )}
+      </Modal>
     </div>
   );
 }
