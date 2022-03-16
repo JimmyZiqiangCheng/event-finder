@@ -1,13 +1,16 @@
 import React, { useState, useContext } from "react";
 import "antd/dist/antd.css";
-import { Input, Modal, Button, Checkbox, Form, message } from "antd";
-import { LockOutlined, MailOutlined, GoogleOutlined } from "@ant-design/icons";
+import { message, Modal } from "antd";
 import ThemeContext from "../../layout/theme";
 import styles from "./modal.module.scss";
+import LoginModalForm from "./LoginModalForm";
+import SignupModalForm from "./SignupModalForm";
 
-function MyModal() {
+function MyModal(props) {
+  const { loginType } = props;
   const [loading, setLoading] = useState(false);
-  const { showLogin, setShowLogin } = useContext(ThemeContext);
+  const { showLogin, setShowLogin, showSignup, setShowSignup } =
+    useContext(ThemeContext);
   const handleGoogle = () => {
     setLoading(true);
     setTimeout(message.success("logged in via google"), 200);
@@ -16,89 +19,49 @@ function MyModal() {
   const onChangeRemember = (e) => {
     console.log(`remember password: ${e.target.checked}`);
   };
-  const onFinish = (e) => {
+  const onSubmitLogin = (e) => {
     console.log(e);
     setLoading(true);
     setTimeout(message.success("logged in successfully"), 200);
     setLoading(false);
     setShowLogin(false);
   };
+  const onRegister = (e) => {
+    console.log(e);
+    setLoading(true);
+    setTimeout(message.success("sign up successfully"), 200);
+    setLoading(false);
+    setShowSignup(false);
+  };
   return (
-    <Modal
-      className={styles.my_modal}
-      visible={showLogin}
-      onCancel={() => setShowLogin(false)}
-      title="Login"
-      footer={null}
-    >
-      <Form
-        className="login-form-modal"
-        initialValues={{
-          remember: true,
-        }}
-        onFinish={onFinish}
-      >
-        <Form.Item
-          className="modal-input-field form-email"
-          name="email"
-          rules={[
-            {
-              required: true,
-              type: "email",
-              message: "Please enter a valid email address!",
-            },
-          ]}
+    <div className="my-models">
+      {loginType ? (
+        <Modal
+          className={styles.my_modal}
+          visible={showLogin}
+          onCancel={() => setShowLogin(false)}
+          title="Login"
+          footer={null}
         >
-          <Input placeholder="Email" prefix={<MailOutlined />} />
-        </Form.Item>
-        <Form.Item
-          className="modal-input-field form-password"
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: "Please enter a valid password!",
-            },
-          ]}
+          <LoginModalForm
+            loading={loading}
+            onChangeRemember={onChangeRemember}
+            onFinish={onSubmitLogin}
+            handleGoogle={handleGoogle}
+          />
+        </Modal>
+      ) : (
+        <Modal
+          className={styles.my_modal}
+          visible={showSignup}
+          onCancel={() => setShowSignup(false)}
+          title="Sign Up"
+          footer={null}
         >
-          <Input placeholder="Password" prefix={<LockOutlined />} />
-        </Form.Item>
-        <Form.Item className="modal-others">
-          <Form.Item name="remember" valuePropName="checked">
-            <Checkbox onChange={onChangeRemember} className="login-checkbox">
-              Remember me
-            </Checkbox>
-          </Form.Item>
-          <a href="." className="login-forget">
-            Forget password
-          </a>
-        </Form.Item>
-
-        <Form.Item className="modal-footer">
-          <Button
-            type="primary"
-            loading={loading}
-            htmlType="submit"
-            className="modal-button regular-login-button"
-          >
-            Log in
-          </Button>
-          <p className="or-separator">OR</p>
-          <Button
-            type="primary"
-            loading={loading}
-            onClick={handleGoogle}
-            className="modal-button google-login-button"
-          >
-            <GoogleOutlined
-              style={{ fontSize: "18px" }}
-              className="google-icon"
-            />
-            Login with Google
-          </Button>
-        </Form.Item>
-      </Form>
-    </Modal>
+          <SignupModalForm onFinish={onRegister} loading={loading} />
+        </Modal>
+      )}
+    </div>
   );
 }
 

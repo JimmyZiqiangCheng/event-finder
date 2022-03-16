@@ -4,11 +4,12 @@ import styles from "./header.module.scss";
 import { Layout, Button } from "antd";
 import ThemeContext from "../theme";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
-import LoginModal from "../../utils/MyModal/MyModal";
+import MyModal from "../../utils/MyModal/MyModal";
 
 const { Header } = Layout;
 function MyHeader() {
-  const { collapsed, setCollapsed, setShowLogin } = useContext(ThemeContext);
+  const { collapsed, setCollapsed, setShowLogin, setShowSignup } =
+    useContext(ThemeContext);
   useEffect(() => {
     const handleWindowResize = () => {
       window.innerWidth < 900 ? setCollapsed(true) : setCollapsed(false);
@@ -41,14 +42,16 @@ function MyHeader() {
           >
             Login
           </Button>
-          <LoginModal />
+          <MyModal loginType={true} />
           <Button
             className="header-button header-button-signup"
             type="primary"
             size={"middle"}
+            onClick={() => setShowSignup(true)}
           >
             Sign Up
           </Button>
+          <MyModal loginType={false} />
         </div>
       </Header>
     </div>

@@ -11,6 +11,7 @@ function MyLayout() {
   const [showLogin, setShowLogin] = useState(false);
   const [showRating, setShowRating] = useState(false);
   const [showJoin, setShowJoin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
   const themeValue = {
     collapsed,
     setCollapsed,
@@ -20,6 +21,8 @@ function MyLayout() {
     setShowRating,
     showJoin,
     setShowJoin,
+    showSignup,
+    setShowSignup,
   };
   return (
     <ThemeContext.Provider value={themeValue}>

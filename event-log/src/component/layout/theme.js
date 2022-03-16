@@ -4,6 +4,7 @@ const themes = {
   showLogin: false,
   showRating: false,
   showJoin: false,
+  showSignup: false,
 };
 
 const ThemeContext = React.createContext(themes);
