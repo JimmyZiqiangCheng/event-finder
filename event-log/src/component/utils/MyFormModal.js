@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
 import "antd/dist/antd.css";
 import { message, Modal } from "antd";
-import ThemeContext from "../../layout/theme";
-import styles from "./modal.module.scss";
-import LoginModalForm from "./LoginModalForm";
-import SignupModalForm from "./SignupModalForm";
+import ThemeContext from "../layout/theme";
+import styles from "./FormModal/modal.module.scss";
+import LoginModalForm from "./FormModal/LoginModalForm";
+import SignupModalForm from "./FormModal/SignupModalForm";
 
-function MyModal(props) {
+function MyFormModal(props) {
   const { loginType } = props;
   const [loading, setLoading] = useState(false);
   const { showLogin, setShowLogin, showSignup, setShowSignup } =
@@ -59,4 +59,4 @@ function MyModal(props) {
   );
 }
 
-export default MyModal;
+export default MyFormModal;

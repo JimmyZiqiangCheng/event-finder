@@ -1,21 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import "antd/dist/antd.css";
-import { Modal, Button, Rate, message } from "antd";
-import ThemeContext from "../../layout/theme";
+import { Modal, Button, Rate } from "antd";
 import styles from "./rateModal.module.scss";
 
-function RateModal() {
-  const { showRating, setShowRating } = useContext(ThemeContext);
-  const handleCancel = () => {
-    setShowRating(false);
-  };
-  const handleChange = (r) => {
-    console.log(`rating: ${r}`);
-  };
-  const handleOk = () => {
-    message.success("Event Rated!", 1);
-    setShowRating(false);
-  };
+function RateModal(props) {
+  const { showRating, handleOk, handleCancel, handleChange } = props;
   return (
     <Modal
       className={styles.rate_modal}

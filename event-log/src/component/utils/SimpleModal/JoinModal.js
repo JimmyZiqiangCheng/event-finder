@@ -1,19 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import "antd/dist/antd.css";
-import { Modal, Button, Rate, message } from "antd";
+import { Modal, Button } from "antd";
 import { ExclamationCircleTwoTone } from "@ant-design/icons";
-import ThemeContext from "../../layout/theme";
 import styles from "./join.module.scss";
 
-function JoinModal() {
-  const { showJoin, setShowJoin } = useContext(ThemeContext);
-  const handleCancel = () => {
-    setShowJoin(false);
-  };
-  const handleOk = () => {
-    message.success("Event Joined!", 1);
-    setShowJoin(false);
-  };
+function JoinModal(props) {
+  const { showJoin, handleOk, handleCancel } = props;
   return (
     <Modal
       className={styles.join_modal}

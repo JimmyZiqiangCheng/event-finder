@@ -9,8 +9,7 @@ import {
 } from "@ant-design/icons";
 import moment from "moment";
 import { Link } from "react-router-dom";
-import RateModal from "../../utils/RateModal/RateModal";
-import JoinModal from "../../utils/JoinModal/JoinModal";
+import MySimpleModal from "../../utils/MySimpleModal";
 import ThemeContext from "../theme";
 import { postEventData } from "../../../api/eventsApi";
 
@@ -91,7 +90,7 @@ function MyEventCard(props) {
           >
             join this event
           </Button>
-          <JoinModal />
+          <MySimpleModal isRateModal={false} />
           <Button
             className="card-button"
             type="primary"
@@ -100,7 +99,7 @@ function MyEventCard(props) {
           >
             rate this event
           </Button>
-          <RateModal />
+          <MySimpleModal isRateModal={true} />
         </div>
       </section>
       <section className="card-section card-host">

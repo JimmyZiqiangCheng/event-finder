@@ -24,7 +24,7 @@ function MySider() {
   return (
     <div className={styles.my_sider}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="logo" />
+        <img src="../../../logo_big.svg" alt="logo" className="logo-img" />
         <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
           <Menu.Item
             key="Events"

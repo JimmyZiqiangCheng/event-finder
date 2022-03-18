@@ -1,11 +1,11 @@
 .my_sider {
   display: flex;
   :global {
-    .logo {
+    .logo-img {
       height: 32px;
       margin: 16px;
-      background-image: url("../../../../public/logo_big.svg");
       background-color: #fff;
+      text-align: center;
     }
   }
 }
