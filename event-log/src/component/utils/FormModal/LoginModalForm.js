@@ -22,11 +22,7 @@ function LoginModalForm(props) {
           },
         ]}
       >
-        <Input
-          key="login-email"
-          placeholder="Email"
-          prefix={<MailOutlined />}
-        />
+        <Input placeholder="Email" prefix={<MailOutlined />} />
       </Form.Item>
       <Form.Item
         className="modal-input-field form-password"

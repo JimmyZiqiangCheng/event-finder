@@ -4,7 +4,7 @@ import { Layout } from "antd";
 import Event from "../../events/Event";
 import Events from "../../events/Events";
 import CreateEvent from "../../events/CreateEvent";
-import Profile from "../../profile/Profile";
+import Profile from "../../users/Profile";
 import styles from "./content.module.scss";
 import Attendee from "../../events/Attendee";
 import Comments from "../../events/Comments";

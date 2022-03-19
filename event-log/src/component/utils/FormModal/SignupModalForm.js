@@ -30,11 +30,7 @@ function SignupModalForm(props) {
           },
         ]}
       >
-        <Input
-          key="signup-email"
-          placeholder="Email"
-          prefix={<MailOutlined />}
-        />
+        <Input placeholder="Email" prefix={<MailOutlined />} />
       </Form.Item>
       <Form.Item
         name="password"

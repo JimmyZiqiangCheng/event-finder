@@ -49,7 +49,7 @@ function EventList(props) {
   return (
     <>
       {events.length === 0 ? (
-        <p>loading...</p>
+        <p> no events </p>
       ) : (
         <List
           itemLayout="vertical"

@@ -1,11 +1,17 @@
+@use "../colors";
 .my_sider {
   display: flex;
   :global {
-    .logo-img {
-      height: 32px;
-      margin: 16px;
-      background-color: #fff;
-      text-align: center;
+    .logo-icon {
+      display: flex;
+      justify-content: center;
+      .logo-img {
+        height: 32px;
+        margin: 16px;
+        background-color: #fff;
+        text-align: center;
+        border-radius: 5px;
+      }
     }
   }
 }
