@@ -1,0 +1,26 @@
+@use "../../uiThemes/colors";
+.my_attendees {
+  align-self: flex-start;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: colors.$greycolor-light;
+  width: 100%;
+  :global {
+    h1 {
+      font-weight: bold;
+      font-size: 22px;
+    }
+    .ant-list-items {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .ant-list {
+      display: flex;
+      flex-direction: column;
+      .ant-list-pagination {
+        align-self: center;
+      }
+    }
+  }
+}

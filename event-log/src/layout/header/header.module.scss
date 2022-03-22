@@ -1,0 +1,30 @@
+@use "../../uiThemes/colors";
+.my_header {
+  :global {
+    .ant-layout-header {
+      background: colors.$greycolor-light;
+      display: flex;
+      justify-content: space-between;
+      .trigger {
+        padding: 0 24px;
+        font-size: 18px;
+        line-height: 64px;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+      .header-button-group {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-right: 100px;
+        .ant-btn {
+          border-radius: 5px;
+        }
+        .header-button-login {
+          padding: 0 25px;
+        }
+      }
+    }
+  }
+}
