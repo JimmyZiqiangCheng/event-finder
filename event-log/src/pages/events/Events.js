@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getData } from "../../api/eventsApi";
-import EventCalendar from "../../components/listPage/EventCalendar";
-import EventList from "../../components/listPage/EventList";
+import EventCalendar from "./pageComponents/EventCalendar";
+import EventList from "./pageComponents/EventList";
 
 function Events() {
   const dispatch = useDispatch();

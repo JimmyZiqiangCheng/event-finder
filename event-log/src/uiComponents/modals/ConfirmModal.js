@@ -1,15 +1,22 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { Modal, Button } from "antd";
+import { Modal, Button, message } from "antd";
 import { ExclamationCircleTwoTone } from "@ant-design/icons";
 import styles from "./modal.module.scss";
 
-function JoinModal(props) {
-  const { showJoin, handleOk, handleCancel } = props;
+function ConfirmModal({ showModal, setShowModal }) {
+  const handleCancel = () => {
+    setShowModal();
+  };
+  const handleOk = () => {
+    message.success("Event Joined!", 1);
+    setShowModal();
+  };
+
   return (
     <Modal
       className={styles.join_modal}
-      visible={showJoin}
+      visible={showModal}
       onCancel={handleCancel}
       onOk={handleOk}
       closable={false}
@@ -43,4 +50,4 @@ function JoinModal(props) {
   );
 }
 
-export default JoinModal;
+export default ConfirmModal;

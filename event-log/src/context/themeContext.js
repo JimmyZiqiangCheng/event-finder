@@ -2,8 +2,6 @@ import React from "react";
 const themes = {
   collapsed: false,
   showLogin: false,
-  showRating: false,
-  showJoin: false,
   showSignup: false,
 };
 

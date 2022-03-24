@@ -2,13 +2,23 @@ import React from "react";
 import "antd/dist/antd.css";
 import { Modal, Button, Rate } from "antd";
 import styles from "./modal.module.scss";
+import { message } from "antd";
 
-function RateModal(props) {
-  const { showRating, handleOk, handleCancel, handleChange } = props;
+function RateModal({ showModal, setShowModal }) {
+  const handleCancel = () => {
+    setShowModal();
+  };
+  const handleChange = (r) => {
+    console.log(`rating: ${r}`);
+  };
+  const handleOk = () => {
+    message.success("Event Rated!", 1);
+    setShowModal();
+  };
   return (
     <Modal
       className={styles.rate_modal}
-      visible={showRating}
+      visible={showModal}
       onOk={handleOk}
       onCancel={handleCancel}
       footer={[

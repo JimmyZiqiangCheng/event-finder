@@ -2,7 +2,7 @@ import React from "react";
 import { Avatar } from "antd";
 import "antd/dist/antd.css";
 import { UserOutlined } from "@ant-design/icons";
-import EventsTable from "../../components/EventsTable";
+import EventsTable from "./pageComponents/EventsTable";
 
 function Profile() {
   return (

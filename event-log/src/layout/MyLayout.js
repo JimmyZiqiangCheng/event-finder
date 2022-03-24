@@ -8,21 +8,9 @@ import { Layout } from "antd";
 
 function MyLayout() {
   const [collapsed, setCollapsed] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
-  const [showRating, setShowRating] = useState(false);
-  const [showJoin, setShowJoin] = useState(false);
-  const [showSignup, setShowSignup] = useState(false);
   const themeValue = {
     collapsed,
     setCollapsed,
-    showLogin,
-    setShowLogin,
-    showRating,
-    setShowRating,
-    showJoin,
-    setShowJoin,
-    showSignup,
-    setShowSignup,
   };
   return (
     <ThemeContext.Provider value={themeValue}>

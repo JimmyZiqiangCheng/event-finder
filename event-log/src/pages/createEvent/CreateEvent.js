@@ -1,5 +1,5 @@
 import React from "react";
-import EventForm from "../../components/EventForm";
+import EventForm from "./pageComponents/EventForm";
 import { postData } from "../../api/eventsApi";
 
 const CATEGORIES = ["culture", "travel", "music", "food", "film"];

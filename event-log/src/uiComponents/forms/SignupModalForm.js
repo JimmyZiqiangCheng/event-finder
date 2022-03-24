@@ -1,11 +1,20 @@
 import React from "react";
-import { Input, Button, Form } from "antd";
+import { Input, Button, Form, message } from "antd";
 import { UnlockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
+import { useToggle } from "../../utils/customHooks";
 
-function SignupModalForm(props) {
-  const { onFinish, loading } = props;
+function SignupModalForm({ toggleSignup }) {
+  const [loading, toggleLoading] = useToggle();
+  const handleRegister = (e) => {
+    console.log(e);
+    toggleLoading();
+    setTimeout(message.success("sign up successfully"), 200);
+    toggleLoading();
+    toggleSignup();
+  };
+
   return (
-    <Form className="Signup-form-modal" onFinish={onFinish}>
+    <Form className="Signup-form-modal" onFinish={handleRegister}>
       <Form.Item
         name="username"
         rules={[

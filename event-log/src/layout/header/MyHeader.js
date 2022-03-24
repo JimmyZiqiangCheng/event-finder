@@ -4,22 +4,28 @@ import styles from "./header.module.scss";
 import { Layout, Button } from "antd";
 import ThemeContext from "../../context/themeContext";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
-import MyModal from "../../components/modals/MyFormModal";
+import { debounce } from "../../utils/utilFunc";
+import SignupModal from "../../uiComponents/modals/SignupModal";
+import LoginModal from "../../uiComponents/modals/LoginModal";
+import { useToggle } from "../../utils/customHooks";
 
 const { Header } = Layout;
 function MyHeader() {
-  const { collapsed, setCollapsed, setShowLogin, setShowSignup } =
-    useContext(ThemeContext);
+  const [showLogin, toggleLogin] = useToggle();
+  const [showSignup, toggleSignup] = useToggle();
+  const { collapsed, setCollapsed } = useContext(ThemeContext);
   useEffect(() => {
     const handleWindowResize = () => {
       window.innerWidth < 900 ? setCollapsed(true) : setCollapsed(false);
     };
-    window.addEventListener("resize", handleWindowResize);
+    const delayedResize = debounce(handleWindowResize, 200);
+    window.addEventListener("resize", delayedResize);
     return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
   const toggle = () => {
     setCollapsed(!collapsed);
   };
+
   return (
     <div className={styles.my_header}>
       <Header
@@ -38,20 +44,20 @@ function MyHeader() {
             className="header-button header-button-login"
             type="primary"
             size={"middle"}
-            onClick={() => setShowLogin(true)}
+            onClick={toggleLogin}
           >
             Login
           </Button>
-          <MyModal loginType={true} />
+          <LoginModal showLogin={showLogin} toggleLogin={toggleLogin} />
           <Button
             className="header-button header-button-signup"
             type="primary"
             size={"middle"}
-            onClick={() => setShowSignup(true)}
+            onClick={toggleSignup}
           >
             Sign Up
           </Button>
-          <MyModal loginType={false} />
+          <SignupModal showSignup={showSignup} toggleSignup={toggleSignup} />
         </div>
       </Header>
     </div>

@@ -17,7 +17,6 @@ export const getData = (dispatch, date, eventId) => {
       const responseEvent = await fetch(`${EVENTS_API}${addon}`);
       const dataEvent = await responseEvent.json();
       dispatch(loadEvents(dataEvent));
-
       const responseHost = await fetch(HOSTS_API);
       const dataHost = await responseHost.json();
       dispatch(loadHosts(dataHost));

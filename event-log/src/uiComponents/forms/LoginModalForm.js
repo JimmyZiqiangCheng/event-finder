@@ -1,15 +1,33 @@
 import React from "react";
-import { Input, Button, Checkbox, Form } from "antd";
+import { Input, Button, Checkbox, Form, message } from "antd";
 import { LockOutlined, MailOutlined, GoogleOutlined } from "@ant-design/icons";
-function LoginModalForm(props) {
-  const { onFinish, handleGoogle, onChangeRemember, loading } = props;
+import { useToggle } from "../../utils/customHooks";
+
+function LoginModalForm({ toggleLogin }) {
+  const [loading, toggleLoading] = useToggle();
+  const handleGoogle = () => {
+    toggleLoading();
+    setTimeout(message.success("logged in via google"), 200);
+    toggleLoading();
+  };
+  const handleChangeRemember = (e) => {
+    console.log(`remember password: ${e.target.checked}`);
+  };
+  const handleLogin = (e) => {
+    console.log(e);
+    toggleLoading();
+    setTimeout(message.success("logged in successfully"), 200);
+    toggleLoading();
+    toggleLogin();
+  };
+
   return (
     <Form
       className="login-form-modal"
       initialValues={{
         remember: true,
       }}
-      onFinish={onFinish}
+      onFinish={handleLogin}
     >
       <Form.Item
         className="modal-input-field form-email"
@@ -38,7 +56,7 @@ function LoginModalForm(props) {
       </Form.Item>
       <Form.Item className="modal-others">
         <Form.Item name="remember" valuePropName="checked">
-          <Checkbox onChange={onChangeRemember} className="login-checkbox">
+          <Checkbox onChange={handleChangeRemember} className="login-checkbox">
             Remember me
           </Checkbox>
         </Form.Item>

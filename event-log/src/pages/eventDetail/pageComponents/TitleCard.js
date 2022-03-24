@@ -1,7 +1,11 @@
 import React from "react";
 import { Button } from "antd";
-import MySimpleModal from "../modals/MySimpleModal";
-function TitleCard({ event, host, showModal1, showModal2 }) {
+import ConfirmModal from "../../../uiComponents/modals/ConfirmModal";
+import RateModal from "../../../uiComponents/modals/RateModal";
+import { useToggle } from "../../../utils/customHooks";
+function TitleCard({ event, host }) {
+  const [showJoin, toggleJoin] = useToggle();
+  const [showRating, toggleRating] = useToggle();
   return (
     <div className="card-section card-title">
       <div className="info-group">
@@ -14,20 +18,20 @@ function TitleCard({ event, host, showModal1, showModal2 }) {
           className="card-button"
           type="primary"
           size={"middle"}
-          onClick={() => showModal1(true)}
+          onClick={toggleJoin}
         >
           join this event
         </Button>
-        <MySimpleModal isRateModal={false} />
+        <ConfirmModal showModal={showJoin} setShowModal={toggleJoin} />
         <Button
           className="card-button"
           type="primary"
           size={"middle"}
-          onClick={() => showModal2(true)}
+          onClick={toggleRating}
         >
           rate this event
         </Button>
-        <MySimpleModal isRateModal={true} />
+        <RateModal showModal={showRating} setShowModal={toggleRating} />
       </div>
     </div>
   );

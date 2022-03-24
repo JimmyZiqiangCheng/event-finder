@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import "antd/dist/antd.css";
 import { Calendar } from "antd";
 import moment from "moment";
-import { getData } from "../../api/eventsApi";
+import { getData } from "../../../api/eventsApi";
 
 function EventCalendar() {
   const dispatch = useDispatch();
