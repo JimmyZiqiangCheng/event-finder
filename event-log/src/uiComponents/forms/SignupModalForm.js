@@ -10,7 +10,7 @@ function SignupModalForm({ toggleSignup }) {
     toggleLoading();
     setTimeout(message.success("sign up successfully"), 200);
     toggleLoading();
-    toggleSignup();
+    toggleSignup(false);
   };
 
   return (

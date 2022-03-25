@@ -6,11 +6,11 @@ import styles from "./modal.module.scss";
 
 function ConfirmModal({ showModal, setShowModal }) {
   const handleCancel = () => {
-    setShowModal();
+    setShowModal(false);
   };
   const handleOk = () => {
     message.success("Event Joined!", 1);
-    setShowModal();
+    setShowModal(false);
   };
 
   return (

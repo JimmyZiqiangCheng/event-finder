@@ -4,7 +4,7 @@ import styles from "./header.module.scss";
 import { Layout, Button } from "antd";
 import ThemeContext from "../../context/themeContext";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
-import { debounce } from "../../utils/utilFunc";
+import { debounce } from "../../utils/helperFunctions";
 import SignupModal from "../../uiComponents/modals/SignupModal";
 import LoginModal from "../../uiComponents/modals/LoginModal";
 import { useToggle } from "../../utils/customHooks";

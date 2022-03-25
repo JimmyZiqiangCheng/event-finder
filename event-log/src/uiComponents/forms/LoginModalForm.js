@@ -18,7 +18,7 @@ function LoginModalForm({ toggleLogin }) {
     toggleLoading();
     setTimeout(message.success("logged in successfully"), 200);
     toggleLoading();
-    toggleLogin();
+    toggleLogin(false);
   };
 
   return (

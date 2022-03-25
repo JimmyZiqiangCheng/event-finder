@@ -6,14 +6,14 @@ import { message } from "antd";
 
 function RateModal({ showModal, setShowModal }) {
   const handleCancel = () => {
-    setShowModal();
+    setShowModal(false);
   };
   const handleChange = (r) => {
     console.log(`rating: ${r}`);
   };
   const handleOk = () => {
     message.success("Event Rated!", 1);
-    setShowModal();
+    setShowModal(false);
   };
   return (
     <Modal

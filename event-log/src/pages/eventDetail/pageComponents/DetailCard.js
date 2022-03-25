@@ -6,6 +6,7 @@ import {
   CompassOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import SimpleMap from "../../../uiComponents/map/SimpleMap";
 
 function DetailCard({ event }) {
   const createAvatars = (attendees) => {
@@ -32,11 +33,16 @@ function DetailCard({ event }) {
         </div>
         <div className="date-detail">{event.date}</div>
       </div>
-      <div className="event-card-detail event-location">
-        <div className="event-icon">
-          <CompassOutlined style={{ fontSize: "20px" }} />
+      <div className="event-location-detail">
+        <div className="event-card-detail event-location">
+          <div className="event-icon">
+            <CompassOutlined style={{ fontSize: "20px" }} />
+          </div>
+          <div className="location-detail">{event.venue}</div>
         </div>
-        <div className="location-detail">{event.venue}</div>
+        <div className="event-map">
+          <SimpleMap />
+        </div>
       </div>
       <div className="event-card-detail event-participant">
         <div className="participant-title">Who's coming?</div>
