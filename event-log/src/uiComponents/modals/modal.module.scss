@@ -3,6 +3,7 @@
 .rate_modal {
   :global {
     .ant-modal-content {
+      border-radius: 5px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -60,43 +61,49 @@
 .basic_modal {
   max-width: 360px;
   :global {
-    .ant-modal-body {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-      .modal-others {
-        .ant-form-item-control-input-content {
-          display: flex;
-          justify-content: space-between;
-        }
+    .ant-modal-content {
+      border-radius: 5px;
+      .ant-modal-header {
+        border-radius: 5px 5px 0 0;
       }
-      .modal-footer {
-        .ant-form-item-control-input-content {
-          display: flex;
-          justify-content: space-between;
-          flex-direction: column;
-          .modal-button {
-            font-weight: bold;
-          }
-          .google-login-button {
-            background-color: orangered;
-            border: none;
+      .ant-modal-body {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        .modal-others {
+          .ant-form-item-control-input-content {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: space-between;
           }
         }
-        p {
-          margin-top: 10px;
-          align-self: center;
+        .modal-footer {
+          .ant-form-item-control-input-content {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            .modal-button {
+              font-weight: bold;
+            }
+            .google-login-button {
+              background-color: orangered;
+              border: none;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+          p {
+            margin-top: 10px;
+            align-self: center;
+          }
         }
-      }
-      .ant-form {
-        .ant-form-item-control-input-content {
-          display: flex;
-          flex-direction: column;
-          .modal-button {
-            font-weight: bold;
+        .ant-form {
+          .ant-form-item-control-input-content {
+            display: flex;
+            flex-direction: column;
+            .modal-button {
+              font-weight: bold;
+            }
           }
         }
       }

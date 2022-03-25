@@ -1,13 +1,14 @@
 import React, { useContext, useEffect } from "react";
 import "antd/dist/antd.css";
 import styles from "./header.module.scss";
-import { Layout, Button } from "antd";
+import { Layout } from "antd";
 import ThemeContext from "../../context/themeContext";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import { debounce } from "../../utils/helperFunctions";
 import SignupModal from "../../uiComponents/modals/SignupModal";
 import LoginModal from "../../uiComponents/modals/LoginModal";
 import { useToggle } from "../../utils/customHooks";
+import HeaderButton from "../../uiComponents/buttons/HeaderButton";
 
 const { Header } = Layout;
 function MyHeader() {
@@ -40,23 +41,9 @@ function MyHeader() {
           }
         )}
         <div className="header-button-group">
-          <Button
-            className="header-button header-button-login"
-            type="primary"
-            size={"middle"}
-            onClick={toggleLogin}
-          >
-            Login
-          </Button>
+          <HeaderButton toggle={toggleLogin} name={` Login `} />
           <LoginModal showLogin={showLogin} toggleLogin={toggleLogin} />
-          <Button
-            className="header-button header-button-signup"
-            type="primary"
-            size={"middle"}
-            onClick={toggleSignup}
-          >
-            Sign Up
-          </Button>
+          <HeaderButton toggle={toggleSignup} name={"Sign Up"} />
           <SignupModal showSignup={showSignup} toggleSignup={toggleSignup} />
         </div>
       </Header>
