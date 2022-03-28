@@ -11,14 +11,17 @@ import ThemeContext from "../../context/themeContext";
 import { Link } from "react-router-dom";
 import styles from "./sider.module.scss";
 import { getData } from "../../api/eventsApi";
+import { loadEvents } from "../../redux/actions/eventActions";
+import { loadHosts } from "../../redux/actions/hostActions";
 
 const { Sider } = Layout;
 
 function MySider() {
   const dispatch = useDispatch();
-  const handleClick = () => {
-    const fetchData = getData(dispatch);
-    fetchData();
+  const handleClick = async () => {
+    const [events, hosts] = await getData();
+    dispatch(loadEvents(events));
+    dispatch(loadHosts(hosts));
   };
   const { collapsed } = useContext(ThemeContext);
   return (

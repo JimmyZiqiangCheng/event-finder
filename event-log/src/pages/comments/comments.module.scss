@@ -1,18 +1,35 @@
 @use "../../uiThemes/colors";
 .my_comments {
-  align-self: flex-start;
+  display: flex;
   border-radius: 5px;
   padding: 10px;
-  width: 100%;
+  flex: 1 1 100vw;
   background-color: colors.$greycolor-light;
   :global {
-    .ant-list-items {
+    .comments {
+      flex: 1 0 auto;
       padding: 20px;
-      .ant-list-item {
-        padding-bottom: 20px;
-        .ant-list-item-meta-content {
+      .ant-list {
+        flex: 1 1 auto;
+        .ant-list-items {
           display: flex;
-          gap: 10px;
+          flex-direction: column;
+          flex: 1 0 auto;
+          align-content: flex-start;
+          .ant-list-item {
+            flex: 1 0 auto;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 20px;
+            align-items: flex-start;
+            .ant-list-item-meta-content {
+              display: flex;
+              gap: 10px;
+            }
+            .item-content {
+              flex: 1 0 auto;
+            }
+          }
         }
       }
     }

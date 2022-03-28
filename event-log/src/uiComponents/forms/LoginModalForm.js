@@ -2,21 +2,22 @@ import React from "react";
 import { Input, Button, Checkbox, Form, message } from "antd";
 import { LockOutlined, MailOutlined, GoogleOutlined } from "@ant-design/icons";
 import { useToggle } from "../../utils/customHooks";
+import { loginWithEmail, loginWithGoogle } from "../../services/AuthService";
 
 function LoginModalForm({ toggleLogin }) {
   const [loading, toggleLoading] = useToggle();
-  const handleGoogle = () => {
+  const handleGoogle = async () => {
     toggleLoading();
-    setTimeout(message.success("logged in via google"), 200);
+    await loginWithGoogle();
     toggleLoading();
+    toggleLogin(false);
   };
   const handleChangeRemember = (e) => {
     console.log(`remember password: ${e.target.checked}`);
   };
-  const handleLogin = (e) => {
-    console.log(e);
+  const handleLogin = async (e) => {
     toggleLoading();
-    setTimeout(message.success("logged in successfully"), 200);
+    await loginWithEmail(e.email, e.password);
     toggleLoading();
     toggleLogin(false);
   };

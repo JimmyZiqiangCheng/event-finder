@@ -6,15 +6,21 @@ import TitleCard from "./pageComponents/TitleCard";
 import SideCard from "./pageComponents/SideCard";
 import DetailCard from "./pageComponents/DetailCard";
 import ChatCard from "./pageComponents/ChatCard";
-import { postEventData } from "../../api/eventsApi";
+import { postComment } from "../../api/eventsApi";
 import styles from "./event.module.scss";
+import { loadEvents } from "../../redux/actions/eventActions";
+import { loadHosts } from "../../redux/actions/hostActions";
 
 function EventDetail() {
   const dispatch = useDispatch();
   const { id } = useParams();
   useEffect(() => {
-    const fetchData = getData(dispatch, null, id);
-    fetchData();
+    const loadData = async () => {
+      const [events, hosts] = await getData(null, id);
+      dispatch(loadEvents(events));
+      dispatch(loadHosts(hosts));
+    };
+    loadData();
   }, []);
   const event = useSelector((state) => state.events[0]);
   const host = useSelector((state) => state.hosts).filter(
@@ -23,12 +29,8 @@ function EventDetail() {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
-  const onFinish = (e) => {
-    const postComment = postEventData();
-    postComment(event.eventId, event, e.comment);
-  };
   return (
-    <div>
+    <div className="event-detail-page">
       {event && host && (
         <div className="event-detail">
           <div className={styles.my_event_detail}>
@@ -37,7 +39,9 @@ function EventDetail() {
             <DetailCard event={event} />
             <ChatCard
               event={event}
-              onFinish={onFinish}
+              onFinish={(action) =>
+                postComment(event.eventId, event, action.comment)
+              }
               onFinishFailed={onFinishFailed}
             />
           </div>

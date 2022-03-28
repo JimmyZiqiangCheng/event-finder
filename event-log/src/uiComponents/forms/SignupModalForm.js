@@ -2,13 +2,13 @@ import React from "react";
 import { Input, Button, Form, message } from "antd";
 import { UnlockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import { useToggle } from "../../utils/customHooks";
+import { signup } from "../../services/AuthService";
 
 function SignupModalForm({ toggleSignup }) {
   const [loading, toggleLoading] = useToggle();
-  const handleRegister = (e) => {
-    console.log(e);
+  const handleRegister = async (e) => {
     toggleLoading();
-    setTimeout(message.success("sign up successfully"), 200);
+    await signup(e.email, e.password);
     toggleLoading();
     toggleSignup(false);
   };
