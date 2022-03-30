@@ -10,6 +10,7 @@ import { postComment } from "../../api/eventsApi";
 import styles from "./event.module.scss";
 import { loadEvents } from "../../redux/actions/eventActions";
 import { loadHosts } from "../../redux/actions/hostActions";
+import { message } from "antd";
 
 function EventDetail() {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ function EventDetail() {
     (h) => h.eventId === event.eventId
   )[0];
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    message.error(`Failed: ${errorInfo}`);
   };
   return (
     <div className="event-detail-page">

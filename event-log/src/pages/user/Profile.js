@@ -3,7 +3,7 @@ import { Avatar } from "antd";
 import "antd/dist/antd.css";
 import { UserOutlined } from "@ant-design/icons";
 import EventsTable from "./pageComponents/EventsTable";
-import AuthContext from "../../context/authContext";
+import { AuthContext } from "../../context/authContext";
 
 function Profile() {
   const currentUser = useContext(AuthContext);

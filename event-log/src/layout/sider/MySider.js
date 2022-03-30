@@ -7,7 +7,7 @@ import {
   CoffeeOutlined,
 } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
-import ThemeContext from "../../context/themeContext";
+import { ThemeContext } from "../../context/themeContext";
 import { Link } from "react-router-dom";
 import styles from "./sider.module.scss";
 import { getData } from "../../api/eventsApi";

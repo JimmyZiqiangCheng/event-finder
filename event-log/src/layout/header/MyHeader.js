@@ -2,14 +2,14 @@ import React, { useContext, useEffect } from "react";
 import "antd/dist/antd.css";
 import styles from "./header.module.scss";
 import { Avatar, Layout } from "antd";
-import ThemeContext from "../../context/themeContext";
+import { ThemeContext } from "../../context/themeContext";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import { debounce } from "../../utils/helperFunctions";
 import SignupModal from "../../uiComponents/modals/SignupModal";
 import LoginModal from "../../uiComponents/modals/LoginModal";
 import { useToggle } from "../../utils/customHooks";
 import HeaderButton from "../../uiComponents/buttons/HeaderButton";
-import AuthContext from "../../context/authContext";
+import { AuthContext } from "../../context/authContext";
 import MyPopover from "../../uiComponents/popover/MyPopover";
 import { logOutUser } from "../../services/AuthService";
 
@@ -20,6 +20,7 @@ function MyHeader() {
   const [popoverVisible, setPopoverVisible] = useToggle();
   const { collapsed, setCollapsed } = useContext(ThemeContext);
   const { currentUser } = useContext(AuthContext);
+
   useEffect(() => {
     const handleWindowResize = () => {
       window.innerWidth < 900 ? setCollapsed(true) : setCollapsed(false);

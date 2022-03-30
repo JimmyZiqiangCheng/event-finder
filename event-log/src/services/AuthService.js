@@ -13,12 +13,23 @@ import {
 import { message } from "antd";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../config/firebase";
-import { formatUser } from "../utils/helperFunctions";
 
 // Initialize Firebase
 
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
+
+const formatUser = (user) => {
+  return {
+    id: user.uid,
+    name: user.displayName || "John Doe",
+    email: user.email,
+    access_token: user.stsTokenManager.accessToken,
+    refresh_token: user.stsTokenManager.refreshToken,
+    provider: user.providerData[0].providerId,
+    photoURL: user.photoURL || "https://randomuser.me/api/portraits/men/22.jpg",
+  };
+};
 
 export const signup = async (email, password) => {
   try {
@@ -29,7 +40,6 @@ export const signup = async (email, password) => {
     );
     const user = formatUser(userCredential.user);
     message.success(`${user.name} signed up successfully.`);
-    return user;
   } catch (error) {
     message.error(error.message);
   }
@@ -37,14 +47,13 @@ export const signup = async (email, password) => {
 
 export const loginWithEmail = async (email, password) => {
   try {
-    const unFormattedUser = await signInWithEmailAndPassword(
+    const userCredential = await signInWithEmailAndPassword(
       auth,
       email,
       password
     );
-    const user = formatUser(unFormattedUser);
+    const user = formatUser(userCredential.user);
     message.success(`${user.name} logged in successfully.`);
-    return user;
   } catch (error) {
     message.error(error.message);
   }
@@ -56,8 +65,7 @@ export const loginWithGoogle = async () => {
     const result = await signInWithPopup(auth, provider);
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const user = formatUser(result.user);
-    message.success("Login Successful.");
-    return [credential, user];
+    message.success(`${user.name} Login Successful.`);
   } catch (error) {
     message.error(error.message);
   }
@@ -68,7 +76,7 @@ export const onAuthStatusChange = (func) => {
     if (currentUser) {
       func(formatUser(currentUser));
     } else {
-      func(null);
+      func({});
     }
   });
 };

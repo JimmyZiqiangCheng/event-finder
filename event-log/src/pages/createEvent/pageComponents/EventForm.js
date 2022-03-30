@@ -1,11 +1,11 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { Form, Input, Button, Select, DatePicker } from "antd";
+import { Form, Input, Button, Select, DatePicker, message } from "antd";
 
 function EventForm(props) {
   const { onSubmit, categories, cities, venues } = props;
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    message.error(`Failed: ${errorInfo}`);
   };
 
   return (
