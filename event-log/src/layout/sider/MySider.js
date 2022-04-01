@@ -13,10 +13,18 @@ import styles from "./sider.module.scss";
 import { getData } from "../../api/eventsApi";
 import { loadEvents } from "../../redux/actions/eventActions";
 import { loadHosts } from "../../redux/actions/hostActions";
+import { AuthContext } from "../../context/authContext";
+import { useToggle } from "../../utils/customHooks";
+import LoginModal from "../../uiComponents/modals/LoginModal";
 
 const { Sider } = Layout;
 
 function MySider() {
+  const { isAuthenticated } = useContext(AuthContext);
+  const [showLogin, toggleLogin] = useToggle();
+  const onClick = () => {
+    !isAuthenticated && toggleLogin();
+  };
   const dispatch = useDispatch();
   const handleClick = async () => {
     const [events, hosts] = await getData();
@@ -34,18 +42,31 @@ function MySider() {
           <Menu.Item
             key="Events"
             icon={<CoffeeOutlined />}
-            onClick={handleClick}
+            onClick={isAuthenticated ? handleClick : onClick}
           >
-            <Link to="/">Events</Link>
+            {isAuthenticated ? <Link to="/">Events</Link> : <p>Events</p>}
           </Menu.Item>
-          <Menu.Item key="Create Event" icon={<UploadOutlined />}>
-            <Link to="/create">Create Event</Link>
+          <Menu.Item
+            key="Create Event"
+            icon={<UploadOutlined />}
+            onClick={onClick}
+          >
+            {isAuthenticated ? (
+              <Link to="/create">Create Event</Link>
+            ) : (
+              <p>Create Event</p>
+            )}
           </Menu.Item>
-          <Menu.Item key="Profile" icon={<UserOutlined />}>
-            <Link to="/profile">Profile</Link>
+          <Menu.Item key="Profile" icon={<UserOutlined />} onClick={onClick}>
+            {isAuthenticated ? (
+              <Link to="/profile">Profile</Link>
+            ) : (
+              <p>Profile</p>
+            )}
           </Menu.Item>
         </Menu>
       </Sider>
+      <LoginModal showLogin={showLogin} toggleLogin={toggleLogin} />
     </div>
   );
 }
