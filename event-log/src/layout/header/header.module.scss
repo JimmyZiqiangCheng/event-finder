@@ -12,17 +12,32 @@
         cursor: pointer;
         transition: color 0.3s;
       }
+      .header-user-info {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: center;
+        .user-name {
+          margin-bottom: 0;
+        }
+        .user-name:hover {
+          cursor: pointer;
+        }
+      }
       .header-button-group {
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 10px;
-        margin-right: 100px;
+        margin-right: 40px;
         .ant-btn {
           border-radius: 5px;
         }
         .Login {
           padding: 0 24px;
+        }
+        .header-user-info {
+          margin-right: 40px;
         }
       }
     }

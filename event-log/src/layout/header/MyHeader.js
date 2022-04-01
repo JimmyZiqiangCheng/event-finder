@@ -19,7 +19,7 @@ function MyHeader() {
   const [showSignup, toggleSignup] = useToggle();
   const [popoverVisible, setPopoverVisible] = useToggle();
   const { collapsed, setCollapsed } = useContext(ThemeContext);
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, isAuthenticated } = useContext(AuthContext);
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -47,17 +47,15 @@ function MyHeader() {
           }
         )}
         <div className="header-button-group">
-          {currentUser ? (
+          {isAuthenticated ? (
             <div className="header-user-info">
               <Avatar src={currentUser.photoURL} />
               <MyPopover
                 visible={popoverVisible}
                 setVisible={setPopoverVisible}
-                onClick={async () => {
-                  await logOutUser();
-                }}
+                logout={logOutUser}
               >
-                <p> {currentUser.name} </p>
+                <p className="user-name"> {currentUser.name} </p>
               </MyPopover>
             </div>
           ) : (

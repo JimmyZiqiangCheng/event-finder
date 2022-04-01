@@ -10,12 +10,11 @@ const VENUES = [
 ];
 
 function CreateEvent() {
-  const submitForm = postData();
   return (
     <div className="create-event">
       <h1> Create New Event</h1>
       <EventForm
-        onSubmit={submitForm}
+        onSubmit={postData}
         categories={CATEGORIES}
         cities={CITIES}
         venues={VENUES}

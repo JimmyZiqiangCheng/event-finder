@@ -71,12 +71,14 @@ export const loginWithGoogle = async () => {
   }
 };
 
-export const onAuthStatusChange = (func) => {
+export const onAuthStatusChange = (setUser, setAuthenticated) => {
   onAuthStateChanged(auth, (currentUser) => {
     if (currentUser) {
-      func(formatUser(currentUser));
+      setUser(formatUser(currentUser));
+      setAuthenticated(true);
     } else {
-      func({});
+      setUser({});
+      setAuthenticated(false);
     }
   });
 };
@@ -84,7 +86,7 @@ export const onAuthStatusChange = (func) => {
 export const logOutUser = async () => {
   try {
     await signOut(auth);
-    message.success("Login Successful.");
+    message.success("Logout Successful.");
   } catch (error) {
     message.error(error.message);
   }

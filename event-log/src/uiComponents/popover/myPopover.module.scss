@@ -1,0 +1,10 @@
+.my_popover {
+  :global {
+    .popover-content {
+      padding-top: 1em;
+      ul {
+        margin-left: 0;
+      }
+    }
+  }
+}

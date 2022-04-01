@@ -5,11 +5,12 @@ export const AuthContext = React.createContext();
 
 function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState({});
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   useEffect(() => {
-    onAuthStatusChange(setCurrentUser);
+    onAuthStatusChange(setCurrentUser, setIsAuthenticated);
   }, []);
   return (
-    <AuthContext.Provider value={{ currentUser }}>
+    <AuthContext.Provider value={{ currentUser, isAuthenticated }}>
       {children}
     </AuthContext.Provider>
   );

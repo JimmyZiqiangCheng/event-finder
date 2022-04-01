@@ -11,7 +11,8 @@ function EventCalendar() {
   const dispatch = useDispatch();
   const [date, setDate] = useState(moment());
   const onSelect = async (val) => {
-    const [events, hosts] = await getData();
+    const date = val.format().slice(0, 10);
+    const [events, hosts] = await getData(date);
     dispatch(loadEvents(events));
     dispatch(loadHosts(hosts));
   };
