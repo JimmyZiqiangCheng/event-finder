@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./modal.module.scss";
 import { Modal } from "antd";
 
-function BasicModal({ children, visible, onCancel, title, footer }) {
+function FormModal({ children, visible, onCancel, title, footer = null }) {
   return (
     <Modal
       className={styles.basic_modal}
@@ -16,4 +16,4 @@ function BasicModal({ children, visible, onCancel, title, footer }) {
   );
 }
 
-export default BasicModal;
+export default FormModal;

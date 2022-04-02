@@ -1,12 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import "antd/dist/antd.css";
 import { List, Avatar, Space, Rate } from "antd";
 import { MessageOutlined, LikeOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../../context/authContext";
-import { useToggle } from "../../../utils/customHooks";
-import LoginModal from "../../../uiComponents/modals/LoginModal";
 
 const IconText = ({ icon, text }) => (
   <Space>
@@ -19,12 +16,6 @@ const defaultAvatar = "https://joeschmoe.io/api/v1/random";
 function EventList(props) {
   const events = useSelector((state) => state.events);
   const hosts = useSelector((state) => state.hosts);
-  const { isAuthenticated } = useContext(AuthContext);
-  const [showLogin, toggleLogin] = useToggle();
-
-  const onClick = () => {
-    !isAuthenticated && toggleLogin();
-  };
 
   const createAvatar = (hosts, item, defaultAvatar) => {
     const arr =
@@ -72,7 +63,6 @@ function EventList(props) {
           dataSource={events}
           renderItem={(item) => (
             <List.Item
-              onClick={onClick}
               key={item.title}
               actions={[
                 <Space>{createRating(item)}</Space>,
@@ -95,27 +85,19 @@ function EventList(props) {
                 />
               }
             >
-              {isAuthenticated ? (
-                <Link to={`/events/${item.eventId}`}>
-                  <List.Item.Meta
-                    avatar={createAvatar(hosts, item, defaultAvatar)}
-                    title={item.title}
-                    description={item.description}
-                  />
-                </Link>
-              ) : (
+              <Link to={`/events/${item.eventId}`}>
                 <List.Item.Meta
                   avatar={createAvatar(hosts, item, defaultAvatar)}
                   title={item.title}
                   description={item.description}
                 />
-              )}
+              </Link>
+
               {item.content}
             </List.Item>
           )}
         />
       )}
-      <LoginModal showLogin={showLogin} toggleLogin={toggleLogin} />
     </>
   );
 }

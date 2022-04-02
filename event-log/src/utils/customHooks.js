@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect } from "react";
+import { useCallback, useState, useEffect, useRef } from "react";
 
 export const useToggle = (defaultValue = false) => {
   const [state, setState] = useState(defaultValue);
@@ -23,4 +23,10 @@ export const useLocalStorage = (key, defaultValue) => {
   }, [key, value]);
 
   return [value, setValue];
+};
+
+export const useWillMount = (fu) => {
+  const willMount = useRef(true);
+  willMount.current && fu();
+  willMount.current = false;
 };

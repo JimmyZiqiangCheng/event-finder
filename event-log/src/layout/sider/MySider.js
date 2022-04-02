@@ -15,7 +15,8 @@ import { loadEvents } from "../../redux/actions/eventActions";
 import { loadHosts } from "../../redux/actions/hostActions";
 import { AuthContext } from "../../context/authContext";
 import { useToggle } from "../../utils/customHooks";
-import LoginModal from "../../uiComponents/modals/LoginModal";
+import FormModal from "../../uiComponents/modals/FormModal";
+import LoginModalForm from "../../uiComponents/forms/LoginModalForm";
 
 const { Sider } = Layout;
 
@@ -44,29 +45,20 @@ function MySider() {
             icon={<CoffeeOutlined />}
             onClick={isAuthenticated ? handleClick : onClick}
           >
-            {isAuthenticated ? <Link to="/">Events</Link> : <p>Events</p>}
+            <Link to="/">Events</Link>
           </Menu.Item>
           <Menu.Item
             key="Create Event"
             icon={<UploadOutlined />}
             onClick={onClick}
           >
-            {isAuthenticated ? (
-              <Link to="/create">Create Event</Link>
-            ) : (
-              <p>Create Event</p>
-            )}
+            <Link to="/create">Create Event</Link>
           </Menu.Item>
           <Menu.Item key="Profile" icon={<UserOutlined />} onClick={onClick}>
-            {isAuthenticated ? (
-              <Link to="/profile">Profile</Link>
-            ) : (
-              <p>Profile</p>
-            )}
+            <Link to="/profile">Profile</Link>
           </Menu.Item>
         </Menu>
       </Sider>
-      <LoginModal showLogin={showLogin} toggleLogin={toggleLogin} />
     </div>
   );
 }

@@ -5,13 +5,14 @@ import { Avatar, Layout } from "antd";
 import { ThemeContext } from "../../context/themeContext";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import { debounce } from "../../utils/helperFunctions";
-import SignupModal from "../../uiComponents/modals/SignupModal";
-import LoginModal from "../../uiComponents/modals/LoginModal";
 import { useToggle } from "../../utils/customHooks";
-import HeaderButton from "../../uiComponents/buttons/HeaderButton";
 import { AuthContext } from "../../context/authContext";
-import MyPopover from "../../uiComponents/popover/MyPopover";
 import { logOutUser } from "../../services/AuthService";
+import FormModal from "../../uiComponents/modals/FormModal";
+import SignupModalForm from "../../uiComponents/forms/SignupModalForm";
+import LoginModalForm from "../../uiComponents/forms/LoginModalForm";
+import ToggleButton from "../../uiComponents/buttons/ToggleButton";
+import MyPopover from "../../uiComponents/popover/MyPopover";
 
 const { Header } = Layout;
 function MyHeader() {
@@ -60,16 +61,22 @@ function MyHeader() {
             </div>
           ) : (
             <div className="header-button-group">
-              <HeaderButton toggle={toggleLogin} name={` Login `} />
-              <LoginModal
-                showLogin={showLogin}
-                toggleLogin={toggleLogin}
-              />{" "}
-              <HeaderButton toggle={toggleSignup} name={"Sign Up"} />
-              <SignupModal
-                showSignup={showSignup}
-                toggleSignup={toggleSignup}
-              />
+              <ToggleButton onClick={toggleLogin} name={` Login `} />
+              <FormModal
+                visible={showLogin}
+                onCancel={toggleLogin}
+                title={"Log In"}
+              >
+                <LoginModalForm toggleLogin={toggleLogin} />
+              </FormModal>
+              <ToggleButton onClick={toggleSignup} name={"Sign Up"} />
+              <FormModal
+                visible={showSignup}
+                onCancel={toggleSignup}
+                title={"Sign Up"}
+              >
+                <SignupModalForm toggleSignup={toggleSignup} />
+              </FormModal>
             </div>
           )}
         </div>
