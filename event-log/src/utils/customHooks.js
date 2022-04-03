@@ -1,4 +1,5 @@
-import { useCallback, useState, useEffect, useRef } from "react";
+import { useCallback, useState, useEffect, useRef, useContext } from "react";
+import { AuthContext } from "../context/authContext";
 
 export const useToggle = (defaultValue = false) => {
   const [state, setState] = useState(defaultValue);
@@ -29,4 +30,8 @@ export const useWillMount = (fu) => {
   const willMount = useRef(true);
   willMount.current && fu();
   willMount.current = false;
+};
+
+export const useAuth = () => {
+  return useContext(AuthContext);
 };

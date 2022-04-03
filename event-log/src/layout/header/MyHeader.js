@@ -6,7 +6,7 @@ import { ThemeContext } from "../../context/themeContext";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import { debounce } from "../../utils/helperFunctions";
 import { useToggle } from "../../utils/customHooks";
-import { AuthContext } from "../../context/authContext";
+import { useAuth } from "../../utils/customHooks";
 import { logOutUser } from "../../services/AuthService";
 import FormModal from "../../uiComponents/modals/FormModal";
 import SignupModalForm from "../../uiComponents/forms/SignupModalForm";
@@ -20,7 +20,7 @@ function MyHeader() {
   const [showSignup, toggleSignup] = useToggle();
   const [popoverVisible, setPopoverVisible] = useToggle();
   const { collapsed, setCollapsed } = useContext(ThemeContext);
-  const { currentUser, isAuthenticated } = useContext(AuthContext);
+  const { currentUser, isAuthenticated } = useAuth();
 
   useEffect(() => {
     const handleWindowResize = () => {

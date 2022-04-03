@@ -5,3 +5,5 @@ export const debounce = (func, delay) => {
     myTimeOut = setTimeout(() => func(), delay);
   };
 };
+
+export const displayAvatar = () => {};

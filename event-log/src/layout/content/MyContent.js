@@ -8,6 +8,7 @@ import Profile from "../../pages/profile/Profile";
 import styles from "./content.module.scss";
 import Attendees from "../../pages/attendees/Attendees";
 import Comments from "../../pages/comments/Comments";
+import ProtectedRoute from "../../utils/ProtectedRoute";
 
 const { Content } = Layout;
 function MyContent() {
@@ -24,11 +25,46 @@ function MyContent() {
         <Routes>
           <Route path="/" element={<Events />} />
           <Route path="/events" element={<Events />} />
-          <Route path="/events/:id" element={<Event />} />
-          <Route path="/events/:id/Attendee" element={<Attendees />} />
-          <Route path="/events/:id/comments" element={<Comments />} />
-          <Route path="/create" element={<CreateEvent />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/events/:id"
+            element={
+              <ProtectedRoute>
+                <Event />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/events/:id/Attendee"
+            element={
+              <ProtectedRoute>
+                <Attendees />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/events/:id/comments"
+            element={
+              <ProtectedRoute>
+                <Comments />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/create"
+            element={
+              <ProtectedRoute>
+                <CreateEvent />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Content>
     </div>
