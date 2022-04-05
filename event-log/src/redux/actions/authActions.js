@@ -3,7 +3,7 @@ import { authActionTypes } from "../actionTypes/authActionTypes";
 export const loginUser = (payload) => {
   return {
     type: authActionTypes.LOGIN_USER,
-    payload: { user: payload },
+    payload: payload,
   };
 };
 

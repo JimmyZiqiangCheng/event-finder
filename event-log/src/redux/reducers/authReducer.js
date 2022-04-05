@@ -1,11 +1,14 @@
 import { authActionTypes } from "../actionTypes/authActionTypes";
 
-export const authReducer = (state = null, { type, payload }) => {
+export const authReducer = (
+  state = { user: null, isAuthenticated: false },
+  { type, payload }
+) => {
   switch (type) {
     case authActionTypes.LOGIN_USER:
-      return payload.user;
+      return { user: payload, isAuthenticated: true };
     case authActionTypes.LOGOUT_USER:
-      return null;
+      return { user: null, isAuthenticated: false };
     default:
       return state;
   }
