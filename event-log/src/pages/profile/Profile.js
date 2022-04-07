@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Avatar } from "antd";
 import "antd/dist/antd.css";
 import { UserOutlined } from "@ant-design/icons";

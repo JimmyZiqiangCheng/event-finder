@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import "antd/dist/antd.css";
 import styles from "./header.module.scss";
 import { Avatar, Layout } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 import { ThemeContext } from "../../context/themeContext";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import { debounce } from "../../utils/helperFunctions";
@@ -50,7 +51,11 @@ function MyHeader() {
         <div className="header-button-group">
           {isAuthenticated ? (
             <div className="header-user-info">
-              <Avatar src={currentUser.photoURL} />
+              {currentUser.photoURL ? (
+                <Avatar src={currentUser.photoURL} />
+              ) : (
+                <Avatar icon={<UserOutlined />} />
+              )}
               <MyPopover
                 visible={popoverVisible}
                 setVisible={setPopoverVisible}
@@ -60,24 +65,26 @@ function MyHeader() {
               </MyPopover>
             </div>
           ) : (
-            <div className="header-button-group">
-              <ToggleButton onClick={toggleLogin} name={` Login `} />
-              <FormModal
-                visible={showLogin}
-                onCancel={toggleLogin}
-                title={"Log In"}
-              >
-                <LoginModalForm toggleLogin={toggleLogin} />
-              </FormModal>
-              <ToggleButton onClick={toggleSignup} name={"Sign Up"} />
-              <FormModal
-                visible={showSignup}
-                onCancel={toggleSignup}
-                title={"Sign Up"}
-              >
-                <SignupModalForm toggleSignup={toggleSignup} />
-              </FormModal>
-            </div>
+            isAuthenticated === false && (
+              <div className="header-button-group">
+                <ToggleButton onClick={toggleLogin} name={` Login `} />
+                <FormModal
+                  visible={showLogin}
+                  onCancel={toggleLogin}
+                  title={"Log In"}
+                >
+                  <LoginModalForm toggleLogin={toggleLogin} />
+                </FormModal>
+                <ToggleButton onClick={toggleSignup} name={"Sign Up"} />
+                <FormModal
+                  visible={showSignup}
+                  onCancel={toggleSignup}
+                  title={"Sign Up"}
+                >
+                  <SignupModalForm toggleSignup={toggleSignup} />
+                </FormModal>
+              </div>
+            )
           )}
         </div>
       </Header>

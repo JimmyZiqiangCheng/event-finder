@@ -24,10 +24,9 @@ const formatUser = (user) => {
     id: user.uid,
     name: user.displayName || user.email,
     email: user.email,
-    access_token: user.stsTokenManager.accessToken,
-    refresh_token: user.stsTokenManager.refreshToken,
+    token: user.stsTokenManager,
     provider: user.providerData[0].providerId,
-    photoURL: user.photoURL || "https://randomuser.me/api/portraits/men/22.jpg",
+    photoURL: user.photoURL,
   };
 };
 
@@ -71,12 +70,14 @@ export const loginWithGoogle = async () => {
   }
 };
 
-export const onAuthStatusChange = ({ setUser, removeUser }) => {
+export const onAuthStatusChange = ({ setCurrentUser, setIsAuthenticated }) => {
   onAuthStateChanged(auth, (currentUser) => {
     if (currentUser) {
-      setUser(formatUser(currentUser));
+      setCurrentUser(formatUser(currentUser));
+      setIsAuthenticated(true);
     } else {
-      removeUser();
+      setCurrentUser({});
+      setIsAuthenticated(false);
     }
   });
 };

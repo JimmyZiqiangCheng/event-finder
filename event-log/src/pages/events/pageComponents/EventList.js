@@ -18,7 +18,6 @@ const IconText = ({ icon, text }) => (
 const defaultAvatar = "https://joeschmoe.io/api/v1/random";
 
 function EventList(props) {
-  const { isAuthenticated } = useAuth();
   const [login, toggleLogin] = useToggle();
   const events = useSelector((state) => state.events);
   const hosts = useSelector((state) => state.hosts);
