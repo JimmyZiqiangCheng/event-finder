@@ -6,12 +6,15 @@ import moment from "moment";
 import { getData } from "../../../api/eventsApi";
 import { loadEvents } from "../../../redux/actions/eventActions";
 import { loadHosts } from "../../../redux/actions/hostActions";
+import { useAuth } from "../../../utils/customHooks";
 
 function EventCalendar() {
   const dispatch = useDispatch();
   const [date, setDate] = useState(moment());
+  const { isAuthenticated } = useAuth();
 
   const onSelect = async (val) => {
+    if (!isAuthenticated) return;
     const date = val.format().slice(0, 10);
     const [events, hosts] = await getData(date);
     dispatch(loadEvents(events));

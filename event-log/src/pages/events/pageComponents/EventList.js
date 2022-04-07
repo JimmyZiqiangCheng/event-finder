@@ -4,10 +4,6 @@ import { List, Avatar, Space, Rate } from "antd";
 import { MessageOutlined, LikeOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import FormModal from "../../../uiComponents/modals/FormModal";
-import LoginModalForm from "../../../uiComponents/forms/LoginModalForm";
-import { useToggle } from "../../../utils/customHooks";
-import { useAuth } from "../../../utils/customHooks";
 
 const IconText = ({ icon, text }) => (
   <Space>
@@ -18,7 +14,6 @@ const IconText = ({ icon, text }) => (
 const defaultAvatar = "https://joeschmoe.io/api/v1/random";
 
 function EventList(props) {
-  const [login, toggleLogin] = useToggle();
   const events = useSelector((state) => state.events);
   const hosts = useSelector((state) => state.hosts);
 
@@ -60,9 +55,6 @@ function EventList(props) {
           itemLayout="vertical"
           size="large"
           pagination={{
-            onChange: (page) => {
-              console.log(page);
-            },
             pageSize: 3,
           }}
           dataSource={events}
@@ -102,9 +94,6 @@ function EventList(props) {
           )}
         />
       )}
-      <FormModal visible={login} onCancel={toggleLogin} title="Log In">
-        <LoginModalForm toggleLogin={toggleLogin} />
-      </FormModal>
     </>
   );
 }
