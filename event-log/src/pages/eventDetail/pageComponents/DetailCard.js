@@ -7,17 +7,16 @@ import {
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import SimpleMap from "../../../uiComponents/map/SimpleMap";
+import { displayAvatar } from "../../../utils/helperFunctions";
 
 function DetailCard({ event }) {
   const createAvatars = (attendees) => {
     if (attendees.length < 6) {
-      return attendees.map((attendee) => (
-        <Avatar key={attendee.id} src={attendee.photoURL} />
-      ));
+      return attendees.map((attendee) => displayAvatar(attendee.photoURL));
     }
     return attendees
       .slice(0, 5)
-      .map((attendee) => <Avatar key={attendee.id} src={attendee.photoURL} />);
+      .map((attendee) => displayAvatar(attendee.photoURL));
   };
   return (
     <div className="card-section card-detail">

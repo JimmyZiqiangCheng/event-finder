@@ -1,8 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useCallback } from "react";
 import "antd/dist/antd.css";
 import styles from "./header.module.scss";
-import { Avatar, Layout } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { Layout } from "antd";
 import { ThemeContext } from "../../context/themeContext";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import { debounce } from "../../utils/helperFunctions";
@@ -14,6 +13,8 @@ import SignupModalForm from "../../uiComponents/forms/SignupModalForm";
 import LoginModalForm from "../../uiComponents/forms/LoginModalForm";
 import ToggleButton from "../../uiComponents/buttons/ToggleButton";
 import MyPopover from "../../uiComponents/popover/MyPopover";
+import { useDebounce } from "../../utils/customHooks";
+import { displayAvatar } from "../../utils/helperFunctions";
 
 const { Header } = Layout;
 function MyHeader() {
@@ -22,6 +23,7 @@ function MyHeader() {
   const [popoverVisible, setPopoverVisible] = useToggle();
   const { collapsed, setCollapsed } = useContext(ThemeContext);
   const { currentUser, isAuthenticated } = useAuth();
+  // const delayedResize = useDebounce(handleWindowResize, 200);
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -29,7 +31,7 @@ function MyHeader() {
     };
     const delayedResize = debounce(handleWindowResize, 200);
     window.addEventListener("resize", delayedResize);
-    return () => window.removeEventListener("resize", handleWindowResize);
+    return () => window.removeEventListener("resize", delayedResize);
   }, []);
   const toggle = () => {
     setCollapsed(!collapsed);
@@ -51,11 +53,7 @@ function MyHeader() {
         <div className="header-button-group">
           {isAuthenticated ? (
             <div className="header-user-info">
-              {currentUser.photoURL ? (
-                <Avatar src={currentUser.photoURL} />
-              ) : (
-                <Avatar icon={<UserOutlined />} />
-              )}
+              {displayAvatar(currentUser.photoURL)}
               <MyPopover
                 visible={popoverVisible}
                 setVisible={setPopoverVisible}

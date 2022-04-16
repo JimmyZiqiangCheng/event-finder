@@ -3,6 +3,7 @@ import { Button, Avatar, Form, Input } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import { displayAvatar } from "../../../utils/helperFunctions";
 
 function ChatCard({ event, onFinish, onFinishFailed }) {
   const createComments = (comment) => {
@@ -27,7 +28,7 @@ function ChatCard({ event, onFinish, onFinishFailed }) {
     const finalTime = years > 0 ? years : months > 0 ? months : days;
     return (
       <li className="comment-li" key={comment.id}>
-        <Avatar className="comment-avatar" src={comment.photoURL}></Avatar>
+        {displayAvatar(comment.photoURL)}
         <div className="comment-detail">
           <div className="comment-meta">
             <p className="comment-name">{comment.name}</p>

@@ -39,6 +39,46 @@ export const postData = async (inputData) => {
   }
 };
 
+export const postRating = async (id, rate) => {
+  const rating = {
+    EventId: `{id}`,
+    rate: rate,
+  };
+  const url = `${EVENTS_API}/${id}/rates`;
+  try {
+    await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(rating),
+    });
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
+export const postAttendee = async (id, name, photoURL, email) => {
+  const attendee = {
+    EventId: `{id}`,
+    name: name,
+    photoURL: photoURL,
+    email: email,
+  };
+  const url = `${EVENTS_API}/${id}/Attendees`;
+  try {
+    await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(attendee),
+    });
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
 export const postComment = async (
   id,
   event,

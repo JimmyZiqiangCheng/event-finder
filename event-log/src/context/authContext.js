@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { onAuthStatusChange } from "../services/AuthService";
-import { useWillMount } from "../utils/customHooks";
 
 export const AuthContext = React.createContext();
-function AuthProvider({ children }) {
+function AuthProvider({ children, ...props }) {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
+  const { useWillMount, onAuthStatusChange } = props;
   useWillMount(() => {
     onAuthStatusChange({
       setCurrentUser,

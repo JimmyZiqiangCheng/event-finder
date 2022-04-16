@@ -11,6 +11,15 @@ export const useToggle = (defaultValue = false) => {
   return [state, toggle];
 };
 
+export const useDebounce = (func, delay) => {
+  let myTimeOut;
+  const debounce = useCallback(() => {
+    clearTimeout(myTimeOut);
+    myTimeOut = setTimeout(() => func(), delay);
+  }, []);
+  return debounce;
+};
+
 const getStorageValue = (key, defaultValue) => {
   const saved = localStorage.getItem(key);
   const initial = JSON.parse(saved);

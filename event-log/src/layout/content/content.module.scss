@@ -36,6 +36,11 @@
         .ant-list-vertical {
           flex: 0.6;
         }
+
+        .event-img {
+          border-radius: 5px;
+        }
+
         @media screen and (max-width: 960px) {
           .ant-list-vertical {
             flex: 1;

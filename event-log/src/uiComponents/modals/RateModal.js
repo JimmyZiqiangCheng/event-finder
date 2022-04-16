@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "antd/dist/antd.css";
+import { useParams } from "react-router-dom";
 import { Modal, Button, Rate } from "antd";
 import styles from "./modal.module.scss";
 import { message } from "antd";
+import { postRating } from "../../api/eventsApi";
 
 function RateModal({ showModal, setShowModal }) {
+  const [rating, setRating] = useState(2.5);
+  const { id } = useParams();
   const handleCancel = () => {
     setShowModal(false);
   };
   const handleChange = (r) => {
-    console.log(`rating: ${r}`);
+    setRating(r);
   };
-  const handleOk = () => {
+  const handleOk = async () => {
+    await postRating(id, rating);
     message.success("Event Rated!", 1);
     setShowModal(false);
   };
