@@ -34,7 +34,7 @@ function ChatCard({ event, onFinish, onFinishFailed }) {
             <p className="comment-name">{comment.name}</p>
             <p className="comment-time">{`${finalTime} ${unit} ago`}</p>
           </div>
-          <p className="comment-content">{comment.comment}</p>
+          <div className="comment-content">{comment.comment}</div>
         </div>
       </li>
     );

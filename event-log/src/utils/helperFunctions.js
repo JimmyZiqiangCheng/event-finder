@@ -10,5 +10,9 @@ export const debounce = (func, delay) => {
 };
 
 export const displayAvatar = (url) => {
-  return url ? <Avatar src={url} /> : <Avatar icon={<UserOutlined />} />;
+  return url ? (
+    <Avatar data-testid="avatar-url" src={url} />
+  ) : (
+    <Avatar data-testid="avatar-default" icon={<UserOutlined />} />
+  );
 };

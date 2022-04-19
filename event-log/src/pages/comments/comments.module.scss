@@ -9,8 +9,10 @@
     .comments {
       flex: 1 0 auto;
       padding: 20px;
+      width: 800px;
       .ant-list {
         flex: 1 1 auto;
+        max-width: 100%;
         .ant-list-items {
           display: flex;
           flex-direction: column;
@@ -27,7 +29,8 @@
               gap: 10px;
             }
             .item-content {
-              flex: 1 0 auto;
+              max-width: 100%;
+              overflow-wrap: break-word;
             }
           }
         }

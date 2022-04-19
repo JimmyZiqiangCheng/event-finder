@@ -180,11 +180,13 @@
           margin-left: 10px;
           display: flex;
           flex-direction: column;
-          justify-content: flex-start;
-          align-items: flex-start;
+          max-width: 80%;
+          .comment-content {
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
           .comment-meta {
             display: flex;
-            align-self: center;
             .comment-time {
               margin-left: 10px;
               color: colors.$greycolor-dark;
