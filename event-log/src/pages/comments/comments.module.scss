@@ -9,7 +9,7 @@
     .comments {
       flex: 1 0 auto;
       padding: 20px;
-      width: 800px;
+      width: 100px;
       .ant-list {
         flex: 1 1 auto;
         max-width: 100%;
@@ -27,6 +27,7 @@
             .ant-list-item-meta-content {
               display: flex;
               gap: 10px;
+              width: 100%;
             }
             .item-content {
               max-width: 100%;
