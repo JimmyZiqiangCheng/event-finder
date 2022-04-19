@@ -5,6 +5,7 @@ import { List, Avatar } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./comments.module.scss";
 import { loadEvents } from "../../redux/actions/eventActions";
+import { displayAvatar } from "../../utils/helperFunctions";
 
 function Comments() {
   const dispatch = useDispatch();
@@ -30,12 +31,7 @@ function Comments() {
             renderItem={(item) => (
               <List.Item>
                 <List.Item.Meta
-                  avatar={
-                    <Avatar
-                      className="comment-avatar"
-                      src={item.photoURL}
-                    ></Avatar>
-                  }
+                  avatar={displayAvatar(item.photoURL)}
                   title={<p>{item.name}</p>}
                   description={item.createAt.slice(0, 10)}
                 />
