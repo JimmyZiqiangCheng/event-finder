@@ -1,6 +1,3 @@
 export default {
-  get: jest.fn().mockResolvedValue({ data: {
-    user: {}
-    isAuthenticated: 
-  } }),
+  get: jest.fn().mockResolvedValue({ data: {} }),
 };

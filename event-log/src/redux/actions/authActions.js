@@ -10,6 +10,6 @@ export const loginUser = (payload) => {
 export const logoutUser = () => {
   return {
     type: authActionTypes.LOGOUT_USER,
-    payload: null,
+    payload: {},
   };
 };

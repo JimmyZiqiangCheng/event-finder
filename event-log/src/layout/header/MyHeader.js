@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useCallback } from "react";
+import React, { useContext, useEffect } from "react";
 import "antd/dist/antd.css";
 import styles from "./header.module.scss";
 import { Layout } from "antd";
@@ -13,7 +13,6 @@ import SignupModalForm from "../../uiComponents/forms/SignupModalForm";
 import LoginModalForm from "../../uiComponents/forms/LoginModalForm";
 import ToggleButton from "../../uiComponents/buttons/ToggleButton";
 import MyPopover from "../../uiComponents/popover/MyPopover";
-import { useDebounce } from "../../utils/customHooks";
 import { displayAvatar } from "../../utils/helperFunctions";
 
 const { Header } = Layout;

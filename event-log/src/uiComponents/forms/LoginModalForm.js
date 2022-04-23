@@ -1,24 +1,18 @@
 import React from "react";
-import { Input, Button, Checkbox, Form, message } from "antd";
+import { Input, Button, Checkbox, Form } from "antd";
 import { LockOutlined, MailOutlined, GoogleOutlined } from "@ant-design/icons";
-import { useToggle } from "../../utils/customHooks";
 import { loginWithEmail, loginWithGoogle } from "../../services/AuthService";
 
 function LoginModalForm({ toggleLogin }) {
-  const [loading, toggleLoading] = useToggle();
   const handleGoogle = async () => {
-    toggleLoading();
     await loginWithGoogle();
-    toggleLoading();
     toggleLogin(false);
   };
   const handleChangeRemember = (e) => {
     console.log(`remember password: ${e.target.checked}`);
   };
   const handleLogin = async (e) => {
-    toggleLoading();
     await loginWithEmail(e.email, e.password);
-    toggleLoading();
     toggleLogin(false);
   };
 
@@ -69,7 +63,6 @@ function LoginModalForm({ toggleLogin }) {
       <Form.Item className="modal-footer">
         <Button
           type="primary"
-          loading={loading}
           htmlType="submit"
           className="modal-button regular-login-button"
         >
@@ -78,7 +71,6 @@ function LoginModalForm({ toggleLogin }) {
         <p className="or-separator">OR</p>
         <Button
           type="primary"
-          loading={loading}
           onClick={handleGoogle}
           className="modal-button google-login-button"
         >
