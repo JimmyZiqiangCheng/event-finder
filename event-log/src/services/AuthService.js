@@ -6,28 +6,17 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   createUserWithEmailAndPassword,
-  onAuthStateChanged,
   GoogleAuthProvider,
   signOut,
 } from "firebase/auth";
 import { message } from "antd";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../config/firebase";
+import { formatUser } from "../utils/helperFunctions";
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-const auth = getAuth(firebaseApp);
-
-const formatUser = (user) => {
-  return {
-    id: user.uid,
-    name: user.displayName || user.email,
-    email: user.email,
-    token: user.stsTokenManager,
-    provider: user.providerData[0].providerId,
-    photoURL: user.photoURL,
-  };
-};
+export const auth = getAuth(firebaseApp);
 
 export const signup = async (email, password) => {
   try {
@@ -67,18 +56,6 @@ export const loginWithGoogle = async () => {
   } catch (error) {
     message.error(error.message);
   }
-};
-
-export const onAuthStatusChange = ({ setCurrentUser, setIsAuthenticated }) => {
-  onAuthStateChanged(auth, (currentUser) => {
-    if (currentUser) {
-      setCurrentUser(formatUser(currentUser));
-      setIsAuthenticated(true);
-    } else {
-      setCurrentUser({});
-      setIsAuthenticated(false);
-    }
-  });
 };
 
 export const logOutUser = async () => {

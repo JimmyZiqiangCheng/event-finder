@@ -65,7 +65,11 @@ function MyHeader() {
           ) : (
             isAuthenticated === false && (
               <div className="header-button-group">
-                <ToggleButton onClick={toggleLogin} name={` Login `} />
+                <ToggleButton
+                  data-testid="login-button"
+                  onClick={toggleLogin}
+                  name={` Login `}
+                />
                 <FormModal
                   visible={showLogin}
                   onCancel={toggleLogin}
@@ -73,7 +77,11 @@ function MyHeader() {
                 >
                   <LoginModalForm toggleLogin={toggleLogin} />
                 </FormModal>
-                <ToggleButton onClick={toggleSignup} name={"Sign Up"} />
+                <ToggleButton
+                  data-testid="signup-button"
+                  onClick={toggleSignup}
+                  name={"Sign Up"}
+                />
                 <FormModal
                   visible={showSignup}
                   onCancel={toggleSignup}

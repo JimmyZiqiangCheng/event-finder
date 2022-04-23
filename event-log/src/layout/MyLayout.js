@@ -6,15 +6,10 @@ import MySider from "./sider/MySider";
 import MyHeader from "./header/MyHeader";
 import "antd/dist/antd.css";
 import { Layout } from "antd";
-import { onAuthStatusChange } from "../services/AuthService";
-import { useWillMount } from "../utils/customHooks";
 
 function MyLayout() {
   return (
-    <AuthProvider
-      onAuthStatusChange={onAuthStatusChange}
-      useWillMount={useWillMount}
-    >
+    <AuthProvider>
       <ThemeProvider>
         <Layout>
           <MySider />

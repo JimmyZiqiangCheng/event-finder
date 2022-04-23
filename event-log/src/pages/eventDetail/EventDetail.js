@@ -30,6 +30,12 @@ function EventDetail() {
   const onFinishFailed = (errorInfo) => {
     message.error(`Failed: ${errorInfo}`);
   };
+  const onFinish = async (action) => {
+    await postComment(event.eventId, event, action.comment);
+    const [events, hosts] = await getData(null, id);
+    dispatch(loadEvents(events));
+    dispatch(loadHosts(hosts));
+  };
   return (
     <div className="event-detail-page">
       {event && host && (
@@ -40,9 +46,7 @@ function EventDetail() {
             <DetailCard event={event} />
             <ChatCard
               event={event}
-              onFinish={(action) =>
-                postComment(event.eventId, event, action.comment)
-              }
+              onFinish={onFinish}
               onFinishFailed={onFinishFailed}
             />
           </div>
