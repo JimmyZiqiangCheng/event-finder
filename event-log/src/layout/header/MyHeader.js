@@ -63,11 +63,11 @@ function MyHeader() {
             </div>
           ) : (
             isAuthenticated === false && (
-              <div className="header-button-group">
+              <div data-testid="button-group" className="header-button-group">
                 <ToggleButton
-                  data-testid="login-button"
                   onClick={toggleLogin}
-                  name={` Login `}
+                  name={"Log In"}
+                  data-testid="login-button"
                 />
                 <FormModal
                   visible={showLogin}
@@ -77,9 +77,9 @@ function MyHeader() {
                   <LoginModalForm toggleLogin={toggleLogin} />
                 </FormModal>
                 <ToggleButton
-                  data-testid="signup-button"
                   onClick={toggleSignup}
                   name={"Sign Up"}
+                  data-testid="signup-button"
                 />
                 <FormModal
                   visible={showSignup}
