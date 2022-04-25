@@ -62,6 +62,7 @@ function EventList(props) {
             <Link to={`/events/${item.eventId}`}>
               <List.Item
                 key={item.title}
+                data-testid="row"
                 actions={[
                   <Space>{createRating(item)}</Space>,
                   <IconText

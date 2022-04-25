@@ -1,12 +1,6 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import {
-  render,
-  cleanup,
-  fireEvent,
-  screen,
-  waitFor,
-} from "@testing-library/react";
+import { render, cleanup, screen } from "@testing-library/react";
 import MyHeader from "../MyHeader";
 import axios from "axios";
 import ThemeProvider from "../../../context/themeContext";
@@ -22,14 +16,11 @@ const renderWithContext = (component) => {
   );
 };
 
-describe("<MyHeader />", () => {
+describe("MyHeader", () => {
   it("should have login and signup button when user is not logged in", async () => {
     renderWithContext(<MyHeader />);
-    const buttonGroup = await waitFor(() => {
-      screen.getByTestId("button-group");
-    });
-    expect(buttonGroup).toBeTruthy();
-    //expect(buttonGroup).toBeInTheDocument();
+    const buttonGroup = await screen.findByTestId("button-group");
+    expect(buttonGroup).toBeInTheDocument();
   });
   // it("should have the user name displayed after user logged in", () => {
   //   renderWithContext(<MyHeader />);
