@@ -80,7 +80,7 @@ function EventList(props) {
                   <img
                     className="event-img"
                     width={272}
-                    alt="logo"
+                    alt=""
                     src={`./img/${item.category}.jpg`}
                   />
                 }

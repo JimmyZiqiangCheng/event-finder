@@ -19,6 +19,7 @@ function LoginModalForm({ toggleLogin }) {
   return (
     <Form
       className="login-form-modal"
+      data-testid="login-modal"
       initialValues={{
         remember: true,
       }}
@@ -35,7 +36,11 @@ function LoginModalForm({ toggleLogin }) {
           },
         ]}
       >
-        <Input placeholder="Email" prefix={<MailOutlined />} />
+        <Input
+          placeholder="Email"
+          data-testid="email"
+          prefix={<MailOutlined />}
+        />
       </Form.Item>
       <Form.Item
         className="modal-input-field form-password"
@@ -47,7 +52,11 @@ function LoginModalForm({ toggleLogin }) {
           },
         ]}
       >
-        <Input placeholder="Password" prefix={<LockOutlined />} />
+        <Input
+          placeholder="Password"
+          data-testid="password"
+          prefix={<LockOutlined />}
+        />
       </Form.Item>
       <Form.Item className="modal-others">
         <Form.Item name="remember" valuePropName="checked">
@@ -63,6 +72,7 @@ function LoginModalForm({ toggleLogin }) {
       <Form.Item className="modal-footer">
         <Button
           type="primary"
+          data-testid="submit-login"
           htmlType="submit"
           className="modal-button regular-login-button"
         >

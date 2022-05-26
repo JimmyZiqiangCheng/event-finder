@@ -3,36 +3,20 @@ import { Button, Avatar, Form, Input } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import moment from "moment";
 import { Link } from "react-router-dom";
-import { displayAvatar } from "../../../utils/helperFunctions";
+import { displayAvatar, getTimeDiff } from "../../../utils/helperFunctions";
 
 function ChatCard({ event, onFinish, onFinishFailed }) {
   const createComments = (comment) => {
-    const [years, months, days] = [
-      Number(moment().format().slice(0, 4)) -
-        Number(comment.createAt.slice(0, 4)),
-      Number(moment().format().slice(5, 7)) -
-        Number(comment.createAt.slice(5, 7)),
-      Number(moment().format().slice(8, 10)) -
-        Number(comment.createAt.slice(8, 10)),
-    ];
-    const unit =
-      years > 1
-        ? "years"
-        : years === 1
-        ? "year"
-        : months > 1
-        ? "months"
-        : months === 1
-        ? "month"
-        : "days";
-    const finalTime = years > 0 ? years : months > 0 ? months : days;
+    const now = moment(moment().format().slice(0, 10));
+    const created = moment(comment.createAt.slice(0, 10));
+    const timeDiff = getTimeDiff(now, created);
     return (
       <li className="comment-li" key={comment.id}>
         {displayAvatar(comment.photoURL)}
         <div className="comment-detail">
           <div className="comment-meta">
             <p className="comment-name">{comment.name}</p>
-            <p className="comment-time">{`${finalTime} ${unit} ago`}</p>
+            <p className="comment-time">{timeDiff}</p>
           </div>
           <div className="comment-content">{comment.comment}</div>
         </div>

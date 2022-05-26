@@ -5,6 +5,7 @@ import { Layout } from "antd";
 import { ThemeContext } from "../../context/themeContext";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import { debounce } from "../../utils/helperFunctions";
+import { useDebounce } from "../../utils/customHooks";
 import { useToggle } from "../../utils/customHooks";
 import { useAuth } from "../../utils/customHooks";
 import { logOutUser } from "../../services/AuthService";
@@ -22,13 +23,16 @@ function MyHeader() {
   const [popoverVisible, setPopoverVisible] = useToggle();
   const { collapsed, setCollapsed } = useContext(ThemeContext);
   const { currentUser, isAuthenticated } = useAuth();
-  // const delayedResize = useDebounce(handleWindowResize, 200);
-
+  const handleWindowResize = () => {
+    console.log("called");
+    window.innerWidth < 900 ? setCollapsed(true) : setCollapsed(false);
+  };
+  const delayedResize = useDebounce(handleWindowResize, 200);
   useEffect(() => {
-    const handleWindowResize = () => {
-      window.innerWidth < 900 ? setCollapsed(true) : setCollapsed(false);
-    };
-    const delayedResize = debounce(handleWindowResize, 200);
+    // const handleWindowResize = () => {
+    //   window.innerWidth < 900 ? setCollapsed(true) : setCollapsed(false);
+    // };
+    //const delayedResize = debounce(handleWindowResize, 200);
     window.addEventListener("resize", delayedResize);
     return () => window.removeEventListener("resize", delayedResize);
   }, []);

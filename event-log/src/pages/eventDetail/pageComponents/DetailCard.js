@@ -12,11 +12,13 @@ import { displayAvatar } from "../../../utils/helperFunctions";
 function DetailCard({ event }) {
   const createAvatars = (attendees) => {
     if (attendees.length < 6) {
-      return attendees.map((attendee) => displayAvatar(attendee.photoURL));
+      return attendees.map((attendee, index) =>
+        displayAvatar(attendee.photoURL, index)
+      );
     }
     return attendees
       .slice(0, 5)
-      .map((attendee) => displayAvatar(attendee.photoURL));
+      .map((attendee, index) => displayAvatar(attendee.photoURL, index));
   };
   return (
     <div className="card-section card-detail">
