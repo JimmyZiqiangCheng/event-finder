@@ -183,6 +183,7 @@
           max-width: 80%;
           .comment-content {
             overflow: hidden;
+
             text-overflow: ellipsis;
           }
           .comment-meta {
