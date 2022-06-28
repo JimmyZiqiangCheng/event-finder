@@ -6,9 +6,9 @@ export const authReducer = (
 ) => {
   switch (type) {
     case authActionTypes.LOGIN_USER:
-      return { currentUser: payload, isAuthenticated: true };
+      return { user: payload, isAuthenticated: true };
     case authActionTypes.LOGOUT_USER:
-      return { currentUser: payload, isAuthenticated: false };
+      return { user: payload, isAuthenticated: false };
     default:
       return state;
   }

@@ -13,14 +13,14 @@ import FormModal from "../../uiComponents/modals/FormModal";
 import SignupModalForm from "../../uiComponents/forms/SignupModalForm";
 import LoginModalForm from "../../uiComponents/forms/LoginModalForm";
 import ToggleButton from "../../uiComponents/buttons/ToggleButton";
-import MyPopover from "../../uiComponents/popover/MyPopover";
+import MyPopUp from "../../uiComponents/popup/MyPopUp";
 import { displayAvatar } from "../../utils/helperFunctions";
 
 const { Header } = Layout;
 function MyHeader() {
   const [showLogin, toggleLogin] = useToggle();
   const [showSignup, toggleSignup] = useToggle();
-  const [popoverVisible, setPopoverVisible] = useToggle();
+  const [popUpVisible, setPopUpVisible] = useToggle();
   const { collapsed, setCollapsed } = useContext(ThemeContext);
   const { currentUser, isAuthenticated } = useAuth();
   const handleWindowResize = () => {
@@ -57,13 +57,13 @@ function MyHeader() {
           {isAuthenticated ? (
             <div className="header-user-info">
               {displayAvatar(currentUser.photoURL)}
-              <MyPopover
-                visible={popoverVisible}
-                setVisible={setPopoverVisible}
+              <MyPopUp
+                visible={popUpVisible}
+                setVisible={setPopUpVisible}
                 logout={logOutUser}
               >
                 <p className="user-name"> {currentUser.name} </p>
-              </MyPopover>
+              </MyPopUp>
             </div>
           ) : (
             isAuthenticated === false && (

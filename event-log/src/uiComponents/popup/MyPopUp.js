@@ -1,17 +1,17 @@
 import { Popover } from "antd";
-import styles from "./myPopover.module.scss";
-function MyPopover({ children, visible, setVisible, logout }) {
+import styles from "./myPopUp.module.scss";
+function MyPopUp({ children, visible, setVisible, logout }) {
   const onClick = async () => {
     await logout();
     setVisible();
   };
   return (
-    <div className={styles.my_popover}>
+    <div className={styles.my_popup}>
       <Popover
-        className="my-popover"
+        className="my-popup"
         content={
-          <div className="popover-content">
-            <li className="popover-content-list">
+          <div className="popup-content">
+            <li className="popup-content-list">
               <ul>
                 <a onClick={setVisible}>Settings</a>
               </ul>
@@ -31,4 +31,4 @@ function MyPopover({ children, visible, setVisible, logout }) {
   );
 }
 
-export default MyPopover;
+export default MyPopUp;
