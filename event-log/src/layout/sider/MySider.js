@@ -15,13 +15,14 @@ import { loadEvents } from "../../redux/actions/eventActions";
 import { loadHosts } from "../../redux/actions/hostActions";
 import FormModal from "../../uiComponents/modals/FormModal";
 import LoginModalForm from "../../uiComponents/forms/LoginModalForm";
-import { useAuth, useToggle } from "../../utils/customHooks";
+import { useAuth, useTheme } from "../../utils/customHooks";
 
 const { Sider } = Layout;
 
 function MySider() {
   const { isAuthenticated } = useAuth();
-  const [login, toggleLogin] = useToggle();
+  const { setShowLoginModal } = useTheme();
+  const openLogin = () => setShowLoginModal(true);
   const dispatch = useDispatch();
   const handleClick = async () => {
     const [events, hosts] = await getData();
@@ -39,29 +40,32 @@ function MySider() {
           <Menu.Item
             key="Events"
             icon={<CoffeeOutlined />}
-            onClick={!isAuthenticated ? toggleLogin : handleClick}
+            onClick={
+              !isAuthenticated
+                ? () => {
+                    setShowLoginModal(true);
+                  }
+                : handleClick
+            }
           >
             <Link to="/">Events</Link>
           </Menu.Item>
           <Menu.Item
             key="Create Event"
             icon={<UploadOutlined />}
-            onClick={!isAuthenticated && toggleLogin}
+            onClick={!isAuthenticated && openLogin}
           >
             <Link to="/create">Create Event</Link>
           </Menu.Item>
           <Menu.Item
             key="Profile"
             icon={<UserOutlined />}
-            onClick={!isAuthenticated && toggleLogin}
+            onClick={!isAuthenticated && openLogin}
           >
             <Link to="/profile">Profile</Link>
           </Menu.Item>
         </Menu>
       </Sider>
-      <FormModal visible={login} onCancel={toggleLogin} title="Log In">
-        <LoginModalForm toggleLogin={toggleLogin} />
-      </FormModal>
     </div>
   );
 }

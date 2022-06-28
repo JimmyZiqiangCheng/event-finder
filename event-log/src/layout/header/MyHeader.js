@@ -4,10 +4,8 @@ import styles from "./header.module.scss";
 import { Layout } from "antd";
 import { ThemeContext } from "../../context/themeContext";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
-import { debounce } from "../../utils/helperFunctions";
 import { useDebounce } from "../../utils/customHooks";
-import { useToggle } from "../../utils/customHooks";
-import { useAuth } from "../../utils/customHooks";
+import { useAuth, useTheme, useToggle } from "../../utils/customHooks";
 import { logOutUser } from "../../services/AuthService";
 import FormModal from "../../uiComponents/modals/FormModal";
 import SignupModalForm from "../../uiComponents/forms/SignupModalForm";
@@ -18,7 +16,7 @@ import { displayAvatar } from "../../utils/helperFunctions";
 
 const { Header } = Layout;
 function MyHeader() {
-  const [showLogin, toggleLogin] = useToggle();
+  const { showLoginModal, setShowLoginModal } = useTheme();
   const [showSignup, toggleSignup] = useToggle();
   const [popUpVisible, setPopUpVisible] = useToggle();
   const { collapsed, setCollapsed } = useContext(ThemeContext);
@@ -69,16 +67,18 @@ function MyHeader() {
             isAuthenticated === false && (
               <div data-testid="button-group" className="header-button-group">
                 <ToggleButton
-                  onClick={toggleLogin}
+                  onClick={() => setShowLoginModal(true)}
                   name={"Log In"}
                   data-testid="login-button"
                 />
                 <FormModal
-                  visible={showLogin}
-                  onCancel={toggleLogin}
+                  visible={showLoginModal}
+                  onCancel={() => setShowLoginModal(false)}
                   title={"Log In"}
                 >
-                  <LoginModalForm toggleLogin={toggleLogin} />
+                  <LoginModalForm
+                    toggleLogin={() => setShowLoginModal(false)}
+                  />
                 </FormModal>
                 <ToggleButton
                   onClick={toggleSignup}
