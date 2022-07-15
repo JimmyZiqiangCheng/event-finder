@@ -1,22 +1,11 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { useParams } from "react-router-dom";
-import { Modal, Button, message } from "antd";
+import { Modal, Button } from "antd";
 import { ExclamationCircleTwoTone } from "@ant-design/icons";
 import styles from "./modal.module.scss";
-import { postAttendee } from "../../api/eventsApi";
-import { useAuth } from "../../utils/customHooks";
 
-function ConfirmModal({ showModal, setShowModal }) {
-  const { id } = useParams();
-  const { currentUser } = useAuth();
-  const { name, email, photoURL } = currentUser;
+function ConfirmModal({ showModal, setShowModal, handleOk, text }) {
   const handleCancel = () => {
-    setShowModal(false);
-  };
-  const handleOk = async () => {
-    await postAttendee(id, name, photoURL, email);
-    message.success("Event Joined!", 1);
     setShowModal(false);
   };
 
@@ -38,11 +27,11 @@ function ConfirmModal({ showModal, setShowModal }) {
         </Button>,
         <Button
           className="modal-button join-button"
-          key="join"
+          key={text}
           type="primary"
           onClick={handleOk}
         >
-          Join
+          {text}
         </Button>,
       ]}
     >

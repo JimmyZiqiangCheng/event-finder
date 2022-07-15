@@ -62,6 +62,15 @@ export const postAttendee = async (id, name, photoURL, email) => {
   }
 };
 
+export const deleteAttendee = async (eventId, userId) => {
+  const url = `${EVENTS_API}/${eventId}/Attendees/${userId}`;
+  try {
+    await axios.delete(url);
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
 export const postComment = async (
   id,
   event,

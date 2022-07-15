@@ -1,11 +1,13 @@
 import React from "react";
 import { Button, Avatar, Form, Input } from "antd";
+import { useSelector } from "react-redux";
 import { UserOutlined } from "@ant-design/icons";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import { displayAvatar, getTimeDiff } from "../../../utils/helperFunctions";
 
-function ChatCard({ event, onFinish, onFinishFailed }) {
+function ChatCard({ onFinish, onFinishFailed }) {
+  const event = useSelector((state) => state.currentEvent);
   const createComments = (comment) => {
     const now = moment(moment().format().slice(0, 10));
     const created = moment(comment.createAt.slice(0, 10));

@@ -3,7 +3,7 @@ import "antd/dist/antd.css";
 import { Table } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { useAuth } from "../../../utils/customHooks";
-import { loadEvents } from "../../../redux/actions/eventActions";
+import { loadEvents } from "../../../redux/actions/eventsActions";
 import { loadHosts } from "../../../redux/actions/hostActions";
 import { getData } from "../../../api/eventsApi";
 

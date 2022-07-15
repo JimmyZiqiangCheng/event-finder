@@ -22,7 +22,6 @@ function MyHeader() {
   const { collapsed, setCollapsed } = useContext(ThemeContext);
   const { currentUser, isAuthenticated } = useAuth();
   const handleWindowResize = () => {
-    console.log("called");
     window.innerWidth < 900 ? setCollapsed(true) : setCollapsed(false);
   };
   const delayedResize = useDebounce(handleWindowResize, 200);

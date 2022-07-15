@@ -11,7 +11,7 @@ import Comments from "../../pages/comments/Comments";
 import ProtectedRoute from "../../utils/ProtectedRoute";
 
 const { Content } = Layout;
-function MyContent() {
+function ContentRoutes() {
   return (
     <div className={styles.my_content}>
       <Content
@@ -71,4 +71,4 @@ function MyContent() {
   );
 }
 
-export default MyContent;
+export default ContentRoutes;

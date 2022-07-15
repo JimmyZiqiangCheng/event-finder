@@ -3,10 +3,8 @@ import { useDispatch } from "react-redux";
 import { getData } from "../../api/eventsApi";
 import EventCalendar from "./pageComponents/EventCalendar";
 import EventList from "./pageComponents/EventList";
-import { loadEvents } from "../../redux/actions/eventActions";
+import { loadEvents } from "../../redux/actions/eventsActions";
 import { loadHosts } from "../../redux/actions/hostActions";
-import FormModal from "../../uiComponents/modals/FormModal";
-import LoginModalForm from "../../uiComponents/forms/LoginModalForm";
 import { useAuth, useTheme } from "../../utils/customHooks";
 
 function Events() {
@@ -23,7 +21,10 @@ function Events() {
     loadData();
   }, []);
   return (
-    <div className="events-content" onClick={!isAuthenticated && openLogin}>
+    <div
+      className="events-content"
+      onClick={!isAuthenticated ? openLogin : undefined}
+    >
       <EventList />
       <EventCalendar className="calendar" />
     </div>

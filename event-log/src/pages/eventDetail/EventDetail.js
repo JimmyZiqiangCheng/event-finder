@@ -8,50 +8,47 @@ import DetailCard from "./pageComponents/DetailCard";
 import ChatCard from "./pageComponents/ChatCard";
 import { postComment } from "../../api/eventsApi";
 import styles from "./event.module.scss";
-import { loadEvents } from "../../redux/actions/eventActions";
+import { loadEvents } from "../../redux/actions/eventsActions";
+import { loadCurrentEvent } from "../../redux/actions/currentEventActions";
 import { loadHosts } from "../../redux/actions/hostActions";
 import { message } from "antd";
 
 function EventDetail() {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const events = useSelector((state) => state.events);
+  const selectedEvent = events.filter((event) => event.eventId === id)[0];
   useEffect(() => {
-    const loadData = async () => {
-      const [events, hosts] = await getData(null, id);
-      dispatch(loadEvents(events));
-      dispatch(loadHosts(hosts));
+    const dispatchCurrentEvent = () => {
+      dispatch(loadCurrentEvent(selectedEvent));
     };
-    loadData();
+    dispatchCurrentEvent();
   }, []);
-  const event = useSelector((state) => state.events[0]);
   const host = useSelector((state) => state.hosts).filter(
-    (h) => h.eventId === event.eventId
+    (h) => h.eventId === selectedEvent.eventId
   )[0];
   const onFinishFailed = (errorInfo) => {
     message.error(`Failed: ${errorInfo}`);
   };
   const onFinish = async (action) => {
-    await postComment(event.eventId, event, action.comment);
+    await postComment(selectedEvent.eventId, selectedEvent, action.comment);
     const [events, hosts] = await getData(null, id);
     dispatch(loadEvents(events));
     dispatch(loadHosts(hosts));
   };
+  const event = useSelector((state) => state.currentEvent);
   return (
     <div className="event-detail-page">
-      {event && host && (
-        <div className="event-detail">
+      <div className="event-detail">
+        {event ? (
           <div className={styles.my_event_detail}>
-            <TitleCard event={event} host={host} />
+            <TitleCard host={host} dispatch={dispatch} id={id} />
             <SideCard host={host} />
-            <DetailCard event={event} />
-            <ChatCard
-              event={event}
-              onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
-            />
+            <DetailCard />
+            <ChatCard onFinish={onFinish} onFinishFailed={onFinishFailed} />
           </div>
-        </div>
-      )}
+        ) : null}
+      </div>
     </div>
   );
 }

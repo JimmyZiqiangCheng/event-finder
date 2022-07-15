@@ -4,7 +4,7 @@ import { getData } from "../../api/eventsApi";
 import { List, Avatar } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./comments.module.scss";
-import { loadEvents } from "../../redux/actions/eventActions";
+import { loadEvents } from "../../redux/actions/eventsActions";
 import { displayAvatar } from "../../utils/helperFunctions";
 
 function Comments() {
@@ -17,7 +17,7 @@ function Comments() {
     };
     loadData();
   }, []);
-  const event = useSelector((state) => state.events[0]);
+  const event = useSelector((state) => state.currentEvent);
   return (
     <div className={styles.my_comments}>
       {event && (

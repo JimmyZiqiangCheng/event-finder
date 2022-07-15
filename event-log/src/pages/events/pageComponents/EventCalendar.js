@@ -4,7 +4,7 @@ import "antd/dist/antd.css";
 import { Calendar } from "antd";
 import moment from "moment";
 import { getData } from "../../../api/eventsApi";
-import { loadEvents } from "../../../redux/actions/eventActions";
+import { loadEvents } from "../../../redux/actions/eventsActions";
 import { loadHosts } from "../../../redux/actions/hostActions";
 import { useAuth } from "../../../utils/customHooks";
 

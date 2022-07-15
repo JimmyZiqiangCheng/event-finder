@@ -5,7 +5,7 @@ import { Avatar, Card, List } from "antd";
 import { getData } from "../../api/eventsApi";
 import styles from "./attendees.module.scss";
 import { UserOutlined } from "@ant-design/icons";
-import { loadEvents } from "../../redux/actions/eventActions";
+import { loadEvents } from "../../redux/actions/eventsActions";
 
 const { Meta } = Card;
 function Attendees() {
@@ -18,7 +18,7 @@ function Attendees() {
     };
     loadData();
   }, []);
-  const event = useSelector((state) => state.events)[0];
+  const event = useSelector((state) => state.currentEvent);
   const getPhoto = (url) => {
     return url ? (
       <img alt="example" src={url} />
@@ -35,9 +35,7 @@ function Attendees() {
             itemLayout="horizontal"
             dataSource={event.attendees}
             pagination={{
-              onChange: (page) => {
-                console.log(page);
-              },
+              onChange: (page) => {},
               pageSize: 12,
             }}
             renderItem={(item) => (

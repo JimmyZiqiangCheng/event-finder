@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar } from "antd";
+import { useSelector } from "react-redux";
 import {
   InfoCircleOutlined,
   CalendarOutlined,
@@ -9,7 +9,8 @@ import { Link } from "react-router-dom";
 import SimpleMap from "../../../uiComponents/map/SimpleMap";
 import { displayAvatar } from "../../../utils/helperFunctions";
 
-function DetailCard({ event }) {
+function DetailCard() {
+  const event = useSelector((state) => state.currentEvent);
   const createAvatars = (attendees) => {
     if (attendees.length < 6) {
       return attendees.map((attendee, index) =>
