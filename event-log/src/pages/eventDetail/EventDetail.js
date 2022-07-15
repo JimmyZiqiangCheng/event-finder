@@ -35,6 +35,9 @@ function EventDetail() {
     const [events, hosts] = await getData(null, id);
     dispatch(loadEvents(events));
     dispatch(loadHosts(hosts));
+    dispatch(
+      loadCurrentEvent(events.filter((event) => event.eventId === id)[0])
+    );
   };
   const event = useSelector((state) => state.currentEvent);
   return (
@@ -45,7 +48,12 @@ function EventDetail() {
             <TitleCard host={host} dispatch={dispatch} id={id} />
             <SideCard host={host} />
             <DetailCard />
-            <ChatCard onFinish={onFinish} onFinishFailed={onFinishFailed} />
+            <ChatCard
+              onFinish={onFinish}
+              onFinishFailed={onFinishFailed}
+              dispatch={dispatch}
+              id={id}
+            />
           </div>
         ) : null}
       </div>
