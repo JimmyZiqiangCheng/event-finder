@@ -28,7 +28,16 @@ export const postData = async (inputData) => {
     date: inputData.date.format().slice(0, -6),
   };
   try {
-    await axios.post("EVENTS_API", payload);
+    await axios.post(EVENTS_API, payload);
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
+export const addHost = async (hostData) => {
+  const payload = hostData;
+  try {
+    await axios.post(HOSTS_API, payload);
   } catch (err) {
     console.error(err.message);
   }
@@ -76,7 +85,7 @@ export const postComment = async (
   event,
   comment,
   name = "Jimmy",
-  photoURL = "https://randomuser.me/api/portraits/men/33.jpg"
+  photoURL = null
 ) => {
   const newComment = {
     EventId: `${id}`,

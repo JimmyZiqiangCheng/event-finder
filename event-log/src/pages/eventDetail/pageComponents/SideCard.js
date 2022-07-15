@@ -1,5 +1,6 @@
 import React from "react";
 import { Badge } from "antd";
+import { displayHostAvatar } from "../../../utils/helperFunctions";
 
 function SideCard({ host }) {
   return (
@@ -7,7 +8,7 @@ function SideCard({ host }) {
       <div className="title"> Event Host</div>
       <Badge.Ribbon text="host">
         <div className="host-info">
-          <img src={host.photoUrl} alt="avatar" />
+          {displayHostAvatar(host.photoUrl)}
           <p className="host-name">{host.name}</p>
         </div>
       </Badge.Ribbon>

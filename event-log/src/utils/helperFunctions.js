@@ -17,6 +17,14 @@ export const displayAvatar = (url, index) => {
   );
 };
 
+export const displayHostAvatar = (url) => {
+  return url[0] === "h" ? (
+    <img src={url} alt="avatar" />
+  ) : (
+    <Avatar shape="square" size={64} icon={<UserOutlined />} />
+  );
+};
+
 export const formatUser = (user) => {
   if (user) {
     return {
