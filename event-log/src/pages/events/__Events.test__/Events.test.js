@@ -6,6 +6,7 @@ import axios from "axios";
 import { Provider } from "react-redux";
 import store from "../../../redux/store";
 import AuthProvider from "../../../context/authContext";
+import ThemeProvider from "../../../context/themeContext";
 import { BrowserRouter as Router } from "react-router-dom";
 
 afterEach(cleanup);
@@ -16,7 +17,9 @@ const renderWithProvider = (component) => {
   render(
     <Router>
       <Provider store={store}>
-        <AuthProvider>{component}</AuthProvider>
+        <AuthProvider>
+          <ThemeProvider>{component}</ThemeProvider>
+        </AuthProvider>
       </Provider>
     </Router>
   );
