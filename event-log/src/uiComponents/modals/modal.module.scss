@@ -75,6 +75,13 @@
             display: flex;
             justify-content: space-between;
           }
+          .login-forget {
+            color: blue;
+            text-decoration: underline;
+            &:hover {
+              cursor: pointer;
+            }
+          }
         }
         .modal-button {
           font-weight: bold;

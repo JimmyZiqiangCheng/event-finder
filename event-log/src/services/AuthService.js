@@ -8,6 +8,7 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signOut,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { message } from "antd";
 import { initializeApp } from "firebase/app";
@@ -64,5 +65,15 @@ export const logOutUser = async () => {
     message.success("Logout Successful.");
   } catch (error) {
     message.error(error.message);
+  }
+};
+
+export const resetPassword = async (email, toggleLogin) => {
+  try {
+    await sendPasswordResetEmail(auth, email);
+    toggleLogin(false);
+    message.success("Reset link sent!");
+  } catch (error) {
+    message.error("Please enter a valid email address!");
   }
 };

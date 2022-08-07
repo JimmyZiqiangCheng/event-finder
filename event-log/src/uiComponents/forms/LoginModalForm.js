@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Input, Button, Checkbox, Form } from "antd";
 import { LockOutlined, MailOutlined, GoogleOutlined } from "@ant-design/icons";
-import { loginWithEmail, loginWithGoogle } from "../../services/AuthService";
+import {
+  loginWithEmail,
+  loginWithGoogle,
+  resetPassword,
+} from "../../services/AuthService";
 
 function LoginModalForm({ toggleLogin }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const handleGoogle = async () => {
     await loginWithGoogle();
     toggleLogin(false);
@@ -11,9 +17,13 @@ function LoginModalForm({ toggleLogin }) {
   const handleChangeRemember = (e) => {
     console.log(`remember password: ${e.target.checked}`);
   };
-  const handleLogin = async (e) => {
-    await loginWithEmail(e.email, e.password);
+  const handleLogin = async () => {
+    await loginWithEmail(email, password);
     toggleLogin(false);
+  };
+
+  const handleReset = () => {
+    resetPassword(email, toggleLogin);
   };
 
   return (
@@ -40,6 +50,8 @@ function LoginModalForm({ toggleLogin }) {
           placeholder="Email"
           data-testid="email"
           prefix={<MailOutlined />}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </Form.Item>
       <Form.Item
@@ -56,6 +68,8 @@ function LoginModalForm({ toggleLogin }) {
           placeholder="Password"
           data-testid="password"
           prefix={<LockOutlined />}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </Form.Item>
       <Form.Item className="modal-others">
@@ -64,9 +78,9 @@ function LoginModalForm({ toggleLogin }) {
             Remember me
           </Checkbox>
         </Form.Item>
-        <a href="." className="login-forget">
+        <p className="login-forget" onClick={handleReset}>
           Forget password
-        </a>
+        </p>
       </Form.Item>
 
       <Form.Item className="modal-footer">
