@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Modal, Button, Rate } from "antd";
 import styles from "./modal.module.scss";
 import { message } from "antd";
-import { postRating } from "../../api/eventsApi";
+import { postRating } from "../../services/eventsApi";
 
 function RateModal({ showModal, setShowModal }) {
   const [rating, setRating] = useState(2.5);

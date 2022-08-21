@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Avatar, Card, List } from "antd";
-import { getData } from "../../api/eventsApi";
+import { getData } from "../../services/eventsApi";
 import styles from "./attendees.module.scss";
 import { UserOutlined } from "@ant-design/icons";
 import { loadEvents } from "../../redux/actions/eventsActions";

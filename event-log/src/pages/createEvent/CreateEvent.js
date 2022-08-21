@@ -1,7 +1,7 @@
 import React from "react";
 import EventForm from "./pageComponents/EventForm";
 import { message } from "antd";
-import { addHost, getData, postData } from "../../api/eventsApi";
+import { addHost, getData, postData } from "../../services/eventsApi";
 import { useAuth } from "../../utils/customHooks";
 import { useDispatch, useSelector } from "react-redux";
 import { loadEvents } from "../../redux/actions/eventsActions";

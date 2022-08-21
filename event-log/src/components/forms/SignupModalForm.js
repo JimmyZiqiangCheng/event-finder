@@ -2,7 +2,7 @@ import React from "react";
 import { Input, Button, Form, message } from "antd";
 import { UnlockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import { useToggle } from "../../utils/customHooks";
-import { signup } from "../../services/AuthService";
+import { signup } from "../../services/authService";
 
 function SignupModalForm({ toggleSignup }) {
   const [loading, toggleLoading] = useToggle();

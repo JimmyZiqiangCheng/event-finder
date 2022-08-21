@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useWillMount } from "../utils/customHooks";
-import { auth } from "../services/AuthService";
+import { auth } from "../services/authService";
 import { formatUser } from "../utils/helperFunctions";
 import { onAuthStateChanged } from "firebase/auth";
 

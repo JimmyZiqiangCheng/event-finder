@@ -1,4 +1,4 @@
-import { getData } from "./eventsApi";
+import { getData } from "../eventsApi";
 
 describe("getData", () => {
   it("should return all the events and hosts as [events, hosts] if no parameter is used", async () => {

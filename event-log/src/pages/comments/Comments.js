@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getData } from "../../api/eventsApi";
+import { getData } from "../../services/eventsApi";
 import { List, Avatar } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./comments.module.scss";

@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { ThemeContext } from "../../context/themeContext";
 import { Link } from "react-router-dom";
 import styles from "./sider.module.scss";
-import { getData } from "../../api/eventsApi";
+import { getData } from "../../services/eventsApi";
 import { loadEvents } from "../../redux/actions/eventsActions";
 import { loadHosts } from "../../redux/actions/hostActions";
 import { useAuth, useTheme } from "../../utils/customHooks";

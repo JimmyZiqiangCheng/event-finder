@@ -6,7 +6,7 @@ import {
   CompassOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import SimpleMap from "../../../uiComponents/map/SimpleMap";
+import SimpleMap from "../../../components/map/SimpleMap";
 import { displayAvatar } from "../../../utils/helperFunctions";
 
 function DetailCard() {

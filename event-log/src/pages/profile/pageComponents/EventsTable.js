@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useAuth } from "../../../utils/customHooks";
 import { loadEvents } from "../../../redux/actions/eventsActions";
 import { loadHosts } from "../../../redux/actions/hostActions";
-import { getData } from "../../../api/eventsApi";
+import { getData } from "../../../services/eventsApi";
 
 const columns = [
   {

@@ -5,7 +5,7 @@ import {
   loginWithEmail,
   loginWithGoogle,
   resetPassword,
-} from "../../services/AuthService";
+} from "../../services/authService";
 
 function LoginModalForm({ toggleLogin }) {
   const [email, setEmail] = useState("");

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getData } from "../../api/eventsApi";
+import { getData } from "../../services/eventsApi";
 import EventCalendar from "./pageComponents/EventCalendar";
 import EventList from "./pageComponents/EventList";
 import { loadEvents } from "../../redux/actions/eventsActions";

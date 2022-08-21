@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Button, message } from "antd";
-import ConfirmModal from "../../../uiComponents/modals/ConfirmModal";
-import RateModal from "../../../uiComponents/modals/RateModal";
+import ConfirmModal from "../../../components/modals/ConfirmModal";
+import RateModal from "../../../components/modals/RateModal";
 import { useToggle, useAuth } from "../../../utils/customHooks";
-import { deleteAttendee, getData, postAttendee } from "../../../api/eventsApi";
+import {
+  deleteAttendee,
+  getData,
+  postAttendee,
+} from "../../../services/eventsApi";
 import { useSelector } from "react-redux";
 import { loadCurrentEvent } from "../../../redux/actions/currentEventActions";
 import { loadEvents } from "../../../redux/actions/eventsActions";

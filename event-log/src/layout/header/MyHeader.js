@@ -6,12 +6,12 @@ import { ThemeContext } from "../../context/themeContext";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import { useDebounce } from "../../utils/customHooks";
 import { useAuth, useTheme, useToggle } from "../../utils/customHooks";
-import { logOutUser } from "../../services/AuthService";
-import FormModal from "../../uiComponents/modals/FormModal";
-import SignupModalForm from "../../uiComponents/forms/SignupModalForm";
-import LoginModalForm from "../../uiComponents/forms/LoginModalForm";
-import ToggleButton from "../../uiComponents/buttons/ToggleButton";
-import MyPopUp from "../../uiComponents/popup/MyPopUp";
+import { logOutUser } from "../../services/authService";
+import FormModal from "../../components/modals/FormModal";
+import SignupModalForm from "../../components/forms/SignupModalForm";
+import LoginModalForm from "../../components/forms/LoginModalForm";
+import ToggleButton from "../../components/buttons/ToggleButton";
+import MyPopUp from "../../components/popup/MyPopUp";
 import { displayAvatar } from "../../utils/helperFunctions";
 
 const { Header } = Layout;

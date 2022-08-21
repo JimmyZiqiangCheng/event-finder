@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getData } from "../../api/eventsApi";
+import { getData } from "../../services/eventsApi";
 import TitleCard from "./pageComponents/TitleCard";
 import SideCard from "./pageComponents/SideCard";
 import DetailCard from "./pageComponents/DetailCard";
 import ChatCard from "./pageComponents/ChatCard";
-import { postComment } from "../../api/eventsApi";
+import { postComment } from "../../services/eventsApi";
 import styles from "./event.module.scss";
 import { loadEvents } from "../../redux/actions/eventsActions";
 import { loadCurrentEvent } from "../../redux/actions/currentEventActions";
