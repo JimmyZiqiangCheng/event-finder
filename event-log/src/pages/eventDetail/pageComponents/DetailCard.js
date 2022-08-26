@@ -43,7 +43,7 @@ function DetailCard() {
           <div className="location-detail">{event.venue}</div>
         </div>
         <div className="event-map">
-          <SimpleMap />
+          <SimpleMap address={event.venue} />
         </div>
       </div>
       <div className="event-card-detail event-participant">

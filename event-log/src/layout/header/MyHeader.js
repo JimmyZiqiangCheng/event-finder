@@ -26,10 +26,6 @@ function MyHeader() {
   };
   const delayedResize = useDebounce(handleWindowResize, 200);
   useEffect(() => {
-    // const handleWindowResize = () => {
-    //   window.innerWidth < 900 ? setCollapsed(true) : setCollapsed(false);
-    // };
-    //const delayedResize = debounce(handleWindowResize, 200);
     window.addEventListener("resize", delayedResize);
     return () => window.removeEventListener("resize", delayedResize);
   }, []);
