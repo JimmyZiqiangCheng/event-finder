@@ -6,7 +6,7 @@ import { useInView } from "react-intersection-observer";
 
 const EventItem = ({ item, hosts, defaultAvatar }) => {
   const { ref, inView } = useInView({
-    threshold: 0.2,
+    threshold: 0.3,
   });
   const IconText = ({ icon, text }) => (
     <Space>
