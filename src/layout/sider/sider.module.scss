@@ -1,0 +1,20 @@
+@use "../../themes/colors";
+.my_sider {
+  display: flex;
+  :global {
+    p {
+      margin-bottom: 0;
+    }
+    .logo-icon {
+      display: flex;
+      justify-content: center;
+      .logo-img {
+        height: 32px;
+        margin: 16px;
+        background-color: #fff;
+        text-align: center;
+        border-radius: 5px;
+      }
+    }
+  }
+}

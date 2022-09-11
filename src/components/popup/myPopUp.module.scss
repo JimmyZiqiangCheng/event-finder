@@ -1,0 +1,10 @@
+.my_popup {
+  :global {
+    .popup-content {
+      padding-top: 1em;
+      ul {
+        margin-left: 0;
+      }
+    }
+  }
+}

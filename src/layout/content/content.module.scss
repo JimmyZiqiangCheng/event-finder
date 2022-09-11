@@ -1,0 +1,127 @@
+@use "../../themes/colors";
+.my_content {
+  min-height: 100vh;
+  display: flex;
+  :global {
+    .ant-layout-content {
+      min-height: 100vh;
+      margin: 0 !important;
+      padding: 16px !important;
+      flex-direction: column;
+      flex: 1 1 100%;
+      .event-detail-page {
+        display: flex;
+        align-self: center;
+      }
+      .attendees {
+        display: flex;
+        background-color: colors.$greycolor-light;
+        width: 100%;
+        border-radius: 5px;
+      }
+      .events-content {
+        display: flex;
+        padding: 15px;
+        flex: 1 0 auto;
+        justify-content: space-between;
+        gap: 20px;
+        background-color: colors.$greycolor-light;
+        border-radius: 5px;
+        .ant-list-vertical {
+          flex: 0.6;
+        }
+
+        .event-img {
+          border-radius: 5px;
+        }
+
+        @media screen and (max-width: 960px) {
+          .ant-list-vertical {
+            flex: 1;
+          }
+        }
+        @media screen and (max-width: 1366px) {
+          .ant-list-item {
+            flex-direction: column-reverse;
+          }
+        }
+        .my-calendar {
+          flex: 0.4;
+        }
+        @media screen and (max-width: 960px) {
+          .my-calendar {
+            flex: 1;
+          }
+        }
+      }
+      @media screen and (max-width: 960px) {
+        .events-content {
+          flex: 1;
+          flex-wrap: wrap;
+          gap: 50px;
+        }
+      }
+      .create-event {
+        background-color: colors.$greycolor-light;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        border-radius: 5px;
+        .form-button {
+          border-radius: 5px;
+        }
+      }
+      .create-event h1 {
+        align-self: center;
+        margin: 30px 0;
+        font-size: 36px;
+      }
+
+      .ant-form-item .ant-col-14 {
+        max-width: 76%;
+      }
+
+      .create-button .ant-form-item-label label {
+        display: none;
+      }
+      .event-detail {
+        display: flex;
+        width: 100%;
+      }
+      .profile-background {
+        flex: 1 0 auto;
+        border-radius: 5px;
+        background-color: colors.$greycolor-light;
+        width: 100%;
+        padding: 20px 20%;
+        .profile-content {
+          display: flex;
+          flex-direction: column;
+          h1 {
+            font-size: 24px;
+            margin-bottom: 40px;
+          }
+          .profile-avatar {
+            align-self: center;
+            margin-bottom: 20px;
+          }
+          .profile-table-background {
+            padding: 0 24px 88px 24px;
+            border-bottom: 1px solid colors.$greycolor-dark;
+            margin-bottom: 40px;
+            display: flex;
+            .profile-table {
+              width: 100%;
+              .table-item1 {
+                text-align: left;
+              }
+              .table-item2 {
+                text-align: right;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
