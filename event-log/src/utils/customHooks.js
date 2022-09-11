@@ -10,11 +10,11 @@ export const useToggle = (initialState = false) => {
 
 export const useDebounce = (func, delay) => {
   let myTimeOut;
-  const debounce = useCallback((para = null) => {
+  const debouncedFunc = (para = null) => {
     clearTimeout(myTimeOut);
     myTimeOut = setTimeout(() => func(para), delay);
-  }, []);
-  return debounce;
+  };
+  return debouncedFunc;
 };
 
 const getStorageValue = (key, defaultValue) => {
