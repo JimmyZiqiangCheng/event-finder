@@ -8,7 +8,7 @@
 - rate an event which affects overall rating
 - comment on event which lists all user comments
 - create an event with specified name, location, detail ... and added to user profile
-- check on user profile
+- check on user profile to show the created & participated events and basic user info
 ## 3rd party libraries/frameworks used
 - ant design UI library
 - firebase auth service
