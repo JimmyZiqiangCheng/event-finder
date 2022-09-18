@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import styles from "./header.module.scss";
 import { Layout } from "antd";
 import { ThemeContext } from "../../context/themeContext";
@@ -28,7 +28,7 @@ function MyHeader() {
   useEffect(() => {
     window.addEventListener("resize", delayedResize);
     return () => window.removeEventListener("resize", delayedResize);
-  }, []);
+  }, [delayedResize]);
   const toggle = () => {
     setCollapsed(!collapsed);
   };

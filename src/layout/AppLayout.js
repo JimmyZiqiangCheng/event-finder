@@ -5,7 +5,7 @@ import AuthProvider from "../context/authContext";
 import { BrowserRouter as Router } from "react-router-dom";
 import MySider from "./sider/MySider";
 import MyHeader from "./header/MyHeader";
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import { Layout } from "antd";
 
 function AppLayout() {

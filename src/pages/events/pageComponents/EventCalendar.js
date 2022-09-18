@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import { Calendar } from "antd";
 import moment from "moment";
 import { getData } from "../../../services/eventsApi";

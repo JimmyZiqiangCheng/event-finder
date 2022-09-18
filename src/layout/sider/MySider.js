@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import { Layout, Menu } from "antd";
 import {
   UserOutlined,

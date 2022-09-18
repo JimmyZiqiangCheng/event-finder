@@ -1,5 +1,5 @@
 import React from "react";
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import { Form, Input, Button, Select, DatePicker, message } from "antd";
 
 function EventForm({ onSubmit, categories, cities, venues }) {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import { useParams } from "react-router-dom";
 import { Modal, Button, Rate } from "antd";
 import styles from "./modal.module.scss";

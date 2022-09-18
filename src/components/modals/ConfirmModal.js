@@ -1,5 +1,5 @@
 import React from "react";
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import { Modal, Button } from "antd";
 import { ExclamationCircleTwoTone } from "@ant-design/icons";
 import styles from "./modal.module.scss";

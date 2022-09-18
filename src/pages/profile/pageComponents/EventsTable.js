@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import { Table } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { useAuth } from "../../../utils/customHooks";
@@ -12,19 +12,19 @@ const columns = [
     title: "Title",
     dataIndex: "title",
     key: "title",
-    render: (text) => <a>{text}</a>,
+    render: (text) => <p>{text}</p>,
   },
   {
     title: "Category",
     dataIndex: "category",
     key: "category",
-    render: (text) => <a>{text}</a>,
+    render: (text) => <p>{text}</p>,
   },
   {
     title: "Date",
     dataIndex: "date",
     key: "date",
-    render: (text) => <a>{text}</a>,
+    render: (text) => <p>{text}</p>,
   },
 ];
 
@@ -38,7 +38,7 @@ function EventsTable() {
       dispatch(loadHosts(hosts));
     };
     loadData();
-  }, []);
+  }, [dispatch]);
   const events = useSelector((state) => state.events);
   const participatedEvents = events.filter((event) =>
     event.attendees.map((a) => a.email).includes(currentUser.email)
