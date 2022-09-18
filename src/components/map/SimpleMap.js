@@ -8,7 +8,8 @@ function SimpleMap({ address }) {
   const [longitude, setLongitude] = useState(null);
   useEffect(() => {
     const getGeo = async () => {
-      const [la, lo] = await getLocation(address);
+      //const [la, lo] = await getLocation(address);
+      const [la, lo] = [43.65, 280.62];
       setLatitude(la);
       setLongitude(lo);
     };
