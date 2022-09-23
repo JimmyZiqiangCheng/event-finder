@@ -12,18 +12,21 @@ const columns = [
     title: "Title",
     dataIndex: "title",
     key: "title",
+    sorter: (a, b) => a.title > b.title,
     render: (text) => <p>{text}</p>,
   },
   {
     title: "Category",
     dataIndex: "category",
     key: "category",
+    sorter: (a, b) => a.category > b.category,
     render: (text) => <p>{text}</p>,
   },
   {
     title: "Date",
     dataIndex: "date",
     key: "date",
+    sorter: (a, b) => a.date > b.date,
     render: (text) => <p>{text}</p>,
   },
 ];
