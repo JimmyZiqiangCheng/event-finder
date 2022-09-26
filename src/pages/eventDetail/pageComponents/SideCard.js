@@ -1,8 +1,9 @@
-import React from "react";
+import React, { memo } from "react";
 import { Badge } from "antd";
 import { displayHostAvatar } from "../../../utils/helperFunctions";
 
 function SideCard({ host }) {
+  console.log("side car re-render");
   return (
     <div className="card-section card-host">
       <div className="title"> Event Host</div>
@@ -16,4 +17,4 @@ function SideCard({ host }) {
   );
 }
 
-export default SideCard;
+export default memo(SideCard);

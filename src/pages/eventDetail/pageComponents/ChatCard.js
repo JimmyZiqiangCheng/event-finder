@@ -6,7 +6,7 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import { displayAvatar, getTimeDiff } from "../../../utils/helperFunctions";
 
-function ChatCard({ onFinish, onFinishFailed, dispatch, id }) {
+function ChatCard({ onFinish, onFinishFailed }) {
   const event = useSelector((state) => state.currentEvent);
   const createComments = (comment) => {
     const now = moment(moment().format().slice(0, 10));

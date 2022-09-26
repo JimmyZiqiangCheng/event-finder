@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getData } from "../../services/eventsApi";
@@ -30,6 +30,7 @@ function EventDetail() {
   const onFinishFailed = (errorInfo) => {
     message.error(`Failed: ${errorInfo}`);
   };
+  const memoizedOnFailed = useCallback(onFinishFailed, []);
   const onFinish = async (action) => {
     await postComment(selectedEvent.eventId, selectedEvent, action.comment);
     const [events, hosts] = await getData(null, id);
@@ -39,6 +40,7 @@ function EventDetail() {
       loadCurrentEvent(events.filter((event) => event.eventId === id)[0])
     );
   };
+  const memoizedOnFinsh = useCallback(onFinish, []);
   const event = useSelector((state) => state.currentEvent);
   return (
     <div className="event-detail-page">
@@ -49,10 +51,8 @@ function EventDetail() {
             <SideCard host={host} />
             <DetailCard />
             <ChatCard
-              onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
-              dispatch={dispatch}
-              id={id}
+              onFinish={memoizedOnFinsh}
+              onFinishFailed={memoizedOnFailed}
             />
           </div>
         ) : null}
