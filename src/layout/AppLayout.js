@@ -1,7 +1,6 @@
 import React from "react";
 import ContentRoutes from "./content/ContentRoutes";
-import ThemeProvider from "../context/themeContext";
-import AuthProvider from "../context/authContext";
+import MultiProvider from "../context/MultiProvider";
 import { BrowserRouter as Router } from "react-router-dom";
 import MySider from "./sider/MySider";
 import MyHeader from "./header/MyHeader";
@@ -10,19 +9,17 @@ import { Layout } from "antd";
 
 function AppLayout() {
   return (
-    <AuthProvider>
-      <ThemeProvider>
-        <Layout>
-          <Router>
-            <MySider />
-            <Layout className="site-layout">
-              <MyHeader />
-              <ContentRoutes />
-            </Layout>
-          </Router>
-        </Layout>
-      </ThemeProvider>
-    </AuthProvider>
+    <MultiProvider>
+      <Layout>
+        <Router>
+          <MySider />
+          <Layout className="site-layout">
+            <MyHeader />
+            <ContentRoutes />
+          </Layout>
+        </Router>
+      </Layout>
+    </MultiProvider>
   );
 }
 

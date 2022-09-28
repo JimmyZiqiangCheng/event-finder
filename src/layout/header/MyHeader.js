@@ -13,6 +13,7 @@ import LoginModalForm from "../../components/forms/LoginModalForm";
 import ToggleButton from "../../components/buttons/ToggleButton";
 import MyPopUp from "../../components/popup/MyPopUp";
 import { displayAvatar } from "../../utils/helperFunctions";
+import { LangContext } from "../../context/langContext";
 
 const { Header } = Layout;
 function MyHeader() {
@@ -21,6 +22,8 @@ function MyHeader() {
   const [popUpVisible, setPopUpVisible] = useToggle();
   const { collapsed, setCollapsed } = useContext(ThemeContext);
   const { currentUser, isAuthenticated } = useAuth();
+  const { switchLang } = useContext(LangContext);
+
   const handleWindowResize = () => {
     window.innerWidth < 900 ? setCollapsed(true) : setCollapsed(false);
   };
@@ -47,6 +50,10 @@ function MyHeader() {
           }
         )}
         <div className="header-button-group">
+          <div className="lang-switch">
+            <span onClick={() => switchLang("en-ca")}>EN</span> |{" "}
+            <span onClick={() => switchLang("fr-ca")}>FR</span>
+          </div>
           {isAuthenticated ? (
             <div className="header-user-info">
               {displayAvatar(currentUser.photoURL)}

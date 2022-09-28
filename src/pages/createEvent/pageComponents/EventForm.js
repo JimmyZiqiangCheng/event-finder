@@ -1,6 +1,7 @@
 import React from "react";
 import "antd/dist/antd.min.css";
 import { Form, Input, Button, Select, DatePicker, message } from "antd";
+import { FormattedMessage } from "react-intl";
 
 function EventForm({ onSubmit, categories, cities, venues }) {
   const onFinishFailed = (errorInfo) => {
@@ -21,7 +22,9 @@ function EventForm({ onSubmit, categories, cities, venues }) {
       onFinishFailed={onFinishFailed}
     >
       <Form.Item
-        label="Title"
+        label={
+          <FormattedMessage id="create-event-title" defaultMessage="Title" />
+        }
         name="title"
         rules={[
           {
@@ -33,7 +36,12 @@ function EventForm({ onSubmit, categories, cities, venues }) {
         <Input />
       </Form.Item>
       <Form.Item
-        label="Description"
+        label={
+          <FormattedMessage
+            id="create-event-description"
+            defaultMessage="Description"
+          />
+        }
         name="description"
         rules={[
           {
@@ -45,7 +53,12 @@ function EventForm({ onSubmit, categories, cities, venues }) {
         <Input.TextArea />
       </Form.Item>
       <Form.Item
-        label="Category"
+        label={
+          <FormattedMessage
+            id="create-event-category"
+            defaultMessage="Category"
+          />
+        }
         name="category"
         rules={[
           {
@@ -63,7 +76,9 @@ function EventForm({ onSubmit, categories, cities, venues }) {
         </Select>
       </Form.Item>
       <Form.Item
-        label="City"
+        label={
+          <FormattedMessage id="create-event-city" defaultMessage="City" />
+        }
         name="city"
         rules={[
           {
@@ -81,7 +96,9 @@ function EventForm({ onSubmit, categories, cities, venues }) {
         </Select>
       </Form.Item>
       <Form.Item
-        label="Venue"
+        label={
+          <FormattedMessage id="create-event-venue" defaultMessage="Venue" />
+        }
         name="venue"
         rules={[
           {
@@ -100,7 +117,9 @@ function EventForm({ onSubmit, categories, cities, venues }) {
       </Form.Item>
       <Form.Item
         className="date-picker"
-        label="DatePicker"
+        label={
+          <FormattedMessage id="create-event-date" defaultMessage="Date" />
+        }
         name="date"
         rules={[
           {

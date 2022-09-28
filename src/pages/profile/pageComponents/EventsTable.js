@@ -6,24 +6,26 @@ import { useAuth } from "../../../utils/customHooks";
 import { loadEvents } from "../../../redux/actions/eventsActions";
 import { loadHosts } from "../../../redux/actions/hostActions";
 import { getData } from "../../../services/eventsApi";
-
+import { FormattedMessage } from "react-intl";
 const columns = [
   {
-    title: "Title",
+    title: <FormattedMessage id="profile-table-title" defaultMessage="Title" />,
     dataIndex: "title",
     key: "title",
     sorter: (a, b) => a.title > b.title,
     render: (text) => <p>{text}</p>,
   },
   {
-    title: "Category",
+    title: (
+      <FormattedMessage id="profile-table-category" defaultMessage="Category" />
+    ),
     dataIndex: "category",
     key: "category",
     sorter: (a, b) => a.category > b.category,
     render: (text) => <p>{text}</p>,
   },
   {
-    title: "Date",
+    title: <FormattedMessage id="profile-table-date" defaultMessage="Date" />,
     dataIndex: "date",
     key: "date",
     sorter: (a, b) => a.date > b.date,

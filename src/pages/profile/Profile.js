@@ -4,13 +4,16 @@ import "antd/dist/antd.min.css";
 import { UserOutlined } from "@ant-design/icons";
 import EventsTable from "./pageComponents/EventsTable";
 import { useAuth } from "../../utils/customHooks";
+import { FormattedMessage } from "react-intl";
 
 function Profile() {
   const { currentUser } = useAuth();
   return (
     <div className="profile-background">
       <div className="profile-content">
-        <h1>My Profile</h1>
+        <h1>
+          <FormattedMessage id="profile-title" defaultMessage="My Profile" />
+        </h1>
         {currentUser.photoURL ? (
           <Avatar
             className="profile-avatar"
@@ -28,8 +31,18 @@ function Profile() {
           <table className="profile-table">
             <tbody>
               <tr>
-                <th className="table-item1">User Name</th>
-                <th className="table-item2">Email Address</th>
+                <th className="table-item1">
+                  <FormattedMessage
+                    id="profile-user-name"
+                    defaultMessage="User Name"
+                  />
+                </th>
+                <th className="table-item2">
+                  <FormattedMessage
+                    id="profile-email-address"
+                    defaultMessage="Email Address"
+                  />
+                </th>
               </tr>
               <tr>
                 <td className="table-item1">{currentUser.name}</td>

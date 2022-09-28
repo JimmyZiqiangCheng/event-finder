@@ -28,8 +28,21 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 10px;
+        gap: 12px;
         margin-right: 40px;
+        .lang-switch {
+          cursor: pointer;
+          padding-right: 12px;
+          span {
+            border: none;
+            &:active {
+              font-weight: bold;
+            }
+            &:hover {
+              color: colors.$themecolor-main;
+            }
+          }
+        }
         .ant-btn {
           border-radius: 5px;
         }

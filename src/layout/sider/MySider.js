@@ -14,6 +14,7 @@ import { getData } from "../../services/eventsApi";
 import { loadEvents } from "../../redux/actions/eventsActions";
 import { loadHosts } from "../../redux/actions/hostActions";
 import { useAuth, useTheme } from "../../utils/customHooks";
+import { FormattedMessage } from "react-intl";
 
 const { Sider } = Layout;
 
@@ -46,21 +47,30 @@ function MySider() {
                 : handleClick
             }
           >
-            <Link to="/">Events</Link>
+            <Link to="/">
+              <FormattedMessage id="menu-events" defaultMessage="Events" />
+            </Link>
           </Menu.Item>
           <Menu.Item
             key="Create Event"
             icon={<UploadOutlined />}
             onClick={!isAuthenticated && openLogin}
           >
-            <Link to="/create">Create Event</Link>
+            <Link to="/create">
+              <FormattedMessage
+                id="menu-create-event"
+                defaultMessage="Create Event"
+              />
+            </Link>
           </Menu.Item>
           <Menu.Item
             key="Profile"
             icon={<UserOutlined />}
             onClick={!isAuthenticated && openLogin}
           >
-            <Link to="/profile">Profile</Link>
+            <Link to="/profile">
+              <FormattedMessage id="menu-profile" defaultMessage="Profile" />
+            </Link>
           </Menu.Item>
         </Menu>
       </Sider>

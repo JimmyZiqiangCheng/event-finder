@@ -1,0 +1,17 @@
+{
+  "menu-events": "Events",
+  "menu-create-event": "Create Event",
+  "menu-profile": "Profile",
+  "create-event-title": "Title",
+  "create-event-description": "Description",
+  "create-event-category": "Category",
+  "create-event-city": "City",
+  "create-event-venue": "Venue",
+  "create-event-date": "Date",
+  "profile-title": "My Profile",
+  "profile-user-name": "User Name",
+  "profile-email-address": "Email Address",
+  "profile-table-title": "Title",
+  "profile-table-category": "Category",
+  "profile-table-date": "Date"
+}
