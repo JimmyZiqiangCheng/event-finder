@@ -27,6 +27,7 @@ function EventDetail() {
   const host = useSelector((state) => state.hosts).filter(
     (h) => h.eventId === selectedEvent.eventId
   )[0];
+
   const onFinishFailed = (errorInfo) => {
     message.error(`Failed: ${errorInfo}`);
   };

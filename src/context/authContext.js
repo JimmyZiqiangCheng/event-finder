@@ -1,15 +1,13 @@
-import React, { useState } from "react";
-import { useWillMount } from "../utils/customHooks";
-import { auth } from "../services/authService";
+import React, { useState, useEffect } from "react";
 import { formatUser } from "../utils/helperFunctions";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChangedListener } from "../services/authService";
 
 export const AuthContext = React.createContext();
 function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
-  useWillMount(() => {
-    onAuthStateChanged(auth, (user) => {
+  useEffect(() => {
+    const unsubscribe = onAuthStateChangedListener((user) => {
       if (user) {
         setCurrentUser(formatUser(user));
         setIsAuthenticated(true);
@@ -18,7 +16,8 @@ function AuthProvider({ children }) {
         setIsAuthenticated(false);
       }
     });
-  });
+    return unsubscribe;
+  }, []);
 
   return (
     <AuthContext.Provider value={{ currentUser, isAuthenticated }}>

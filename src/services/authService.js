@@ -9,6 +9,7 @@ import {
   GoogleAuthProvider,
   signOut,
   sendPasswordResetEmail,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { message } from "antd";
 import { initializeApp } from "firebase/app";
@@ -77,3 +78,6 @@ export const resetPassword = async (email, toggleLogin) => {
     message.error("Please enter a valid email address!");
   }
 };
+
+export const onAuthStateChangedListener = (callback) =>
+  onAuthStateChanged(auth, callback);

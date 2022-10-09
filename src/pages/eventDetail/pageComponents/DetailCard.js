@@ -10,7 +10,6 @@ import SimpleMap from "../../../components/map/SimpleMap";
 import { displayAvatar } from "../../../utils/helperFunctions";
 
 function DetailCard() {
-  console.log("detailed car re-render");
   const event = useSelector((state) => state.currentEvent);
   const createAvatars = (attendees) => {
     if (attendees.length < 6) {
