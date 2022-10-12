@@ -24,22 +24,22 @@ function TitleCard({ host, dispatch, id }) {
     .map((a) => a.id);
 
   const handleJoin = async () => {
+    toggleJoin(false);
     await postAttendee(event.eventId, name, photoURL, email);
     const result = await getData();
     dispatch(loadEvents(result[0]));
     const newEvent = result[0].filter((event) => event.eventId === id)[0];
     dispatch(loadCurrentEvent(newEvent));
     message.success("Event Joined!", 1);
-    toggleJoin(false);
   };
   const handleLeave = async () => {
+    toggleJoin(false);
     await deleteAttendee(event.eventId, attendeeIds[0]);
     const result = await getData();
     dispatch(loadEvents(result[0]));
     const newEvent = result[0].filter((event) => event.eventId === id)[0];
     dispatch(loadCurrentEvent(newEvent));
     message.success("Left Event!", 1);
-    toggleJoin(false);
   };
 
   return (
